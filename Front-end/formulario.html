@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Formulario</title>
+    
+    <style>
+
+        body{
+            background-color: rgb(221, 221, 221);
+        }
+
+        .menu{
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #ffffff;
+            list-style: none;
+            margin-left: 5%;
+            margin-right: 0%;
+            width: 80%;
+            height: 10%;
+        }
+
+        .menu li{
+            display: inline-block;
+            text-align: center;
+            width: 15%;
+            margin-left: 40px;
+            margin-right: 40px;
+        }
+
+        .menu li a{
+            color: rgb(0, 0, 0);
+            padding: 15px;
+            display: block;
+            text-decoration: none;
+        }
+
+        .menu li a:hover{
+            background-color: #df6666ee;
+        }
+
+        .icono_usuario{
+            width:50px;
+            height:50px;
+            float:right;
+            margin-right:3%;
+        }
+
+        .legend{
+		  display: inline; /**/
+		  width: 100px; /**/
+		  margin-top: 10px;
+		  margin-bottom: 2px;
+		  margin-right: 50px;
+		  margin-left: 50px;
+
+		}
+
+		.legend select{
+			height: 50px;
+			width: 200px;
+			font-size: 15px
+		}
+
+		.selection{
+			margin-left: 5%;
+			margin-right: 5%;
+			width: 90%;
+		}
+
+        .formulario{
+            background-color: #8d8d8dea;
+            width: 80%;
+            margin-left: 10%;
+            margin-top: 8%;
+            margin-bottom: 8%;
+            border-radius: 10px;
+            box-shadow: 30px 30px 10px #1d070788;
+            border-radius: 20px;
+        }
+
+        .encabezado{
+            background-color: #474747;
+            padding: 20px;
+            border-radius: 20px;
+            margin-bottom: 5px;
+            font-size: 20px;
+            color: #FFF
+        }
+
+        .recuadro{
+            background-color: #ffffff;
+            padding: 20px;
+            margin-top: 40px;
+            margin-bottom: 40px;
+            margin-left: 10%;
+            margin-right: 10%;
+
+        }
+
+        .pregunta{
+            padding: 15px;
+            text-align: center;
+
+        }
+
+        .opciones{
+            list-style: none;
+            width: 80%;
+            height: 10%;
+        }
+
+        .opciones li{
+            padding: 15px;
+            display: inline-block;
+            text-align: center;
+        }
+
+
+        .opcion{
+            border-radius: 50%;
+            width: 10px;
+            height: 10px;
+            background-color: blue;
+        }
+
+
+        .envio{
+            cursor: pointer;
+            background-color: #3f3f3f;
+            text-align: center;
+            font-size: 20px;
+            border-radius: 8px;
+            box-shadow: 8px 8px 5px #1d070788;
+            margin: 15px;
+            margin-left: 80%;
+            padding: 20px;
+            color: #FFF;
+        }
+
+
+    
+    </style>
+    
+</head>
+    
+    
+    
+<body>
+    
+    <img src="usuario1.png" class="icono_usuario" alt="Icono usuario">
+
+    <ul class="menu">
+        <li><a href="a.html">Inicio</a></li>
+        <li><a href="b.html">Ver Cursos</a></li>
+        <li><a href="c.html">Valorar un curso</a></li>
+        <li><a href="d.html">Cerrar cesion</a></li>
+    </ul>
+
+    
+    <div class="selection">
+        <div class="legend">
+            <select name="especialidad" id="especialidad">
+                <option value="0" selected="selected">Especialidad</option>
+                <option value="1">Opcion1</option>
+                <option value="2">Opcion2</option>
+                <option value="3">Opcion3</option>
+            </select>
+        </div>
+       <div class="legend">
+            <select  name="curso" id="curso">
+                <option value="0" selected="selected">Curso</option>
+                <option value="1">Opcion1</option>
+                <option value="2">Opcion2</option>
+                <option value="3">Opcion3</option>
+            </select>
+        </div>
+        <div class="legend">
+            <select name="año_semestre" id="año_semestre">
+                <option value="0" selected="selected">Año y semestre</option>
+                <option value="1">Opcion1</option>
+                <option value="2">Opcion2</option>
+                <option value="3">Opcion3</option>
+            </select>
+        </div>
+        <div class="legend">
+            <select name="seccion" id="seccion">
+                <option value="0" selected="selected">Seccion</option>
+                <option value="1">Opcion1</option>
+                <option value="2">Opcion2</option>
+                <option value="3">Opcion3</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="formulario">
+
+        <form>
+            <div class="encabezado">Elija una puntuación para cada aspecto</div>
+
+            <div class="recuadro">
+                <div class="pregunta">Aqui va la pregunta 1</div>
+                
+                <ul class="opciones">
+                    <li><div class="opcion mala chica"></div></li>
+                    <li><div class="opcion mala mediana"></div></li>
+                    <li><div class="opcion neutra"></div></li>
+                    <li><div class="opcion buena mediana"></div></li>
+                    <li><div class="opcion buena mediana"></div></li>
+                </ul>
+
+            </div>
+            <div class="recuadro">
+                <div class="pregunta">Aqui va la pregunta 2</div>
+                <ul class="opciones">
+                    <li><input type="checkbox" value="0"></li>
+                    <li><input type="checkbox" value="0"></li>
+                    <li><input type="checkbox" value="0"></li>
+                    <li><input type="checkbox" value="0"></li>
+                    <li><input type="checkbox" value="0"></li>
+                </ul>
+            </div>
+            <div class="recuadro">
+                <div class="pregunta">Aqui va la pregunta 3</div>
+
+                
+            </div>
+
+
+        </form>
+    </div>
+
+    <button class="envio" type="submit">Enviar  review</button>
+</body>
+    
+
+</html>
