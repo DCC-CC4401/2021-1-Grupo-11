@@ -7,6 +7,8 @@
     
     <style>
 
+
+
         body{
             background-color: rgb(221, 221, 221);
         }
@@ -107,8 +109,9 @@
 
         .opciones{
             list-style: none;
-            width: 80%;
             height: 10%;
+            margin-left: 23.5%;
+            margin-right: 23.5%;
         }
 
         .opciones li{
@@ -139,6 +142,63 @@
             color: #FFF;
         }
 
+        .opciones li input[type="radio"].low_hard{
+            width: 4em;
+            height: 4em;
+        }
+        .opciones li input[type="radio"].low_easy{
+            width: 5em;
+            height: 5em;
+        }
+        .opciones li input[type="radio"].neutral{
+            width: 6em;
+            height: 6em;
+        }
+        .opciones li input[type="radio"].high_easy{
+            width: 5em;
+            height: 5em;
+        }
+        .opciones li input[type="radio"].high_hard{
+            background-color: #E04444;
+            width: 4em;
+            height: 4em;
+        }
+
+        input[type='radio']:after {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            top: -2px;
+            left: -1px;
+            position: relative;
+            content: '';
+            display: inline-block;
+            visibility: visible;
+            border: 2px solid white;
+        }
+        input[type='radio'].low_hard:after {background-color: #9B2B36;}
+        input[type='radio'].low_easy:after {background-color: #CB535F;}
+        input[type='radio'].neutral:after {background-color: #9B9C9B;}
+        input[type='radio'].high_easy:after {background-color: #6CC56C;}
+        input[type='radio'].high_hard:after {background-color: #3D933D;}
+
+        input[type='radio']:checked:after {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            top: -2px;
+            left: -1px;
+            position: relative;
+            content: '';
+            display: inline-block;
+            visibility: visible;
+            border: 2px solid white;
+        }
+        input[type='radio'].low_hard:checked:after {background-color: #454545;}
+        input[type='radio'].low_easy:checked:after {background-color: #454545;}
+        input[type='radio'].neutral:checked:after {background-color: #454545;}
+        input[type='radio'].high_easy:checked:after {background-color: #454545;}
+        input[type='radio'].high_hard:checked:after {background-color: #454545;}
 
     
     </style>
@@ -195,40 +255,69 @@
     </div>
 
     <div class="formulario">
-
+        
         <form>
             <div class="encabezado">Elija una puntuación para cada aspecto</div>
-
+            <div style="overflow-y:scroll; height: 50em;">
             <div class="recuadro">
                 <div class="pregunta">Aqui va la pregunta 1</div>
                 
                 <ul class="opciones">
-                    <li><div class="opcion mala chica"></div></li>
-                    <li><div class="opcion mala mediana"></div></li>
-                    <li><div class="opcion neutra"></div></li>
-                    <li><div class="opcion buena mediana"></div></li>
-                    <li><div class="opcion buena mediana"></div></li>
+                    <li><input class="low_hard" type="radio" name="review1" value="1"></li>
+                    <li><input class="low_easy" type="radio" name="review1" value="2"></li>
+                    <li><input class="neutral" type="radio" name="review1" value="3"></li>
+                    <li><input class="high_easy" type="radio" name="review1" value="4"></li>
+                    <li><input class="high_hard" type="radio" name="review1" value="5"></li>
                 </ul>
 
             </div>
             <div class="recuadro">
                 <div class="pregunta">Aqui va la pregunta 2</div>
                 <ul class="opciones">
-                    <li><input type="checkbox" value="0"></li>
-                    <li><input type="checkbox" value="0"></li>
-                    <li><input type="checkbox" value="0"></li>
-                    <li><input type="checkbox" value="0"></li>
-                    <li><input type="checkbox" value="0"></li>
+                    <li><input class="low_hard" type="radio" name="review2" value="1"></li>
+                    <li><input class="low_easy" type="radio" name="review2" value="2"></li>
+                    <li><input class="neutral" type="radio" name="review2" value="3"></li>
+                    <li><input class="high_easy" type="radio" name="review2" value="4"></li>
+                    <li><input class="high_hard" type="radio" name="review2" value="5"></li>
                 </ul>
+                
             </div>
             <div class="recuadro">
                 <div class="pregunta">Aqui va la pregunta 3</div>
+                <ul class="opciones">
+                    <li><input class="low_hard" type="radio" name="review3" value="1"></li>
+                    <li><input class="low_easy" type="radio" name="review3" value="2"></li>
+                    <li><input class="neutral" type="radio" name="review3" value="3"></li>
+                    <li><input class="high_easy" type="radio" name="review3" value="4"></li>
+                    <li><input class="high_hard" type="radio" name="review3" value="5"></li>
+                </ul>
+            </div>
 
-                
+            <div class="recuadro">
+                <div class="pregunta">Aqui va la pregunta 4</div>
+                <ul class="opciones">
+                    <li><input class="low_hard" type="radio" name="review4" value="1"></li>
+                    <li><input class="low_easy" type="radio" name="review4" value="2"></li>
+                    <li><input class="neutral" type="radio" name="review4" value="3"></li>
+                    <li><input class="high_easy" type="radio" name="review4" value="4"></li>
+                    <li><input class="high_hard" type="radio" name="review4" value="5"></li>
+                </ul>
+            </div>
+
+            <div class="recuadro">
+                <div class="pregunta">Aqui va la pregunta 5</div>
+                <ul class="opciones">
+                    <li><input class="low_hard" type="radio" name="review5" value="1"></li>
+                    <li><input class="low_easy" type="radio" name="review5" value="2"></li>
+                    <li><input class="neutral" type="radio" name="review5" value="3"></li>
+                    <li><input class="high_easy" type="radio" name="review5" value="4"></li>
+                    <li><input class="high_hard" type="radio" name="review5" value="5"></li>
+                </ul>
             </div>
 
 
         </form>
+    </div>
     </div>
 
     <button class="envio" type="submit">Enviar  review</button>
