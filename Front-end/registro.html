@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Registro</title>
+	<style></style>
+</head>
+<body>
+	<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Formulario</title>
+    
+    <style>
+
+
+
+        body{
+            background-color: rgb(221, 221, 221);
+        }
+
+        .menu{
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #ffffff;
+            list-style: none;
+            margin-left: 5%;
+            margin-right: 0%;
+            width: 80%;
+            height: 10%;
+        }
+
+        .menu li{
+            display: inline-block;
+            text-align: center;
+            width: 15%;
+            margin-left: 40px;
+            margin-right: 40px;
+        }
+
+        .menu li a{
+            color: rgb(0, 0, 0);
+            padding: 15px;
+            display: block;
+            text-decoration: none;
+        }
+
+        .menu li a:hover{
+            background-color: #df6666ee;
+        }
+
+        .icono_usuario{
+            width:50px;
+            height:50px;
+            float:right;
+            margin-right:3%;
+        }
+
+        .legend{
+          display: inline; /**/
+          width: 100px; /**/
+          margin-top: 10px;
+          margin-bottom: 2px;
+          margin-right: 50px;
+          margin-left: 50px;
+        }
+
+        .legend select{
+            height: 50px;
+            width: 200px;
+            font-size: 15px
+        }
+
+        .selection{
+            text-align:center;
+            width: 90%;
+            text-align: center;
+        }
+
+        .formulario{
+            background-color: #8d8d8dea;
+            width: 80%;
+            margin-left: 10%;
+            margin-top: 8%;
+            margin-bottom: 8%;
+            border-radius: 10px;
+            box-shadow: 30px 30px 10px #1d070788;
+            border-radius: 20px;
+        }
+
+        .encabezado{
+            background-color: #474747;
+            padding: 20px;
+            border-radius: 20px;
+            margin-bottom: 5px;
+            font-size: 20px;
+            color: #FFF
+        }
+
+        .recuadro{
+            background-color: #ffffff;
+            padding: 20px;
+            margin-top: 40px;
+            margin-bottom: 40px;
+            margin-left: 10%;
+            margin-right: 10%;
+            text-align: center;
+        }
+
+        .pregunta{
+            padding: 15px;
+            text-align: center;
+
+        }
+
+        .opciones{
+            list-style: none;
+            height: 10%;
+            text-align:center;
+        }
+
+        .opciones li{
+            padding: 1%;
+            display: inline-block;
+            text-align: center;
+        }
+
+
+        .envio{
+            cursor: pointer;
+            background-color: #3f3f3f;
+            text-align: center;
+            font-size: 20px;
+            border-radius: 8px;
+            box-shadow: 8px 8px 5px #1d070788;
+            margin: 15px;
+            margin-left: 80%;
+            padding: 20px;
+            color: #FFF;
+        }
+
+        .opciones li input[type="radio"].low_hard{
+            width: 4em;
+            height: 4em;
+        }
+        .opciones li input[type="radio"].low_easy{
+            width: 5em;
+            height: 5em;
+        }
+        .opciones li input[type="radio"].neutral{
+            width: 6em;
+            height: 6em;
+        }
+        .opciones li input[type="radio"].high_easy{
+            width: 5em;
+            height: 5em;
+        }
+        .opciones li input[type="radio"].high_hard{
+            width: 4em;
+            height: 4em;
+        }
+
+        input[type='radio']:after {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            top: -2px;
+            left: -1px;
+            position: relative;
+            content: '';
+            display: inline-block;
+            visibility: visible;
+            border: 2px solid white;
+        }
+        
+        input[type='radio'].low_hard:after {background-color: #9B2B36;}
+        input[type='radio'].low_easy:after {background-color: #CB535F;}
+        input[type='radio'].neutral:after {background-color: #9B9C9B;}
+        input[type='radio'].high_easy:after {background-color: #6CC56C;}
+        input[type='radio'].high_hard:after {background-color: #3D933D;}
+
+        input[type='radio']:checked:after {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            top: -2px;
+            left: -1px;
+            position: relative;
+            content: '';
+            display: inline-block;
+            visibility: visible;
+            border: 2px solid white;
+        }
+        input[type='radio'].low_hard:checked:after {background-color: #454545;}
+        input[type='radio'].low_easy:checked:after {background-color: #454545;}
+        input[type='radio'].neutral:checked:after {background-color: #454545;}
+        input[type='radio'].high_easy:checked:after {background-color: #454545;}
+        input[type='radio'].high_hard:checked:after {background-color: #454545;}
+
+        .anotacion{
+            width: 15%;
+            text-align: center;
+        }
+
+
+
+     	/*------------------*/
+     	.box{
+            background-color: #f1c4c4ea;
+            width: 80%;
+            height: 30em;
+            margin-left: 10%;
+            border-radius: 20px;
+            box-shadow: 30px 30px 10px #1d070788;
+        }
+
+    
+    </style>
+    
+</head>
+    
+    
+    
+<body>
+    
+    <img src="usuario1.png" class="icono_usuario" alt="Icono usuario">
+
+    <!--<ul class="menu">
+        <li><a href="a.html">Inicio</a></li>
+        <li><a href="b.html">Ver Cursos</a></li>
+        <li><a href="c.html">Valorar un curso</a></li>
+        <li><a href="d.html">Cerrar cesion</a></li>
+    </ul>-->
+
+
+    <div class="box">
+    	<div class="encabezado">Iniciar Sesion</div>
+        <form method="POST">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="nombre_usuario">Nombre</label>
+                <input type="text" class="form-control" id=nombre_usuario name="name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="contraseña">Prefijo</label>
+                <input type="text" class="form-control" id="contraseña" name="prefix" required>
+            </div>
+
+             <button type="submit">Crear usuario</button>
+        </form>
+
+        
+    </div>
+
+</body>
+    
+
+</html>
+
+</body>
+</html>

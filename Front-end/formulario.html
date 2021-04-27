@@ -56,7 +56,6 @@
 		  margin-bottom: 2px;
 		  margin-right: 50px;
 		  margin-left: 50px;
-
 		}
 
 		.legend select{
@@ -66,9 +65,9 @@
 		}
 
 		.selection{
-			margin-left: 5%;
-			margin-right: 5%;
+            text-align:center;
 			width: 90%;
+            text-align: center;
 		}
 
         .formulario{
@@ -98,7 +97,7 @@
             margin-bottom: 40px;
             margin-left: 10%;
             margin-right: 10%;
-
+            text-align: center;
         }
 
         .pregunta{
@@ -110,22 +109,13 @@
         .opciones{
             list-style: none;
             height: 10%;
-            margin-left: 23.5%;
-            margin-right: 23.5%;
+            text-align:center;
         }
 
         .opciones li{
-            padding: 15px;
+            padding: 1%;
             display: inline-block;
             text-align: center;
-        }
-
-
-        .opcion{
-            border-radius: 50%;
-            width: 10px;
-            height: 10px;
-            background-color: blue;
         }
 
 
@@ -159,7 +149,6 @@
             height: 5em;
         }
         .opciones li input[type="radio"].high_hard{
-            background-color: #E04444;
             width: 4em;
             height: 4em;
         }
@@ -176,6 +165,7 @@
             visibility: visible;
             border: 2px solid white;
         }
+        
         input[type='radio'].low_hard:after {background-color: #9B2B36;}
         input[type='radio'].low_easy:after {background-color: #CB535F;}
         input[type='radio'].neutral:after {background-color: #9B9C9B;}
@@ -200,8 +190,15 @@
         input[type='radio'].high_easy:checked:after {background-color: #454545;}
         input[type='radio'].high_hard:checked:after {background-color: #454545;}
 
+        .anotacion{
+            width: 15%;
+            text-align: center;
+        }
+
     
     </style>
+
+    <script src="formulario.js"></script>
     
 </head>
     
@@ -263,14 +260,25 @@
                 <div class="pregunta">Aqui va la pregunta 1</div>
                 
                 <ul class="opciones">
+                    
                     <li><input class="low_hard" type="radio" name="review1" value="1"></li>
                     <li><input class="low_easy" type="radio" name="review1" value="2"></li>
                     <li><input class="neutral" type="radio" name="review1" value="3"></li>
                     <li><input class="high_easy" type="radio" name="review1" value="4"></li>
                     <li><input class="high_hard" type="radio" name="review1" value="5"></li>
                 </ul>
-
+                <a href="comentario.html">Agregar comentario</a>
             </div>
+
+            <div class="modal">
+                <div class="modal-content">
+                    <p>Agregue su comentario</p>
+                    <div>
+                        <input onclick="cerrarComentario()" type="button" class="close" id="volver" value='No estoy seguro, quiero volver al formulario'>
+                    </div>
+                </div>
+            </div>
+
             <div class="recuadro">
                 <div class="pregunta">Aqui va la pregunta 2</div>
                 <ul class="opciones">
@@ -280,40 +288,51 @@
                     <li><input class="high_easy" type="radio" name="review2" value="4"></li>
                     <li><input class="high_hard" type="radio" name="review2" value="5"></li>
                 </ul>
+                <a href="comentario.html">Agregar comentario</a>
                 
             </div>
             <div class="recuadro">
                 <div class="pregunta">Aqui va la pregunta 3</div>
                 <ul class="opciones">
+                    <li class="anotacion">Bueno</li>
                     <li><input class="low_hard" type="radio" name="review3" value="1"></li>
                     <li><input class="low_easy" type="radio" name="review3" value="2"></li>
                     <li><input class="neutral" type="radio" name="review3" value="3"></li>
                     <li><input class="high_easy" type="radio" name="review3" value="4"></li>
                     <li><input class="high_hard" type="radio" name="review3" value="5"></li>
+                    <li class="anotacion">Bueno</li>
                 </ul>
+                <a href="comentario.html">Agregar comentario</a>
             </div>
 
             <div class="recuadro">
                 <div class="pregunta">Aqui va la pregunta 4</div>
                 <ul class="opciones">
+                    <li class="anotacion">Malo</li>
                     <li><input class="low_hard" type="radio" name="review4" value="1"></li>
                     <li><input class="low_easy" type="radio" name="review4" value="2"></li>
                     <li><input class="neutral" type="radio" name="review4" value="3"></li>
                     <li><input class="high_easy" type="radio" name="review4" value="4"></li>
                     <li><input class="high_hard" type="radio" name="review4" value="5"></li>
+                    <li class="anotacion">Bueno</li>
                 </ul>
+                <a href="comentario.html">Agregar comentario</a>
             </div>
 
             <div class="recuadro">
                 <div class="pregunta">Aqui va la pregunta 5</div>
                 <ul class="opciones">
+                    <li class="anotacion">Malo</li>
                     <li><input class="low_hard" type="radio" name="review5" value="1"></li>
                     <li><input class="low_easy" type="radio" name="review5" value="2"></li>
                     <li><input class="neutral" type="radio" name="review5" value="3"></li>
                     <li><input class="high_easy" type="radio" name="review5" value="4"></li>
                     <li><input class="high_hard" type="radio" name="review5" value="5"></li>
+                    <li class="anotacion">Bueno</li>
                 </ul>
+                <a href="comentario.html">Agregar comentario</a>
             </div>
+            
 
 
         </form>
