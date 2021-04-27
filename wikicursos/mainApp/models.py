@@ -7,29 +7,29 @@ class User(AbstractUser):
 	pass
 
 class Roles(models.Model):
-    role_name = models.CharField(max_length=255)
+	role_name = models.CharField(max_length=255)
 
 class UserRoles(models.Model):
-    user_id = models.ForeignKey(User, on_delete=models.CASCADE) 
-    role_id = models.ForeignKey(Roles, on_delete=models.CASCADE) #constructor recibe un objeto de clase Roles
+    user = models.ForeignKey(User, on_delete=models.CASCADE) 
+    role = models.ForeignKey(Roles, on_delete=models.CASCADE) #constructor recibe un objeto de clase Roles
     
 class Course(models.Model):
-	code = models.CharField(max_length=255)
 	name = models.CharField(max_length=255)
-	key = models.CharField(max_length=255) #TODO: Revisar
-	ype = models.CharField(max_length=255) #TODO: Revisar
+	department_code = models.CharField(max_length=255)
+	course_key = models.CharField(max_length=255)
+	course_type = models.CharField(max_length=255)
 
 class Department(models.Model):
     name = models.CharField(max_length=255)
     prefix = models.CharField(max_length=255)
 
 class BelongsTo(models.Model):
-	department_id = models.ForeignKey(Department, on_delete=models.CASCADE) 
-	course_id = models.ForeignKey(Course, on_delete=models.CASCADE) 
+	department = models.ForeignKey(Department, on_delete=models.CASCADE) 
+	course = models.ForeignKey(Course, on_delete=models.CASCADE) 
 	
 class Review(models.Model):
-	course_id = models.ForeignKey(Course, on_delete=models.CASCADE)
-	user_id = models.ForeignKey(User, on_delete=models.CASCADE) 
+	course = models.ForeignKey(Course, on_delete=models.CASCADE)
+	user = models.ForeignKey(User, on_delete=models.CASCADE) 
 	timestamp = models.DateField(default=date.today())
 	
 	# Versión del curso
@@ -48,5 +48,5 @@ class Review(models.Model):
 	extra_comment = models.CharField(max_length=255)
 
 class UsefulFor(models.Model):
-    review_id = models.ForeignKey(Review, on_delete=models.CASCADE) 
-    usefulFor_id = models.IntegerField()
+	review = models.ForeignKey(Review, on_delete=models.CASCADE) 
+	course = models.ForeignKey(Course, on_delete=models.CASCADE)
