@@ -3,6 +3,13 @@ from django.http import HttpResponseRedirect
 from mainApp.models import Course, Department, Review, User, UserRoles, Roles
 from django.contrib.auth import authenticate, login,logout
 
+
+courses_Dict = {
+    'DCC' : [('CC3001', 'CC3001 Algoritmos'), ('CC3002', 'CC3002 Gráfica'), ('CC5002', 'CC5002 Deep Learning')],
+    'DIM' : [('MA1001', 'MA1001 Intro al álgebra'), ('MA2003', 'MA2003 Cálculo diferencial')],
+    'DII' : [('IN3002', 'IN3002 Econo'), ('IN4002', 'IN3002 Evaluación de proyectos')]
+}
+
 # Create your views here.
 def login_user(request):
     if request.method == 'GET':
@@ -22,11 +29,10 @@ def logout_user(request):
     return HttpResponseRedirect('/login')
 
 def register_user(request):
-    if request.method == 'GET': #Si estamos cargando la página
-        return render(request, "mainApp/register_user.html") # Mostrar el template
+    if request.method == 'GET': 
+        return render(request, "mainApp/register_user.html") 
 
-    elif request.method == 'POST': #Si estamos recibiendo el form de registro
-        #Tomar los elementos del formulario que vienen en request.POST
+    elif request.method == 'POST':
         username = request.POST['username']
         password = request.POST['password']
         email = request.POST['email']
@@ -51,7 +57,7 @@ def register_review(request):
         # dict() -> html 
         context = dict()
         #roles = Roles.objects.filter(...)
-        #context['x'] = roles
+        context['dict'] = courses_Dict
         return render(request, "mainApp/review_chanta.html", context)  #template de nombre review 
 
     elif request.method == 'POST':
@@ -85,3 +91,11 @@ def register_review(request):
 
         #Redireccionar 
         return HttpResponseRedirect('/login')
+
+"""
+Para el proximo sprint (dropdow departamento filtra dropdown cursos)
+def load_cursos(request):
+    department_id = request.GET.get('department_id')
+    courses = Courses.objects.filter(department_id = department_id).all() #retorna toda tupla en course tq department_id sea el recibido el post
+    return render(request, '') #html con el dropdown de cursos
+"""

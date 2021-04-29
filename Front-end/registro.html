@@ -215,6 +215,20 @@
             box-shadow: 30px 30px 10px #1d070788;
         }
 
+        .topbar{
+            background-color: white; 
+            height: 40px; 
+            margin-bottom: 4%;
+        }
+
+        .form-group{
+            
+        }
+
+        .form-group label{
+            width: 200%;
+        }
+
     
     </style>
     
@@ -232,12 +246,12 @@
         <li><a href="c.html">Valorar un curso</a></li>
         <li><a href="d.html">Cerrar cesion</a></li>
     </ul>-->
+    <div class="topbar"></div>
 
 
     <div class="box">
     	<div class="encabezado">Iniciar Sesion</div>
         <form method="POST">
-            {% csrf_token %}
             <div class="form-group">
                 <label for="nombre_usuario">Nombre</label>
                 <input type="text" class="form-control" id=nombre_usuario name="name" required>

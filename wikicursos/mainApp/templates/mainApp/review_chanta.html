@@ -5,7 +5,12 @@
         <title>Registro</title>
      </head>
      <body>
-        <h1> Registro </h1>
+         <select id=hola name=hola required>
+            {% for i in dict %}
+            <option value={{i.0}}> "{{i.1}}" </option>
+            {% endfor %}
+         </select>
+        
         <form method="POST">
             {% csrf_token %}
             <div class="form-group">
