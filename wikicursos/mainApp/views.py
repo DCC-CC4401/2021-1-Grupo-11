@@ -49,9 +49,20 @@ def register_review(request):
     if request.method == 'GET':
         #TODO: Pedir la info a la BD y mandarla al template
         # dict() -> html 
-        return render(request, "mainApp/register_review.html")  #template de nombre review 
+        context = dict()
+        #roles = Roles.objects.filter(...)
+        #context['x'] = roles
+        return render(request, "mainApp/review_chanta.html", context)  #template de nombre review 
 
     elif request.method == 'POST':
+        username = request.POST['username']
+        user = User.objects.get(username=username) #este por ahora
+        #user = request.user    """Este es el que queremos """
+
+        course_string = request.POST['course']
+        course = Course.objects.get(course_code=course_string)
+
+        course = Course.objects.get()
         section = request.POST['section']
         year = request.POST['year']
         semester = request.POST['semester']
@@ -65,7 +76,7 @@ def register_review(request):
         extra_comment = request.POST['extra_comment']
 
         #Crear la nueva review
-        review = Review(section=section, year=year, semester=semester, required_time_level=required_time_level,
+        review = Review(user=user, course=course, section=section, year=year, semester=semester, required_time_level=required_time_level,
                         required_time_comment=required_time_comment, difficulty_level=difficulty_level, 
                         difficulty_comment=difficulty_comment, recommendation_level=recommendation_level, 
                         recommendation_comment=recommendation_comment, study_recommendation=study_recommendation,
@@ -73,4 +84,4 @@ def register_review(request):
         review.save()
 
         #Redireccionar 
-        return HttpResponseRedirect('/index')
+        return HttpResponseRedirect('/login')
