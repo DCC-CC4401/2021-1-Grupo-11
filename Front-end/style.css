@@ -48,16 +48,18 @@ body{
 }
 
 .selection{
-    margin-top: 1%;
+    margin-top: 2%;
     display: flex;
     justify-content: space-around;
+    margin-left: 5%;
+    margin-right: 5%;
 }
 
 .formulario{
     background-color: #8d8d8dea;
     width: 80%;
     margin-left: 10%;
-    margin-top: 4%;
+    margin-top: 2%;
     margin-bottom: 8%;
     border-radius: 10px;
     box-shadow: 30px 30px 10px #1d070788;
