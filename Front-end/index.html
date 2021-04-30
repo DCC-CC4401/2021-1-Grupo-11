@@ -254,7 +254,7 @@
         }
 
         .topbar img{
-            margin-left: 40%;
+            margin-left: 35%;
 
     
     </style>
@@ -275,115 +275,18 @@
         <li><a href="c.html">Valorar un curso</a></li>
         <li><a href="d.html">Cerrar cesion</a></li>
     </ul>
-     <div class="topbar"><img src="wikicursos.png" alt="title" width="300" ></div>
+     <div class="topbar"><img src="wikicursos.png" alt="title" width="600" ></div>
     
-    <div class="selection">
-        <div class="legend">
-            <select name="especialidad" id="especialidad">
-                <option value="0" selected="selected">Especialidad</option>
-                <option value="1">Opcion1</option>
-                <option value="2">Opcion2</option>
-                <option value="3">Opcion3</option>
-            </select>
-        </div>
-       <div class="legend">
-            <select  name="course" id="course">
-                <option value="0" selected="selected">Curso</option>
-                <option value="1">Opcion1</option>
-                <option value="2">Opcion2</option>
-                <option value="3">Opcion3</option>
-            </select>
-        </div>
-        <div class="legend">
-            <select name="year" id="year">
-                <option value="0" selected="selected">Año y semestre</option>
-                <option value="1">Opcion1</option>
-                <option value="2">Opcion2</option>
-                <option value="3">Opcion3</option>
-            </select>
-        </div>
-        <div class="legend">
-            <select name="section" id="section">
-                <option value="0" selected="selected">Seccion</option>
-                <option value="1">Opcion1</option>
-                <option value="2">Opcion2</option>
-                <option value="3">Opcion3</option>
-            </select>
-        </div>
-    </div>
+    
     <div class="formulario">
         
         <form>
-            <div class="encabezado">Elija una puntuación para cada aspecto</div>
-            <div style="overflow-y:scroll; height: 50em;">
-
-            <div class="recuadro">
-                <div class="pregunta">Carga academica.<br>¿Cumple con los requisitos de curso?</div>
-                <ul class="opciones">
-                    <li class="anotacion">En desacuerdo</li>
-                    <li><input class="low_hard" type="radio" name="required_time_level" value="1"></li>
-                    <li><input class="low_soft" type="radio" name="required_time_level" value="2"></li>
-                    <li><input class="neutral" type="radio" name="required_time_level" value="3"></li>
-                    <li><input class="high_soft" type="radio" name="required_time_level" value="4"></li>
-                    <li><input class="high_hard" type="radio" name="required_time_level" value="5"></li>
-                    <li class="anotacion">De acuerdo</li>
-                </ul>
-                <div class="comentar" id="abrir_modal" onclick="confbox()">Agregar comentario</div>
-            </div>
-
-            <div class="modal" id="m1">
-                <div class="modal-content">
-                    <input type="button" class="close" id="volver" value="X">
-                    <p>Agregue su comentario</p>
-                    <textarea class="comentario" placeholder="Escriba su comentario acá" rows="4" cols="50"></textarea>
-                    <button class="enviar_comentario" id="enviar_comentario" type="submit">Enviar comentario</button>
-                </div>
-            </div>
-
-            <div class="recuadro">
-                <div class="pregunta">Dificultad del curso.<br>Academicamente ¿Que tan dificil es?</div>
-                <ul class="opciones">
-                    <li class="anotacion">Muy facil</li>
-                    <li><input class="low_hard" type="radio" name="difficulty_level" value="1"></li>
-                    <li><input class="low_soft" type="radio" name="difficulty_level" value="2"></li>
-                    <li><input class="neutral" type="radio" name="difficulty_level" value="3"></li>
-                    <li><input class="high_soft" type="radio" name="difficulty_level" value="4"></li>
-                    <li><input class="high_hard" type="radio" name="difficulty_level" value="5"></li>
-                    <li class="anotacion">Muy dificil</li>
-                </ul>
-                <a href="comentario.html">Agregar comentario</a>
-            </div>
-
-            <div class="recuadro">
-                <div class="pregunta">Recomendacion<br>¿Que tanto recomendaria el curso?</div>
-                <ul class="opciones">
-                    <li class="anotacion">Nada</li>
-                    <li><input class="low_hard" type="radio" name="recommendation_level" value="1"></li>
-                    <li><input class="low_soft" type="radio" name="recommendation_level" value="2"></li>
-                    <li><input class="neutral" type="radio" name="recommendation_level" value="3"></li>
-                    <li><input class="high_soft" type="radio" name="recommendation_level" value="4"></li>
-                    <li><input class="high_hard" type="radio" name="recommendation_level" value="5"></li>
-                    <li class="anotacion">Mucho</li>
-                </ul>
-                <a href="comentario.html">Agregar comentario</a>
-            </div>
-
-            <div class="recuadro">
-                <div class="pregunta">¿Que recomienda para el estudio?</div>
-                <input type="text" name="study_recommendation">
-            </div>
-            
-            <div class="recuadro">
-                <div class="pregunta">Algun otro comentario acerca del curso</div>
-                <input type="text" name="extra_comment">  
-            </div>
-
-
+            <div style="height: 50em;">
         </form>
     </div>
     </div>
 
-    <button class="envio" type="submit">Enviar  review</button>
+
 </body>
     
 
