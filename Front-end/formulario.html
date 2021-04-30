@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <title>Formulario</title>
     <link rel="stylesheet" href="style.css" type="text/css">
-    
+    <script src="formulario.js"></script>
 
 </head>
 
@@ -72,14 +72,14 @@
                     <li><input class="high_hard" type="radio" name="required_time_level" value="5"></li>
                     <li class="anotacion">De acuerdo</li>
                 </ul>
-                <div class="comentar" id="abrir_modal" onclick="document.getElementById('m1').style.display = 'block';">Agregar comentario</div>
+                <div class="comentar" id="abrir_modal" onclick="open_comment_modal('m1')">Agregar comentario</div>
             </div>
             <div class="modal" id="m1">
                 <div class="modal-content">
-                    <input type="button" class="close" id="volver" value="X" onclick="document.getElementById('m1').style.display = 'none';">
+                    <input type="button" class="close" id="volver" value="X" onclick="close_comment_modal('m1')">
                     <p>Agregue su comentario</p>
                     <div class="modal-comment"><textarea name="required_time_comment" class="comentario" placeholder="Escriba su comentario acá" rows="4" cols="50"></textarea></div>
-                    <button class="enviar_comentario" id="enviar_comentario" onclick="document.getElementById('m1').style.display = 'none';">Enviar comentario</button>
+                    <button class="enviar_comentario" id="enviar_comentario" onclick="close_comment_modal('m1')">Enviar comentario</button>
                 </div>
             </div>
 
@@ -95,14 +95,14 @@
                     <li><input class="high_hard" type="radio" name="difficulty_level" value="5"></li>
                     <li class="anotacion">Muy dificil</li>
                 </ul>
-                <div class="comentar" id="abrir_modal" onclick="document.getElementById('m2').style.display = 'block';">Agregar comentario</div>
+                <div class="comentar" id="abrir_modal" onclick="open_comment_modal('m2')">Agregar comentario</div>
             </div>
             <div class="modal" id="m2">
                 <div class="modal-content">
-                    <input type="button" class="close" id="volver" value="X" onclick="document.getElementById('m2').style.display = 'none';">
+                    <input type="button" class="close" id="volver" value="X" onclick="close_comment_modal('m2')">
                     <p>Agregue su comentario</p>
                     <div class="modal-comment"><textarea name="difficulty_comment" class="comentario" placeholder="Escriba su comentario acá" rows="4" cols="50"></textarea></div>
-                    <button class="enviar_comentario" id="enviar_comentario" onclick="document.getElementById('m2').style.display = 'none';">Enviar comentario</button>
+                    <button class="enviar_comentario" id="enviar_comentario" onclick="close_comment_modal('m2')">Enviar comentario</button>
                 </div>
             </div>
 
@@ -118,14 +118,14 @@
                     <li><input class="high_hard" type="radio" name="recommendation_level" value="5"></li>
                     <li class="anotacion">Mucho</li>
                 </ul>
-                <div class="comentar" id="abrir_modal" onclick="document.getElementById('m3').style.display = 'block';">Agregar comentario</div>
+                <div class="comentar" id="abrir_modal" onclick="open_comment_modal('m3')">Agregar comentario</div>
             </div>
             <div class="modal" id="m3">
                 <div class="modal-content">
-                    <input type="button" class="close" id="volver" value="X" onclick="document.getElementById('m3').style.display = 'none';">
+                    <input type="button" class="close" id="volver" value="X" onclick="close_comment_modal('m3')">
                     <p>Agregue su comentario</p>
                     <div class="modal-comment"><textarea name="recommendation_comment" class="comentario" placeholder="Escriba su comentario acá" rows="4" cols="50"></textarea></div>
-                    <button class="enviar_comentario" id="enviar_comentario" onclick="document.getElementById('m3').style.display = 'none';">Enviar comentario</button>
+                    <button class="enviar_comentario" id="enviar_comentario" onclick="close_comment_modal('m3')">Enviar comentario</button>
                 </div>
             </div>
 
