@@ -39,14 +39,7 @@ body{
     margin-right:3%;
 }
 
-.legend{
-  display: inline; /**/
-  width: 100px; /**/
-  margin-top: 10px;
-  margin-bottom: 2px;
-  margin-right: 50px;
-  margin-left: 50px;
-}
+
 
 .legend select{
     height: 50px;
@@ -56,9 +49,8 @@ body{
 
 .selection{
     margin-top: 1%;
-    text-align:center;
-    width: 90%;
-    text-align: center;
+    display: flex;
+    justify-content: space-around;
 }
 
 .formulario{
