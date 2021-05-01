@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
-
+{% load static %}
 <head>
     <meta charset="UTF-8">
     <title>Formulario</title>
+    <link rel="stylesheet" href="style.css" type="text/css">
     
+    <script src="{% static 'scripts/formulario.js' %}"></script>
+
     <style>
-
-
-
         body{
             background-color: rgb(221, 221, 221);
         }
@@ -49,32 +49,27 @@
             margin-right:3%;
         }
 
-        .legend{
-		  display: inline; /**/ 
-		  width: 100px; /**/
-		  margin-top: 10px;
-		  margin-bottom: 2px;
-		  margin-right: 50px;
-		  margin-left: 50px;
-		}
 
-		.legend select{
-			height: 50px;
-			width: 200px;
-			font-size: 15px
-		}
 
-		.selection{
-            text-align:center;
-			width: 90%;
-            text-align: center;
-		}
+        .legend select{
+            height: 50px;
+            width: 200px;
+            font-size: 15px
+        }
+
+        .selection{
+            margin-top: 2%;
+            display: flex;
+            justify-content: space-around;
+            margin-left: 5%;
+            margin-right: 5%;
+        }
 
         .formulario{
             background-color: #8d8d8dea;
             width: 80%;
             margin-left: 10%;
-            margin-top: 8%;
+            margin-top: 2%;
             margin-bottom: 8%;
             border-radius: 10px;
             box-shadow: 30px 30px 10px #1d070788;
@@ -103,7 +98,7 @@
         .pregunta{
             padding: 15px;
             text-align: center;
-
+            color: black;
         }
 
         .opciones{
@@ -165,7 +160,7 @@
             visibility: visible;
             border: 2px solid white;
         }
-        
+
         input[type='radio'].low_hard:after {background-color: #9B2B36;}
         input[type='radio'].low_soft:after {background-color: #CB535F;}
         input[type='radio'].neutral:after {background-color: #9B9C9B;}
@@ -193,141 +188,232 @@
         .anotacion{
             width: 15%;
             text-align: center;
+            color: black;
         }
 
-        .comentario{
+        .comentar{
             cursor: pointer;
             color: blue;
             text-decoration: underline;
         }
 
-    
-    </style>
+        .modal {
+            display: none; 
+            position: fixed; 
+            z-index: 1; 
+            padding-top: 100px; 
+            left: 0;
+            top: 0;
+            width: 100%; 
+            height: 100%;  
+            overflow: auto;  
+            background: rgba(0, 0, 0, 0.658);
+            transition: all 500ms ease;
+            justify-content: center;
+            align-items: center;
+        }
 
-    <script src="formulario.js"></script>
-    
+
+        .modal-content {
+            background-color:  #df6666ee;
+            margin-top: 70px;
+            margin-left: 20%;
+            padding: 20px;
+            border: 1px solid rgb(0, 0, 0);
+            width: 60%;
+        }
+
+        .modal-content p{
+            text-align: center;
+            font-size: 220%;
+
+        }
+
+        .comentario_modal{
+            height: 150px;
+            width: 500px;
+            font-size: 17px;
+            margin-left: 130px;
+            margin-right: 130px;
+            resize: none;
+        }
+
+
+        .close{
+            float:right;
+        }
+
+        .enviar_comentario{
+            text-align: center;
+            margin-top: 30px;
+            margin-left: 40%;
+        }
+        
+        .comentario{
+            height: 100px;
+            width: 80%;
+            font-size: 15px;
+            resize: none;
+        }
+
+        .topbar{
+            display: flex;
+            justify-content: center;
+        }
+
+        .topbar_register{
+            background-color: white; 
+            height: 40px; 
+            margin-bottom: 4%;
+        }
+
+        .topbar_register img{
+            margin-left: 40%;
+        }
+
+        .box{
+            background-color: #f1c4c4ea;
+            width: 80%;
+            height: 30em;
+            margin-left: 10%;
+            border-radius: 20px;
+            box-shadow: 30px 30px 10px #1d070788;
+        }
+
+        .form-group label{
+            width: 200%;
+        }
+
+        .modal-comment{
+            display: flex;
+            justify-content: center;
+        }
+    </style>
 </head>
-    
-    
-    
+
 <body>
     
-    <img src="usuario1.png" class="icono_usuario" alt="Icono usuario">
+    <img src="{% static 'images/usuario1.png' %}" class="icono_usuario" alt="Icono usuario">
 
     <ul class="menu">
-        <li><a href="a.html">Inicio</a></li>
-        <li><a href="b.html">Ver Cursos</a></li>
-        <li><a href="c.html">Valorar un curso</a></li>
-        <li><a href="d.html">Cerrar cesion</a></li>
+        <li><a href="{% url 'index' %}">Inicio</a></li>
+        <li><a href="{% url 'index' %}">Ver cursos</a></li>
+        <li><a href="{% url 'register_review' %}">Valorar un curso</a></li>
+        <li><a href="{% url 'logout' %}">Cerrar sesión</a></li>
     </ul>
-
+     <div class="topbar"><img src="{% static 'images/wikicursos.png' %}" alt="title" width="300" ></div>
     
-    <div class="selection">
-        <div class="legend">
-            <select name="especialidad" id="especialidad">
-                <option value="0" selected="selected">Especialidad</option>
-                <option value="1">Opcion1</option>
-                <option value="2">Opcion2</option>
-                <option value="3">Opcion3</option>
-            </select>
-        </div>
-       <div class="legend">
-            <select  name="curso" id="curso">
-                <option value="0" selected="selected">Curso</option>
-                <option value="1">Opcion1</option>
-                <option value="2">Opcion2</option>
-                <option value="3">Opcion3</option>
-            </select>
-        </div>
-        <div class="legend">
-            <select name="año_semestre" id="año_semestre">
-                <option value="0" selected="selected">Año y semestre</option>
-                <option value="1">Opcion1</option>
-                <option value="2">Opcion2</option>
-                <option value="3">Opcion3</option>
-            </select>
-        </div>
-        <div class="legend">
-            <select name="seccion" id="seccion">
-                <option value="0" selected="selected">Seccion</option>
-                <option value="1">Opcion1</option>
-                <option value="2">Opcion2</option>
-                <option value="3">Opcion3</option>
-            </select>
-        </div>
-    </div>
-
-    <div class="formulario">
-        
-        <form>
+    <form method="POST">
+        {% csrf_token %}
+    	<div class="selection">
+	        <div class="legend">
+	            <input type="number" min=2011 max=2021 value=2021 name="year" id=year required>
+	        </div>
+	       <div class="legend">
+	            <select  name="semester" id="semester">
+	                <option value=0 selected disabled>Curso</option>
+	                <option value=1>Otoño</option>
+	                <option value=2>Primavera</option>
+	            </select>
+	        </div>
+	        
+	        <div class="legend">
+	            <select name="section" id="section">
+	                <option value=0 selected="selected">Sección</option>
+	                <option value=1>1</option>
+	                <option value=2>2</option>
+	            </select>
+	        </div>
+    	</div>
+    	<div class="formulario">
             <div class="encabezado">Elija una puntuación para cada aspecto</div>
             <div style="overflow-y:scroll; height: 50em;">
+
             
             <div class="recuadro">
-                <div class="pregunta">Carga academica.<br>¿Cumple con los requisitos de curso?</div>
+                <div class="pregunta">Carga académica.<br>¿Cumple con los requisitos de curso?</div>
                 <ul class="opciones">
                     <li class="anotacion">En desacuerdo</li>
-                    <li><input class="low_hard" type="radio" name="required_time_level" value="1"></li>
-                    <li><input class="low_soft" type="radio" name="required_time_level" value="2"></li>
-                    <li><input class="neutral" type="radio" name="required_time_level" value="3"></li>
-                    <li><input class="high_soft" type="radio" name="required_time_level" value="4"></li>
-                    <li><input class="high_hard" type="radio" name="required_time_level" value="5"></li>
+                    <li><input class="low_hard" type="radio" name="required_time_level" value=1></li>
+                    <li><input class="low_soft" type="radio" name="required_time_level" value=2></li>
+                    <li><input class="neutral" type="radio" name="required_time_level" value=3></li>
+                    <li><input class="high_soft" type="radio" name="required_time_level" value=4></li>
+                    <li><input class="high_hard" type="radio" name="required_time_level" value=5></li>
                     <li class="anotacion">De acuerdo</li>
                 </ul>
-                <div class="comentario" onclick="abrirComentario()">Agregar comentario</div>
+                <div class="comentar" id="abrir_modal" onclick="open_comment_modal('m1')">Agregar comentario</div>
             </div>
-
-            <div class="modal">
+            <div class="modal" id="m1">
                 <div class="modal-content">
+                    <input type="button" class="close" id="volver" value="X" onclick="close_comment_modal('m1')">
                     <p>Agregue su comentario</p>
-                    <input onclick="cerrarComentario()" type="button" class="close" id="volver" value="X">
-                    <button class="enviar_comentario" type="submit">Enviar  comentario</button>
+                    <div class="modal-comment"><textarea name="required_time_comment" class="comentario" placeholder="Escriba su comentario acá" rows="4" cols="50"></textarea></div>
+                    <input type="button" class="enviar_comentario" value="Enviar comentario" onclick="close_comment_modal('m1')">
                 </div>
             </div>
 
             <div class="recuadro">
-                <div class="pregunta">Dificultad del curso.<br>Academicamente ¿Que tan dificil es?</div>
+                <div class="pregunta">Dificultad del curso.<br>Academicamente ¿Qué tan difícil es?</div>
                 <ul class="opciones">
-                    <li class="anotacion">Muy facil</li>
-                    <li><input class="low_hard" type="radio" name="difficulty_level" value="1"></li>
-                    <li><input class="low_soft" type="radio" name="difficulty_level" value="2"></li>
-                    <li><input class="neutral" type="radio" name="difficulty_level" value="3"></li>
-                    <li><input class="high_soft" type="radio" name="difficulty_level" value="4"></li>
-                    <li><input class="high_hard" type="radio" name="difficulty_level" value="5"></li>
-                    <li class="anotacion">Muy dificil</li>
+                    <li class="anotacion">Muy fácil</li>
+                    <li><input class="low_hard" type="radio" name="difficulty_level" value=1></li>
+                    <li><input class="low_soft" type="radio" name="difficulty_level" value=2></li>
+                    <li><input class="neutral" type="radio" name="difficulty_level" value=3></li>
+                    <li><input class="high_soft" type="radio" name="difficulty_level" value=4></li>
+                    <li><input class="high_hard" type="radio" name="difficulty_level" value=5></li>
+                    <li class="anotacion">Muy difícil</li>
                 </ul>
-                <a href="comentario.html">Agregar comentario</a>
+                <div class="comentar" onclick="open_comment_modal('m2')">Agregar comentario</div>
+            </div>
+            <div class="modal" id="m2">
+                <div class="modal-content">
+                    <input type="button" class="close" value="X" onclick="close_comment_modal('m2')">
+                    <p>Agregue su comentario</p>
+                    <div class="modal-comment"><textarea name="difficulty_comment" class="comentario" placeholder="Escriba su comentario acá" rows="4" cols="50"></textarea></div>
+                    <input type="button" class="enviar_comentario" value="Enviar comentario" onclick="close_comment_modal('m2')">
+                </div>
             </div>
 
             <div class="recuadro">
-                <div class="pregunta">Recomendacion<br>¿Que tanto recomendaria el curso?</div>
+                <div class="pregunta">Recomendación<br>¿Qué tanto recomendaría el curso?</div>
                 <ul class="opciones">
                     <li class="anotacion">Nada</li>
-                    <li><input class="low_hard" type="radio" name="recommendation_level" value="1"></li>
-                    <li><input class="low_soft" type="radio" name="recommendation_level" value="2"></li>
-                    <li><input class="neutral" type="radio" name="recommendation_level" value="3"></li>
-                    <li><input class="high_soft" type="radio" name="recommendation_level" value="4"></li>
-                    <li><input class="high_hard" type="radio" name="recommendation_level" value="5"></li>
+                    <li><input class="low_hard" type="radio" name="recommendation_level" value=1></li>
+                    <li><input class="low_soft" type="radio" name="recommendation_level" value=2></li>
+                    <li><input class="neutral" type="radio" name="recommendation_level" value=3></li>
+                    <li><input class="high_soft" type="radio" name="recommendation_level" value=4></li>
+                    <li><input class="high_hard" type="radio" name="recommendation_level" value=5></li>
                     <li class="anotacion">Mucho</li>
                 </ul>
-                <a href="comentario.html">Agregar comentario</a>
+                <div class="comentar" onclick="open_comment_modal('m3')">Agregar comentario</div>
+            </div>
+            <div class="modal" id="m3">
+                <div class="modal-content">
+                    <input type="button" class="close" value="X" onclick="close_comment_modal('m3')">
+                    <p>Agregue su comentario</p>
+                    <div class="modal-comment"><textarea name="recommendation_comment" class="comentario_modal" placeholder="Escriba su comentario acá" rows="4" cols="50"></textarea></div>
+                    <input type="button" class="enviar_comentario" value="Enviar comentario" onclick="close_comment_modal('m3')">
+                </div>
             </div>
 
             <div class="recuadro">
-                <div class="pregunta">¿Que recomienda para el estudio?</div>
-                <input type="text" name="study_recommendation">
+                <div class="pregunta">¿Qué recomienda para el estudio?</div>
+                <textarea name="study_recommendation" class="comentario" placeholder="Escriba su comentario acá"></textarea>
             </div>
             
             <div class="recuadro">
-                <div class="pregunta">Algun otro comentario acerca del curso</div>
-                <input type="text" name="extra_comment">  
+                <div class="pregunta">¿Algún otro comentario acerca del curso?</div>
+                <textarea name="extra_comment" class="comentario" placeholder="Escriba su comentario acá"></textarea>
             </div>
-            
+
+            <input type="hidden" name="username" value="TESTsdsds">
+            <input type="hidden" name="course" value=MA3002>
+            <button class="envio" type="submit">Enviar  review</button>
         </form>
     </div>
     </div>
 
-    <button class="envio" type="submit">Enviar  review</button>
+   
 </body>
     
 

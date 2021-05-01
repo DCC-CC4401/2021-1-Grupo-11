@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-
+{% load static %}
 <head>
     <meta charset="UTF-8">
     <title>Portada</title>
@@ -72,7 +72,7 @@ body{
 }
 
 .presentacion{
-    background-color: #8d8d8dea;
+    background-color: #db77777c;
     width: 80%;
     margin-left: 10%;
     margin-top: 5%;
@@ -85,7 +85,7 @@ body{
 
 .encabezado{
     padding: 15px;
-    font-size: 20px;
+    font-size: 30px;
     color: black;
     border-radius: 30px;
     margin-left: 25%;
@@ -93,10 +93,9 @@ body{
 }
 .texto{
     margin-bottom: 30px;
-    font-size: 13px;
+    font-size: 25px;
     color: black;
 }
-
 .icono_usuario{
     width:50px;
     height:50px;
@@ -110,15 +109,15 @@ body{
     <script src="formulario.js"></script>  
 </head>
 <body>
-    <img src="usuario1.png" class="icono_usuario" alt="Icono usuario">
+    <img src="{% static 'images/usuario1.png' %}" class="icono_usuario" alt="Icono usuario">
 
     <ul class="menu">
-        <li><a href="a.html">Inicio</a></li>
-        <li><a href="b.html">Ver Cursos</a></li>
-        <li><a href="c.html">Valorar un curso</a></li>
-        <li><a href="d.html">Cerrar sesion</a></li>
+        <li><a href="{% url 'index' %}">Inicio</a></li>
+        <li><a href="{% url 'index' %}">Ver cursos</a></li>
+        <li><a href="{% url 'register_review' %}">Valorar un curso</a></li>
+        <li><a href="{% url 'logout' %}">Cerrar sesión</a></li>
     </ul>
-    <div class="topbar"><img src="wikicursos.png" alt="title" width="600" ></div>
+    <div class="topbar"><img src="{% static 'images/wikicursos.png' %}" alt="title" width="600" ></div>
     
     <div class="bienvenido">Bienvenido!!</div>
     

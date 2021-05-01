@@ -1,10 +1,96 @@
 <!DOCTYPE html>
-     <html lang="en">
-     <head>
-        <meta charset="UTF-8">
-        <title>Login</title>
-     </head>
-     <body>
-        <p> este será el login xd</p>
-     </body>
-     </html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <title>Registro</title>
+    <link rel="stylesheet" href="registro.css" type="text/css">
+    <script src="{% static 'scripts/formulario.js' %}"></script>  
+
+    <style>
+
+body{
+    background-color: rgb(221, 221, 221);
+}
+
+.topbar_register{
+    background-color: white; 
+    height: 40px; 
+    margin-bottom: 4%;
+}
+
+.topbar_register img{
+    margin-left: 40%;
+}
+
+.box{
+    background-color: #f1c4c4ea;
+    width: 80%;
+    height: 30em;
+    margin-left: 10%;
+    border-radius: 20px;
+    box-shadow: 30px 30px 10px #1d070788;
+}
+
+.encabezado{
+    background-color: #474747;
+    padding: 20px;
+    border-radius: 20px;
+    margin-bottom: 5px;
+    font-size: 20px;
+    color: #FFF
+}
+
+.form-group{
+    padding: 20px;
+}
+
+
+.form-group label{
+    width: 200%;
+    color: black;
+}
+
+.boton{
+    margin-left: 15px;
+    margin-bottom: 20px;
+}
+
+
+    </style>
+
+</head> 
+<body>
+
+    <div class="topbar_register"><img src="{% static 'images/wikicursos.png' %}" alt="title" width="300" ></div>
+
+    <div class="box">
+    	<div class="encabezado">Iniciar Sesion</div>
+        <form method="POST">
+         {% csrf_token %}
+            <div class="form-group">
+                <label for="nombre_usuario">Nombre de usuario</label>
+                <div>
+                <input type="text" class="form-control" id=nombre_usuario name="username" required>
+               </div>
+            </div>
+
+            <div class="form-group">
+                <label for="contraseña">Contraseña</label>
+               <div>
+                <input type="password" class="form-control" i  d="contraseña" name="password" required>
+               </div>
+            </div>
+
+             <button class="boton" type="submit">Inicio sesión</button>
+        </form>
+        
+    </div>
+
+</body>
+    
+
+</html>
+
+</body>
+</html>

@@ -5,8 +5,9 @@
         <title>Registro</title>
      </head>
      <body>
+         <p>{{course_string}}</p>
          <select id=hola name=hola required>
-            {% for i in dict %}
+            {% for i in dict.DCC %}
             <option value={{i.0}}> "{{i.1}}" </option>
             {% endfor %}
          </select>

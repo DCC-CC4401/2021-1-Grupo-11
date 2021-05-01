@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from mainApp.models import Course, Department, Review, User, UserRoles, Roles
-from django.contrib.auth import authenticate, login,logout
+from django.contrib.auth import authenticate, login, logout
 
 
 courses_Dict = {
@@ -11,6 +11,9 @@ courses_Dict = {
 }
 
 # Create your views here.
+def index(request):
+    return render(request, "mainApp/index.html")
+
 def login_user(request):
     if request.method == 'GET':
         return render(request, "mainApp/login.html")  
@@ -53,12 +56,14 @@ def register_user(request):
 
 def register_review(request):
     if request.method == 'GET':
-        #TODO: Pedir la info a la BD y mandarla al template
-        # dict() -> html 
+
+        course_string = request.GET.get('course')
+
         context = dict()
         #roles = Roles.objects.filter(...)
         context['dict'] = courses_Dict
-        return render(request, "mainApp/review_chanta.html", context)  #template de nombre review 
+        context['course_string'] = course_string
+        return render(request, "mainApp/formulario.html", context)  #template de nombre review 
 
     elif request.method == 'POST':
         username = request.POST['username']
@@ -90,10 +95,10 @@ def register_review(request):
         review.save()
 
         #Redireccionar 
-        return HttpResponseRedirect('/login')
+        return HttpResponseRedirect('/index')
 
 """
-Para el proximo sprint (dropdow departamento filtra dropdown cursos)
+Para el proximo sprint (dropdown departamento filtra dropdown cursos)
 def load_cursos(request):
     department_id = request.GET.get('department_id')
     courses = Courses.objects.filter(department_id = department_id).all() #retorna toda tupla en course tq department_id sea el recibido el post

@@ -1,11 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <title>Portada</title>
-    <link rel="stylesheet" href="index.css" type="text/css">
-    <style>
 body{
     background-color: rgb(221, 221, 221);
 }
@@ -103,36 +95,3 @@ body{
     float:right;
     margin-right:3%;
 }
-
-    </style>
-
-
-    <script src="formulario.js"></script>  
-</head>
-<body>
-    <img src="usuario1.png" class="icono_usuario" alt="Icono usuario">
-
-    <ul class="menu">
-        <li><a href="a.html">Inicio</a></li>
-        <li><a href="b.html">Ver Cursos</a></li>
-        <li><a href="c.html">Valorar un curso</a></li>
-        <li><a href="d.html">Cerrar sesion</a></li>
-    </ul>
-    <div class="topbar"><img src="wikicursos.png" alt="title" width="600" ></div>
-    
-    <div class="bienvenido">Bienvenido!!</div>
-    
-    <div class="presentacion">
-        <div class="encabezado">¿Quiénes somos?</div>
-        <div class="texto">Somos una comunidad de la FCFM y queremos ayudarte a informarte sobre diferentes ramos que imparte la carrera </div>
-        <div class="encabezado">¿Cómo nos puedes ayudar?</div>
-        <div class="texto">Puedes comentarle a tus cercanos de la FCFM para que la comunidad siga creciendo y ayude a más personas.
-            Además siempre puedes rellenar nuestros formularios para contarnos tu experiencia en el cuerso que diste, así recopilamos información de todas les alumnes cuando rindieron el curso y se la entregamos a toda la comunidad beauchefiana!!</div>
-        
-    </div>
-
-
-</body>
-    
-
-</html>
