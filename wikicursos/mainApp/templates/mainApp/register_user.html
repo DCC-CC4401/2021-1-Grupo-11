@@ -8,55 +8,85 @@
     <script src="{% static 'scripts/formulario.js' %}"></script>  
 
     <style>
+        body{
+            background-color: rgb(221, 221, 221);
+        }
 
-body{
-    background-color: rgb(221, 221, 221);
-}
+        .topbar_register{
+            background-color: white; 
+            /*height: 40px; */
+            margin-bottom: 4%;
+            display: flex;
+            justify-content: center;
+        }
 
-.topbar_register{
-    background-color: white; 
-    height: 40px; 
-    margin-bottom: 4%;
-}
+        /*.topbar_register img{
+            margin-left: 40%;
+        }*/
 
-.topbar_register img{
-    margin-left: 40%;
-}
+        .box{
+            background-color: #f1c4c4ea;
+            /*width: 80%;*/
+            height: 30em;
+            /*margin-left: 10%;*/
+            border-radius: 20px;
+            box-shadow: 30px 30px 10px #1d070788;
+            display: table;
+        }
 
-.box{
-    background-color: #f1c4c4ea;
-    width: 80%;
-    margin-left: 10%;
-    border-radius: 20px;
-    box-shadow: 30px 30px 10px #1d070788;
-}
-
-.encabezado{
-    background-color: #474747;
-    padding: 20px;
-    border-radius: 20px;
-    margin-bottom: 5px;
-    font-size: 20px;
-    color: #FFF
-}
-
-.form-group{
-    padding: 20px;
-}
-
-
-.form-group label{
-
-    color: black;
-}
-
-.boton{
-    margin-left: 15px;
-    margin-bottom: 20px;
-}
+        .encabezado{
+            background-color: #474747;
+            padding: 20px;
+            border-radius: 20px;
+            margin-bottom: 5px;
+            font-size: 20px;
+            color: #FFF
+        }
+    
+        .form-group{
+            padding: 20px;
+            display: grid;
+            justify-content: center;
+            padding-left: 40px;
+            padding-right: 40px;
+        }
 
 
+        .form-group label{
+            color: black;
+            display: block;
+            font-size: 21px;
+        }
 
+        .form-group input{
+            display: block;
+            width: 25em;
+            height: 2em;
+            border: none;
+        }
+
+        .boton{
+            margin-left: 10em;
+            margin-top: 2em;
+            text-align: center;
+            background-color: #545353;
+            margin-bottom: 8px;
+            color: white;
+            border: none;
+            border-radius: 52px;
+            width: 11em;
+            font-size: 19px;
+            padding: 9px;
+        }
+
+        .boton:hover{
+          background-color: #A35151;
+          cursor: pointer;
+        }
+
+        form a{
+            text-align: center;
+        }
 
     </style>
 
@@ -64,51 +94,54 @@ body{
 <body>
 
     <div class="topbar_register"><img src="{% static 'images/wikicursos.png' %}" alt="title" width="300" ></div>
-
-    <div class="box">
-    	<div class="encabezado">Registrar Usuario</div>
-        <form method="POST">
-            {% csrf_token %}
-            <div class="form-group">
-                <label for="nombre_usuario">Nombre de usuario</label>
-                <div>
-                <input type="text" class="form-control" id=nombre_usuario name="username" required>
+    <div style="display: flex; justify-content: center;">
+        <div class="box">
+        	<div class="encabezado">Registrar Usuario</div>
+            <form method="POST">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="nombre_usuario">Nombre de usuario</label>
+                    <div>
+                    <input type="text" class="form-control" id=nombre_usuario name="username" required>
+                    </div>
                 </div>
-            </div>
 
 
-            <div class="form-group">
-                <label for="contraseña">Contraseña</label>
-                <div>
-                <input type="password" class="form-control" id="contraseña" name="password" required>
+                <div class="form-group">
+                    <label for="contraseña">Contraseña</label>
+                    <div>
+                    <input type="password" class="form-control" id="contraseña" name="password" required>
+                    </div>
                 </div>
-            </div>
 
-            <div class="form-group">
-                <label for="email">Correo Electrónico</label>
-                <div>
-                <input type="text" class="form-control" id="email" name="email" required>
+                <div class="form-group">
+                    <label for="email">Correo Electrónico</label>
+                    <div>
+                    <input type="text" class="form-control" id="email" name="email" required>
+                    </div>
                 </div>
-            </div>
 
-            <div class="form-group">
-                <label for="nombre">Nombre</label>
-                <div>
-                <input type="text" class="form-control" id="nombre" name="first_name" required>
+                <div class="form-group">
+                    <label for="nombre">Nombre</label>
+                    <div>
+                    <input type="text" class="form-control" id="nombre" name="first_name" required>
+                    </div>
                 </div>
-            </div>
 
-            <div class="form-group">
-                <label for="apellido">Apellido</label>
-                <div>
-                <input type="text" class="form-control" id="apellido" name="last_name" required>
+                <div class="form-group">
+                    <label for="apellido">Apellido</label>
+                    <div>
+                    <input type="text" class="form-control" id="apellido" name="last_name" required>
+                    </div>
                 </div>
-            </div>
-             <button class="boton" type="submit">Crear usuario</button>
-        </form>
+                <div style="margin-left:5em;">
+                    <input type="checkbox" name="condiciones" /><label>Acepta los <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstleyVEVO">terminos y condiciones</a> </label>
+                </div>
+                <button class="boton" type="submit">Crear usuario</button>
+            </form>
 
+        </div>
     </div>
-
 </body>
     
 
