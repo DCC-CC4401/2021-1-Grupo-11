@@ -12,28 +12,38 @@ courses_Dict = {
 
 # Create your views here.
 def index(request):
-    return render(request, "mainApp/index.html")
+    if request.user.is_authenticated:
+        return render(request, "mainApp/index.html")
+    else:
+        return HttpResponseRedirect('/login')
+
 
 def login_user(request):
-    if request.method == 'GET':
-        return render(request, "mainApp/login.html")  
-    if request.method == 'POST':
-        username = request.POST['username']
-        password = request.POST['password']
-        user = authenticate(username=username, password=password)
-        if user is not None:
-            login(request, user)
-            return HttpResponseRedirect('/index') # Pagina principal
-        else:
-            return HttpResponseRedirect('/login') # login
+    if not request.user.is_authenticated:
+        if request.method == 'GET':
+            return render(request, "mainApp/login.html")  
+        if request.method == 'POST':
+            username = request.POST['username']
+            password = request.POST['password']
+            user = authenticate(username=username, password=password)
+            if user is not None:
+                login(request, user)
+                return HttpResponseRedirect('/index') # Pagina principal
+            else:
+                return HttpResponseRedirect('/login') # login
+    else:
+        return HttpResponseRedirect('/index')
 
 def logout_user(request):
     logout(request)
     return HttpResponseRedirect('/login')
 
 def register_user(request):
-    if request.method == 'GET': 
-        return render(request, "mainApp/register_user.html") 
+    if request.method == 'GET':
+        if not request.user.is_authenticated:
+            return render(request, "mainApp/register_user.html") 
+        else:
+            return HttpResponseRedirect('/index')
 
     elif request.method == 'POST':
         username = request.POST['username']
@@ -57,18 +67,23 @@ def register_user(request):
 def register_review(request):
     if request.method == 'GET':
 
-        course_string = request.GET.get('course')
+        if request.user.is_authenticated:
+            course_string = request.GET.get('course')
 
-        context = dict()
-        #roles = Roles.objects.filter(...)
-        context['dict'] = courses_Dict
-        context['course_string'] = course_string
-        return render(request, "mainApp/formulario.html", context)  #template de nombre review 
+            context = dict()
+            #roles = Roles.objects.filter(...)
+            context['dict'] = courses_Dict
+            context['course_string'] = course_string
+            return render(request, "mainApp/formulario.html", context)  #template de nombre review 
+
+        else:
+            # If no user is logged in
+            return HttpResponseRedirect('/login')
 
     elif request.method == 'POST':
         username = request.POST['username']
-        user = User.objects.get(username=username) #este por ahora
-        #user = request.user    """Este es el que queremos """
+        #user = User.objects.get(username=username) #este por ahora
+        user = request.user    #usuario loggeado
 
         course_string = request.POST['course']
         course = Course.objects.get(course_code=course_string)
