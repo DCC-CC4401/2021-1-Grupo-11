@@ -54,7 +54,8 @@
         .legend select{
             height: 50px;
             width: 200px;
-            font-size: 15px
+            font-size: 15px;
+            text-align: center;
         }
 
         .selection{
@@ -288,6 +289,14 @@
             display: flex;
             justify-content: center;
         }
+
+        .selection .legend input[type="number"]{
+            height: 50px;
+            width: 200px;
+            font-size: 15px;
+            text-align: center;
+        }
+        
     </style>
 </head>
 
@@ -311,7 +320,7 @@
 	        </div>
 	       <div class="legend">
 	            <select  name="semester" id="semester">
-	                <option value=0 selected disabled>Curso</option>
+	                <option value=0 selected disabled>Semestre</option>
 	                <option value=1>Otoño</option>
 	                <option value=2>Primavera</option>
 	            </select>
