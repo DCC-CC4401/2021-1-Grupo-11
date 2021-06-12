@@ -74,7 +74,7 @@ def register_review(request):
             #roles = Roles.objects.filter(...)
             context['dict'] = courses_Dict
             context['course_string'] = course_string
-            return render(request, "mainApp/formulario.html", context)  #template de nombre review 
+            return render(request, "mainApp/formulario.html", context)  # template de nombre review 
 
         else:
             # If no user is logged in
@@ -82,7 +82,6 @@ def register_review(request):
 
     elif request.method == 'POST':
         username = request.POST['username']
-        #user = User.objects.get(username=username) #este por ahora
         user = request.user    #usuario loggeado
 
         course_string = request.POST['course']
@@ -92,21 +91,46 @@ def register_review(request):
         section = request.POST['section']
         year = request.POST['year']
         semester = request.POST['semester']
+
+        # Alternativas
         required_time_level = request.POST['required_time_level']
-        required_time_comment = request.POST['required_time_comment']
+        required_time_comment = request.POST.get('required_time_comment', '')
         difficulty_level = request.POST['difficulty_level']
-        difficulty_comment = request.POST['difficulty_comment']
+        difficulty_comment = request.POST.get('difficulty_comment', '')
         recommendation_level = request.POST['recommendation_level']
-        recommendation_comment = request.POST['recommendation_comment']
-        study_recommendation = request.POST['study_recommendation']
-        extra_comment = request.POST['extra_comment']
+        recommendation_comment = request.POST.get('recommendation_comment', '')
+        practicality_level = request.POST['practicality_level']
+        practicality_comment = request.POST.get('recommendation_comment', '')
+        content_adjustment_level = request.POST['content_adjustment_level']
+        content_adjustment_comment = request.POST.get('content_adjustment_comment', '')
+        stress_level =  request.POST['stress_level']
+        stress_comment = request.POST.get('stress_comment', '')
+        teamwork_level = request.POST['teamwork_level']
+        teamwork_comment = request.POST.get('teamwork_comment', '')
+        fondness_level = request.POST['fondness_level']
+        fondness_comment = request.POST.get('fondness_comment', '')
+        usefulness_level = request.POST['usefulness_level']
+        usefulness_comment = request.POST.get('usefulness_comment', '')
+
+        # Texto
+        study_recommendation_comment = request.POST.get('study_recommendation_comment', '')
+        tools_comment = request.POST.get('tools_comment', '')
+        useful_courses_comment = request.POST.get('useful_courses_comment', '')
+        general_comment = request.POST.get('general_comment', '')
 
         #Crear la nueva review
         review = Review(user=user, course=course, section=section, year=year, semester=semester, required_time_level=required_time_level,
                         required_time_comment=required_time_comment, difficulty_level=difficulty_level, 
                         difficulty_comment=difficulty_comment, recommendation_level=recommendation_level, 
-                        recommendation_comment=recommendation_comment, study_recommendation=study_recommendation,
-                        extra_comment=extra_comment)
+                        recommendation_comment=recommendation_comment, practicality_level = practicality_level,
+                        practicality_comment = practicality_comment, content_adjustment_level = content_adjustment_level,
+                        content_adjustment_comment = content_adjustment_comment, stress_level =  stress_level,
+                        stress_comment = stress_comment, teamwork_level = teamwork_level, teamwork_comment = teamwork_comment,
+                        fondness_level = fondness_level, fondness_comment = fondness_comment, usefulness_level = usefulness_level,
+                        usefulness_comment = usefulness_comment, study_recommendation_comment = study_recommendation_comment,
+                        tools_comment = tools_comment, useful_courses_comment = useful_courses_comment, 
+                        general_comment = general_comment)
+                         
         review.save()
 
         #Redireccionar 
