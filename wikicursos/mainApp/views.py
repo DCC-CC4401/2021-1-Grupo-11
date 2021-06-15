@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
-from mainApp.models import Course, Department, Review, User, UserRoles, Roles
+from mainApp.models import Course, Department, Review, User, UserRoles, Roles, BelongsTo
 from django.contrib.auth import authenticate, login, logout
 
 
@@ -143,3 +143,29 @@ def load_cursos(request):
     courses = Courses.objects.filter(department_id = department_id).all() #retorna toda tupla en course tq department_id sea el recibido el post
     return render(request, '') #html con el dropdown de cursos
 """
+
+def searchDepartment(request):
+    if request.user.is_authenticated:
+        context = {}
+        dep_list = Department.objects.all()
+        context['dep_list'] = dep_list
+        return render(request, "mainApp/departamento.html", context)
+    else:
+        return HttpResponseRedirect('/login')
+
+def searchCourse(request):
+    if request.user.is_authenticated:
+        context = {}
+        dep_id = request.GET.get('dep')
+        # ACA CONSULTA BASE DE DATOS
+        courses_id_list = list(BelongsTo.objects.filter(department_id = dep_id).values('course_id'))
+        courses_id_list = list(map(lambda x: x['course_id'], courses_id_list))
+
+        courses_list = list(Course.objects.filter(id__in = courses_id_list).values('name', 'id'))
+
+        context['dep_id'] = dep_id
+        context['courses_id_list'] = courses_id_list
+        context['courses_list'] = courses_list
+        return render(request, "mainApp/curso.html", context)
+    else:
+        return HttpResponseRedirect('/login')

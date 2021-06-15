@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <title>Formulario</title>
+    <link rel="stylesheet" href="{% static 'styles/departamento.css' %}" type="text/css">
+    <script src="{% static 'scripts/departamento.js' %}"></script>
+</head>
+
+<body>
+    <img src="{% static 'images/usuario1.png' %}" class="icono_usuario" alt="Icono usuario">
+
+    <ul class="menu">
+        <li><a href="{% url 'index' %}">Inicio</a></li>
+        <li><a href="{% url 'index' %}">Ver cursos</a></li>
+        <li><a href="{% url 'register_review' %}">Valorar un curso</a></li>
+        <li><a href="{% url 'logout' %}">Cerrar sesión</a></li>
+    </ul>
+
+
+    <div class="box">
+    	<div class="encabezado">Que curso le interesaria ver (Seleccione un curso)</div>
+        
+        <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Buscar curso por nombre..." title="Type in a name">
+        
+        <ul id="myUL">
+            {% for course in courses_list %}
+            <li><a href="/register_review?id={{course.id}}">{{course.name}}</a></li>
+            {% endfor %}
+        </ul> 
+    </div>
+</body>
+</html>
