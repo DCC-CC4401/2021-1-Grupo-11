@@ -1,15 +1,17 @@
 body{
-    background-color: rgb(221, 221, 221);
+    /*background-color: rgb(221, 221, 221);*/
+    background-image: url(../images/2259.jpg);
+    background-repeat: round;
 }
 
 .menu{
     font-family: Arial, Helvetica, sans-serif;
     background-color: #ffffff;
     list-style: none;
-    margin-left: 5%;
-    margin-right: 0%;
-    width: 80%;
+    margin-left: 3%;
+    margin-right: 3%;
     height: 10%;
+    display: flex !important;
 }
 
 .menu li{
@@ -30,14 +32,6 @@ body{
 .menu li a:hover{
     background-color: #df6666ee;
 }
-
-.icono_usuario{
-    width:50px;
-    height:50px;
-    float:right;
-    margin-right:3%;
-}
-
 
 
 .legend select{
@@ -83,6 +77,7 @@ body{
     margin-left: 10%;
     margin-right: 10%;
     text-align: center;
+    border-radius: 15px;
 }
 
 .pregunta{
@@ -118,6 +113,11 @@ body{
     margin-bottom: 40px;
     padding: 20px;
     color: #FFF;
+}
+
+.envio:hover{
+      background-color: #A35151;
+      cursor: pointer;
 }
 
 .opciones li input[type="radio"].low_hard{
@@ -288,3 +288,46 @@ input[type='radio'].high_hard:checked:after {background-color: #454545;}
     font-size: 15px;
     text-align: center;
 }
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/*statistics*/
+
+.visualization{
+    background-color: #8d8d8dea;
+    width: 80%;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    border-radius: 10px;
+    box-shadow: 30px 30px 10px #1d070788;
+    border-radius: 20px;
+}
+
+.row_flex{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.column_flex{
+    display: flex;
+    flex-direction: column;
+}
+

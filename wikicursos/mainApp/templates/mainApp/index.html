@@ -9,15 +9,21 @@
     <script src="formulario.js"></script>  
 </head>
 <body>
-    <img src="{% static 'images/usuario1.png' %}" class="icono_usuario" alt="Icono usuario">
-
+    
     <ul class="menu">
+        <img src="{% static 'images/wikicursos_lite.png' %}" alt="title" height="50px" >
         <li><a href="{% url 'index' %}">Inicio</a></li>
-        <li><a href="{% url 'index' %}">Ver cursos</a></li>
+        <li><a href="{% url 'search_department' %}">Ver cursos</a></li>
         <li><a href="{% url 'register_review' %}">Valorar un curso</a></li>
+        <li><a href="{% url 'statistics' %}">Estadisticas</a></li>
         <li><a href="{% url 'logout' %}">Cerrar sesión</a></li>
+        <div style="margin-top: 2%;">Usuario</div>
+        <img src="{% static 'images/usuario1.png' %}" class="icono_usuario" alt="Icono usuario", height="50px">
     </ul>
-    <div class="topbar"><img src="{% static 'images/wikicursos.png' %}" alt="title" width="600" ></div>
+    <div class="topbar">
+        <img src="{% static 'images/wikicursos_lite.png' %}" alt="title" width="600" >
+    </div>
+    
     
     <div class="bienvenido">Bienvenido!!</div>
     

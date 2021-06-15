@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <title>Formulario</title>
     <link rel="stylesheet" href="{% static 'styles/base_styles.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'styles/star-rating.css' %}" type="text/css">
     
     <script src="{% static 'scripts/formulario.js' %}"></script>
 
@@ -24,30 +25,10 @@
         <img src="{% static 'images/usuario1.png' %}" class="icono_usuario" alt="Icono usuario", height="50px">
     </ul>
      
-    <!--<div class="topbar"><img src="{% static 'images/wikicursos.png' %}" alt="title" width="300" ></div>-->
-    <form method="POST">
         {% csrf_token %}
-    	<div class="selection">
-	        <div class="legend">
-	            <input type="number" min=2011 max=2021 value=2021 name="year" id=year required>
-	        </div>
-	       <div class="legend">
-	            <select  name="semester" id="semester">
-	                <option value=0 selected disabled>Semestre</option>
-	                <option value=1>Otoño</option>
-	                <option value=2>Primavera</option>
-	            </select>
-	        </div>
-	        
-	        <div class="legend">
-	            <select name="section" id="section">
-	                <option value=0 selected="selected">Sección</option>
-	                <option value=1>1</option>
-	                <option value=2>2</option>
-	            </select>
-	        </div>
-    	</div>
-    	<div class="formulario">
+    <div class="column_flex">
+        <div class="row_flex">
+    	   <div class="visualization">
             <div class="encabezado">Elija una puntuación para cada aspecto</div>
             <div style="overflow-y:scroll; height: 50em;">
 
@@ -55,15 +36,8 @@
             <div class="recuadro">
                 <div class="pregunta">Recomendación<br>¿Qué tanto recomiendas el curso?</div>
                 <ul class="opciones">
-                    <li class="anotacion">Nada recomendable</li>
-                    <li><input class="low_hard" type="radio" name="recommendation_level" value=1></li>
-                    <li><input class="low_soft" type="radio" name="recommendation_level" value=2></li>
-                    <li><input class="neutral" type="radio" name="recommendation_level" value=3></li>
-                    <li><input class="high_soft" type="radio" name="recommendation_level" value=4></li>
-                    <li><input class="high_hard" type="radio" name="recommendation_level" value=5></li>
-                    <li class="anotacion">Muy recomendable</li>
-                </ul>
-                <div class="comentar" id="abrir_modal" onclick="open_comment_modal('m1')">Agregar comentario</div>
+                    <progress value="70" max="100">70 %</progress>
+                <div class="comentar" id="abrir_modal" onclick="open_comment_modal('m1')">Ver comentarios</div>
             </div>
             <div class="modal" id="m1">
                 <div class="modal-content">
@@ -78,15 +52,13 @@
                 <div class="pregunta">Interés en la materia<br>¿Que tánto te gustó la materia que viste?​
                 </div>
                 <ul class="opciones">
-                    <li class="anotacion">No me gustó nada</li>
                     <li><input class="low_hard" type="radio" name="fondness_level" value=1></li>
                     <li><input class="low_soft" type="radio" name="fondness_level" value=2></li>
                     <li><input class="neutral" type="radio" name="fondness_level" value=3></li>
                     <li><input class="high_soft" type="radio" name="fondness_level" value=4></li>
                     <li><input class="high_hard" type="radio" name="fondness_level" value=5></li>
-                    <li class="anotacion">Me gustó mucho</li>
                 </ul>
-                <div class="comentar" id="abrir_modal" onclick="open_comment_modal('m2')">Agregar comentario</div>
+                <div class="comentar" id="abrir_modal" onclick="open_comment_modal('m2')">Ver comentarios</div>
             </div>
             <div class="modal" id="m2">
                 <div class="modal-content">
@@ -100,15 +72,13 @@
             <div class="recuadro">
                 <div class="pregunta">Dificultad<br>¿Académicamente que tan difícil fue?</div>
                 <ul class="opciones">
-                    <li class="anotacion">Muy fácil</li>
                     <li><input class="low_hard" type="radio" name="difficulty_level" value=1></li>
                     <li><input class="low_soft" type="radio" name="difficulty_level" value=2></li>
                     <li><input class="neutral" type="radio" name="difficulty_level" value=3></li>
                     <li><input class="high_soft" type="radio" name="difficulty_level" value=4></li>
                     <li><input class="high_hard" type="radio" name="difficulty_level" value=5></li>
-                    <li class="anotacion">Muy difícil</li>
                 </ul>
-                <div class="comentar" id="abrir_modal" onclick="open_comment_modal('m3')">Agregar comentario</div>
+                <div class="comentar" id="abrir_modal" onclick="open_comment_modal('m3')">Ver comentarios</div>
             </div>
             <div class="modal" id="m3">
                 <div class="modal-content">
@@ -122,15 +92,13 @@
             <div class="recuadro">
                 <div class="pregunta">Tiempo de dedicación<br>¿El tiempo dedicado al ramo se ajusta a los créditos del curso?</div>
                 <ul class="opciones">
-                    <li class="anotacion">Muy en desacuerdo, me consumió mucho más tiempo</li>
                     <li><input class="low_hard" type="radio" name="required_time_level" value=1></li>
                     <li><input class="low_soft" type="radio" name="required_time_level" value=2></li>
                     <li><input class="neutral" type="radio" name="required_time_level" value=3></li>
                     <li><input class="high_soft" type="radio" name="required_time_level" value=4></li>
                     <li><input class="high_hard" type="radio" name="required_time_level" value=5></li>
-                    <li class="anotacion">Muy de acuerdo, me consumió el tiempo señalado o menos</li>
                 </ul>
-                <div class="comentar" id="abrir_modal" onclick="open_comment_modal('m4')">Agregar comentario</div>
+                <div class="comentar" id="abrir_modal" onclick="open_comment_modal('m4')">Ver comentarios</div>
             </div>
             <div class="modal" id="m4">
                 <div class="modal-content">
@@ -145,15 +113,33 @@
                 <div class="pregunta">Evaluaciones<br>¿Las evaluaciones están ajustadas al contenido visto en clase?
                 </div>
                 <ul class="opciones">
-                    <li class="anotacion">Muy en desacuerdo, no tenían relación</li>
-                    <li><input class="low_hard" type="radio" name="content_adjustment_level" value=1></li>
-                    <li><input class="low_soft" type="radio" name="content_adjustment_level" value=2></li>
-                    <li><input class="neutral" type="radio" name="content_adjustment_level" value=3></li>
-                    <li><input class="high_soft" type="radio" name="content_adjustment_level" value=4></li>
-                    <li><input class="high_hard" type="radio" name="content_adjustment_level" value=5></li>
-                    <li class="anotacion">Muy de acuerdo, estaban muy relacionadas</li>
+                        <div class="star">
+                          <i class="star-empty">a</i>
+                          <i class="star-half">a</i>
+                          <i class="star-filled">a</i>
+                        </div>
+                        <div class="star">
+                          <i class="star-empty"></i>
+                          <i class="star-half"></i>
+                          <i class="star-filled"></i>
+                        </div>
+                        <div class="star">
+                          <i class="star-empty"></i>
+                          <i class="star-half"></i>
+                          <i class="star-filled"></i>
+                        </div>
+                        <div class="star">
+                          <i class="star-empty"></i>
+                          <i class="star-half"></i>
+                          <i class="star-filled"></i>
+                        </div>
+                        <div class="star">
+                          <i class="star-empty"></i>
+                          <i class="star-half"></i>
+                          <i class="star-filled"></i>
+                        </div>
                 </ul>
-                <div class="comentar" id="abrir_modal" onclick="open_comment_modal('m5')">Agregar comentario</div>
+                <div class="comentar" id="abrir_modal" onclick="open_comment_modal('m5')">Ver comentarios</div>
             </div>
             <div class="modal" id="m5">
                 <div class="modal-content">
@@ -167,15 +153,38 @@
             <div class="recuadro">
                 <div class="pregunta">Estrés<br>¿Qué tanto estrés te generó el curso?</div>
                 <ul class="opciones">
-                    <li class="anotacion">Nada de estrés</li>
-                    <li><input class="low_hard" type="radio" name="stress_level" value=1></li>
-                    <li><input class="low_soft" type="radio" name="stress_level" value=2></li>
-                    <li><input class="neutral" type="radio" name="stress_level" value=3></li>
-                    <li><input class="high_soft" type="radio" name="stress_level" value=4></li>
-                    <li><input class="high_hard" type="radio" name="stress_level" value=5></li>
-                    <li class="anotacion">Excesivo estrés</li>
+                    <div class="container text-center">
+                      <div class="rating large star-icon half color-default label-top">
+                        <div class="star-container">
+                            <div class="star">
+                                <i class="star-empty"></i>
+                                <i class="star-half"></i>
+                                <i class="star-filled"></i>
+                            </div>
+                            <div class="star">
+                                <i class="star-empty"></i>
+                                <i class="star-half"></i>
+                                <i class="star-filled"></i>
+                            </div>
+                            <div class="star">
+                                <i class="star-empty"></i>
+                                <i class="star-half"></i>
+                                <i class="star-filled"></i>
+                            </div>
+                            <div class="star">
+                                <i class="star-empty"></i>
+                                <i class="star-half"></i>
+                                <i class="star-filled"></i>
+                            </div>
+                            <div class="star">
+                                <i class="star-empty"></i>
+                                <i class="star-half"></i>
+                                <i class="star-filled"></i>
+                            </div>
+                        </div>
+                    </div>
                 </ul>
-                <div class="comentar" id="abrir_modal" onclick="open_comment_modal('m6')">Agregar comentario</div>
+                <div class="comentar" id="abrir_modal" onclick="open_comment_modal('m6')">Ver comentarios</div>
             </div>
             <div class="modal" id="m6">
                 <div class="modal-content">
@@ -190,15 +199,9 @@
             <div class="recuadro">
                 <div class="pregunta">Utilidad<br>¿Crees que este curso será util en tu vida profesional?</div>
                 <ul class="opciones">
-                    <li class="anotacion">Poco útil</li>
-                    <li><input class="low_hard" type="radio" name="usefulness_level" value=1></li>
-                    <li><input class="low_soft" type="radio" name="usefulness_level" value=2></li>
-                    <li><input class="neutral" type="radio" name="usefulness_level" value=3></li>
-                    <li><input class="high_soft" type="radio" name="usefulness_level" value=4></li>
-                    <li><input class="high_hard" type="radio" name="usefulness_level" value=5></li>
-                    <li class="anotacion">Muy útil</li>
+                    
                 </ul>
-                <div class="comentar" onclick="open_comment_modal('m7')">Agregar comentario</div>
+                <div class="comentar" onclick="open_comment_modal('m7')">Ver comentarios</div>
             </div>
             <div class="modal" id="m7">
                 <div class="modal-content">
@@ -212,15 +215,13 @@
             <div class="recuadro">
                 <div class="pregunta">Enfoque del curso<br>¿Qué tan teórico práctico es el curso?</div>
                 <ul class="opciones">
-                    <li class="anotacion">Totalmente teórico</li>
                     <li><input class="low_hard" type="radio" name="practicality_level" value=1></li>
                     <li><input class="low_soft" type="radio" name="practicality_level" value=2></li>
                     <li><input class="neutral" type="radio" name="practicality_level" value=3></li>
                     <li><input class="high_soft" type="radio" name="practicality_level" value=4></li>
                     <li><input class="high_hard" type="radio" name="practicality_level" value=5></li>
-                    <li class="anotacion">Totalmente práctico</li>
                 </ul>
-                <div class="comentar" onclick="open_comment_modal('m8')">Agregar comentario</div>
+                <div class="comentar" onclick="open_comment_modal('m8')">Ver comentarios</div>
             </div>
             <div class="modal" id="m8">
                 <div class="modal-content">
@@ -234,15 +235,13 @@
             <div class="recuadro">
                 <div class="pregunta">Modalidad de trabajo<br>¿Qué tanto trabajo en equipo requiere este curso?</div>
                 <ul class="opciones">
-                    <li class="anotacion">Estríctamente individual</li>
                     <li><input class="low_hard" type="radio" name="teamwork_level" value=1></li>
                     <li><input class="low_soft" type="radio" name="teamwork_level" value=2></li>
                     <li><input class="neutral" type="radio" name="teamwork_level" value=3></li>
                     <li><input class="high_soft" type="radio" name="teamwork_level" value=4></li>
                     <li><input class="high_hard" type="radio" name="teamwork_level" value=5></li>
-                    <li class="anotacion">Estríctamente grupal</li>
                 </ul>
-                <div class="comentar" onclick="open_comment_modal('m9')">Agregar comentario</div>
+                <div class="comentar" onclick="open_comment_modal('m9')">Ver comentarios</div>
             </div>
             <div class="modal" id="m9">
                 <div class="modal-content">
@@ -252,33 +251,89 @@
                     <input type="button" class="enviar_comentario" value="Enviar comentario" onclick="close_comment_modal('m9')">
                 </div>
             </div>
-
-            <div class="recuadro">
-                <div class="pregunta">¿Qué recomiendas para el estudio de este curso?</div>
-                <textarea name="study_recommendation_comment" class="comentario" placeholder="Escriba su comentario acá"></textarea>
-            </div>
-
-            <div class="recuadro">
-                <div class="pregunta">¿Qué herramientas adicionales recomiendas para este curso?</div>
-                <textarea name="tools_comment" class="comentario" placeholder="Escriba su comentario acá"></textarea>
-            </div>
-
-            <div class="recuadro">
-                <div class="pregunta">¿Qué otros cursos te ayudaron para dar este?</div>
-                <textarea name="useful_courses_comment" class="comentario" placeholder="Escriba su comentario acá"></textarea>
-            </div>
-            
-            <div class="recuadro">
-                <div class="pregunta">¿Algún otro comentario acerca del curso?</div>
-                <textarea name="general_comment" class="comentario" placeholder="Escriba su comentario acá"></textarea>
-            </div>
-
-            <input type="hidden" name="username" value="TESTsdsds">
-            <input type="hidden" name="course" value=MA3002>
-            <button class="envio" type="submit">Enviar  review</button>
-        </form>
+        </div>
     </div>
+    </div>  
+
+    <div style="margin-left: 8%; margin-right: 8%;">
+        <div class="row_flex">
+            <div class="visualization">
+                <div class="encabezado">Elija una puntuación para cada aspecto</div>
+                <div style="overflow-y:scroll; height: 20em;">
+                    <div class="recuadro">
+                        <div class="pregunta">¿Qué recomiendas para el estudio de este curso?</div>
+                        <textarea name="study_recommendation_comment" class="comentario" placeholder="Escriba su comentario acá"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="visualization">
+                <div class="encabezado">Elija una puntuación para cada aspecto</div>
+                <div style="overflow-y:scroll; height: 20em;">
+                    <div class="recuadro">
+                        <div class="pregunta">¿Qué recomiendas para el estudio de este curso?</div>
+                        <textarea name="study_recommendation_comment" class="comentario" placeholder="Escriba su comentario acá"></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+
+    <div class="row_flex">
+        <div class="visualization">
+            <div class="encabezado">Elija una puntuación para cada aspecto</div>
+            <div style="overflow-y:scroll; height: 20em;">
+                <div class="recuadro">
+                    <div class="pregunta">¿Qué recomiendas para el estudio de este curso?</div>
+                    <textarea name="study_recommendation_comment" class="comentario" placeholder="Escriba su comentario acá"></textarea>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row_flex">
+        <div class="visualization">
+        <div class="encabezado">Elija una puntuación para cada aspecto</div>
+            <div style="overflow-y:scroll; height: 20em;">
+                <div class="recuadro">
+                    <div class="pregunta">¿Qué recomiendas para el estudio de este curso?</div>
+                    <textarea name="study_recommendation_comment" class="comentario" placeholder="Escriba su comentario acá"></textarea>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row_flex">
+        <div class="visualization">
+        <div class="encabezado">Elija una puntuación para cada aspecto</div>
+            <div style="overflow-y:scroll; height: 20em;">
+                <div class="recuadro">
+                    <div class="pregunta">¿Qué herramientas adicionales recomiendas para este curso?</div>
+                    <textarea name="tools_comment" class="comentario" placeholder="Escriba su comentario acá"></textarea>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row_flex">
+        <div class="visualization">
+        <div class="encabezado">Elija una puntuación para cada aspecto</div>
+            <div style="overflow-y:scroll; height: 20em;">
+                <div class="recuadro">
+                    <div class="pregunta">¿Qué otros cursos te ayudaron para dar este?</div>
+                    <textarea name="useful_courses_comment" class="comentario" placeholder="Escriba su comentario acá"></textarea>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row_flex">
+        <div class="visualization">
+        <div class="encabezado">Elija una puntuación para cada aspecto</div>
+            <div style="overflow-y:scroll; height: 20em;">    
+                <div class="recuadro">
+                    <div class="pregunta">¿Algún otro comentario acerca del curso?</div>
+                    <textarea name="general_comment" class="comentario" placeholder="Escriba su comentario acá"></textarea>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
    
 </body>

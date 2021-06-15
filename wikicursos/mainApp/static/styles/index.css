@@ -1,5 +1,7 @@
 body{
-    background-color: rgb(221, 221, 221);
+    /*background-color: rgb(221, 221, 221);*/
+    background-image: url(../images/2259.jpg);
+    background-repeat: round;
 }
 
 
@@ -7,10 +9,10 @@ body{
     font-family: Arial, Helvetica, sans-serif;
     background-color: #ffffff;
     list-style: none;
-    margin-left: 5%;
-    margin-right: 0%;
-    width: 80%;
+    margin-left: 3%;
+    margin-right: 3%;
     height: 10%;
+    display: flex !important;
 }
 
 .menu li{
@@ -36,6 +38,7 @@ body{
 .topbar{
     display: flex;
     justify-content: center;
+    background-attachment: "{% static 'images/book1.jpg' %}";
 }
 
 .bienvenido {
@@ -50,7 +53,7 @@ body{
     background-color: #df6666ee; 
     border-radius: 10px;
     color: rgb(0, 0, 0);
-    box-shadow: 20px 30px 10px #000000;
+    box-shadow: 20px 30px 10px #000000ad;
 }
 
 
@@ -88,9 +91,24 @@ body{
     font-size: 25px;
     color: black;
 }
-.icono_usuario{
-    width:50px;
-    height:50px;
-    float:right;
-    margin-right:3%;
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
 }
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+

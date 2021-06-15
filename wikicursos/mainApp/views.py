@@ -169,3 +169,9 @@ def searchCourse(request):
         return render(request, "mainApp/curso.html", context)
     else:
         return HttpResponseRedirect('/login')
+
+def statistics(request):
+    if request.user.is_authenticated:
+        return render(request, "mainApp/statistics.html")
+    else:
+        return HttpResponseRedirect('/login')
