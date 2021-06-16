@@ -331,3 +331,36 @@ input[type='radio'].high_hard:checked:after {background-color: #454545;}
     flex-direction: column;
 }
 
+*, *::before{box-sizing: border-box;}
+
+.globo{
+  font-size: 15px;
+  border-radius: var(--borde);
+  padding: var(--borde);
+  --borde: 1em;
+  font-family: sans-serif;
+  z-index: 1; 
+  background-color: white;
+  filter: drop-shadow(0px 0px 1px black);
+  margin-left: 5%;
+  margin-bottom: 4%;
+  width: 85%
+}
+
+.globo::before{
+  content: '';
+  position: absolute; 
+  z-index: -1;
+  width: var(--colita);
+  height: var(--colita);
+}
+
+.globo.abajo-derecha::before{
+  --colita: 35px;
+  left: 95%;
+  bottom: calc( var(--colita) / -1.5);
+  transform: skewY(30deg) rotateZ(-50deg);
+  border-radius: 0 0 0 10em;
+  box-shadow: 
+    inset calc(var(--colita)/2) calc(var(--colita)/3) 0 0 white;
+}
