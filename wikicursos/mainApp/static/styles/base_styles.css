@@ -1,7 +1,8 @@
 body{
     /*background-color: rgb(221, 221, 221);*/
-    background-image: url(../images/2259.jpg);
-    background-repeat: round;
+    background-color: #ffffff;
+    background-image: url("https://www.transparenttextures.com/patterns/clean-gray-paper.png");
+    /* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
 }
 
 .menu{
