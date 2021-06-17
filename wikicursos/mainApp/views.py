@@ -68,12 +68,12 @@ def register_review(request):
     if request.method == 'GET':
 
         if request.user.is_authenticated:
-            course_string = request.GET.get('course')
+            course_id = request.GET.get('course_id')
 
             context = dict()
             #roles = Roles.objects.filter(...)
             context['dict'] = courses_Dict
-            context['course_string'] = course_string
+            context['course_id'] = course_id
             return render(request, "mainApp/formulario.html", context)  # template de nombre review 
 
         else:
@@ -84,10 +84,9 @@ def register_review(request):
         username = request.POST['username']
         user = request.user    #usuario loggeado
 
-        course_string = request.POST['course']
-        course = Course.objects.get(course_code=course_string)
-
-        course = Course.objects.get()
+        course_id = request.POST['course_id']
+        course = Course.objects.get(id=course_id)
+        
         section = request.POST['section']
         year = request.POST['year']
         semester = request.POST['semester']
