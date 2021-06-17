@@ -3,16 +3,21 @@
 {% load static %}
 <head>
     <meta charset="UTF-8">
-    <title>Formulario</title>
+    <title>Estadísticas</title>
     <link rel="stylesheet" href="{% static 'styles/base_styles.css' %}" type="text/css">
-    <link rel="stylesheet" href="{% static 'styles/star-rating.css' %}" type="text/css">
+    <!-- <link rel="stylesheet" href="{% static 'styles/star-rating.css' %}" type="text/css"> -->
+    <link rel="stylesheet" href="{% static 'styles/graphs.css' %}" type="text/css">
+    <script> list1 = [3, 2, 1, 5, 6]; list2 = [5, 5, 2, 1, 3]; list3 = [4, 2, 1, 2, 2]</script>
+    <script>{{listString}}</script>
+    <script src="{% static 'scripts/statistics.js' %}"></script>
+    <script src="https://code.highcharts.com/highcharts.src.js"></script>
     
-    <script src="{% static 'scripts/formulario.js' %}"></script>
-
     
 </head>
 
 <body>
+
+    
 
     <ul class="menu">
         <img src="{% static 'images/wikicursos_lite.png' %}" alt="title" height="50px" >
@@ -49,16 +54,10 @@
             </div>
 
             <div class="recuadro">
-                <div class="pregunta">Interés en la materia<br>¿Que tánto te gustó la materia que viste?​
-                </div>
-                <ul class="opciones">
-                    <li><input class="low_hard" type="radio" name="fondness_level" value=1></li>
-                    <li><input class="low_soft" type="radio" name="fondness_level" value=2></li>
-                    <li><input class="neutral" type="radio" name="fondness_level" value=3></li>
-                    <li><input class="high_soft" type="radio" name="fondness_level" value=4></li>
-                    <li><input class="high_hard" type="radio" name="fondness_level" value=5></li>
-                </ul>
-                <div class="comentar" id="abrir_modal" onclick="open_comment_modal('m2')">Ver comentarios</div>
+                <!--gráfico de prueba-->
+                <figure class="highcharts-figure">
+                    <div id="testGraph"></div>
+                </figure>
             </div>
             <div class="modal" id="m2">
                 <div class="modal-content">
@@ -341,6 +340,9 @@
     </div>
 </div>
 
+<script>
+    displayGraphs();
+</script>
    
 </body>
     

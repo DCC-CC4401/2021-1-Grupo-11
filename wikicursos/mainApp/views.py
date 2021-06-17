@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from mainApp.models import Course, Department, Review, User, UserRoles, Roles, BelongsTo
 from django.contrib.auth import authenticate, login, logout
+import statistics as st
 
 
 courses_Dict = {
@@ -9,6 +10,10 @@ courses_Dict = {
     'DIM' : [('MA1001', 'MA1001 Intro al álgebra'), ('MA2003', 'MA2003 Cálculo diferencial')],
     'DII' : [('IN3002', 'IN3002 Econo'), ('IN4002', 'IN3002 Evaluación de proyectos')]
 }
+
+lista_indicadores = ['required_time_level', 'difficulty_level', 'recommendation_level', 'practicality_level', 
+        'content_adjustment_level', 'stress_level', 'teamwork_level', 'fondness_level', 'usefulness_level']
+        
 
 # Create your views here.
 def index(request):
@@ -81,12 +86,11 @@ def register_review(request):
             return HttpResponseRedirect('/login')
 
     elif request.method == 'POST':
-        username = request.POST['username']
         user = request.user    #usuario loggeado
 
         course_id = request.POST['course_id']
         course = Course.objects.get(id=course_id)
-        
+
         section = request.POST['section']
         year = request.POST['year']
         semester = request.POST['semester']
@@ -169,8 +173,32 @@ def searchCourse(request):
     else:
         return HttpResponseRedirect('/login')
 
+
+"""
+Funcion que dada una lista de indicadores, retorna un string con el promedio y cuenta de puntajes
+de cada indicador
+"""
 def statistics(request):
+    
+    def mean_count_aux(indicador, data_string):
+        indicador_level = list(Review.objects.values(indicador))
+        indicador_level = list(map(lambda x: x[indicador], indicador_level))
+        indicador_level_mean = st.mean(indicador_level)
+        data_string += indicador + '_mean=' + str(indicador_level_mean) + ';'
+        data_string += indicador + '_count=' + str([indicador_level.count(i) for i in range(1, 6)]) +';'
+        return data_string
+
     if request.user.is_authenticated:
-        return render(request, "mainApp/statistics.html")
+        data_string = '' 
+        for indicador in lista_indicadores:
+            data_string = mean_count_aux(indicador, data_string)
+
+        print(data_string)
+        context = {}
+        context['listString'] = data_string
+
+        # renderear
+        return render(request, "mainApp/statistics.html", context)
+
     else:
         return HttpResponseRedirect('/login')
