@@ -4,31 +4,28 @@ function displayGraph(divId, data) {
             type: 'column'
         },
         title: {
-            text: 'Monthly Average Rainfall'
-        },
-        subtitle: {
-            text: 'Source: WorldClimate.com'
+            text: 'Título gráfico test'
         },
         xAxis: {
             categories: [
-                '0',
-                '1',
-                '2',
-                '3',
-                '4',
+                'Muy en desacuerdo',
+                'En desacuerdo',
+                'Neutral',
+                'De acuerdo',
+                'Muy de acuerdo',
             ],
             crosshair: true
         },
         yAxis: {
             min: 0,
             title: {
-                text: 'Rainfall (mm)'
+                text: 'Valoraciones'
             }
         },
         tooltip: {
             headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
             pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
-                '<td style="padding:0"><b>{point.y:.1f} mm</b></td></tr>',
+                '<td style="padding:0"><b>{point.y}</b></td></tr>',
             footerFormat: '</table>',
             shared: true,
             useHTML: true
@@ -46,14 +43,18 @@ function displayGraph(divId, data) {
 
 
 const testData = [{
-    name: 'Tokyo',
-    data: required_time_level_count
+    name: '',
+    data: required_time_level_count // [1, 2, 3, 4, 5]
 
 }]
 
 const testList1 = list1
 console.log(required_time_level_mean, required_time_level_count)
 function displayGraphs() {
-    displayGraph('testGraph', testData)
+    //displayGraph('testGraph1', testData)
+    displayGraph('testGraph2', testData)
+    displayGraph('testGraph3', testData)
+    displayGraph('testGraph4', testData)
+    displayGraph('testGraph5', testData)
 
 }

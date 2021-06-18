@@ -33,226 +33,132 @@
         {% csrf_token %}
     <div class="column_flex">
         <div class="row_flex">
-    	   <div class="visualization">
-            <div class="encabezado">Elija una puntuación para cada aspecto</div>
-            <div style="overflow-y:scroll; height: 50em;">
-
-            
-            <div class="recuadro">
-                <div class="pregunta">Recomendación<br>¿Qué tanto recomiendas el curso?</div>
-                <ul class="opciones">
-                    <progress value="70" max="100">70 %</progress>
-                <div class="comentar" id="abrir_modal" onclick="open_comment_modal('m1')">Ver comentarios</div>
-            </div>
-            <div class="modal" id="m1">
-                <div class="modal-content">
-                    <input type="button" class="close" id="volver" value="X" onclick="close_comment_modal('m1')">
-                    <p>Agregue su comentario</p>
-                    <div class="modal-comment"><textarea name="recommendation_comment" class="comentario" placeholder="Escriba su comentario acá" rows="4" cols="50"></textarea></div>
-                    <input type="button" class="enviar_comentario" value="Enviar comentario" onclick="close_comment_modal('m1')">
+    	    <div class="visualization">
+            <div class="encabezado">¿Qué tanto recomiendas el curso?</div>
+            <div style="overflow-y:scroll;">
+                <div class="row_flex">
+                <div class="graphBox">
+                    <figure class="highcharts-figure">
+                        <div id="testGraph2"></div>
+                    </figure>
                 </div>
-            </div>
-
-            <div class="recuadro">
-                <!--gráfico de prueba-->
-                <figure class="highcharts-figure">
-                    <div id="testGraph"></div>
-                </figure>
-            </div>
-            <div class="modal" id="m2">
-                <div class="modal-content">
-                    <input type="button" class="close" id="volver" value="X" onclick="close_comment_modal('m2')">
-                    <p>Agregue su comentario</p>
-                    <div class="modal-comment"><textarea name="fondness_comment" class="comentario" placeholder="Escriba su comentario acá" rows="4" cols="50"></textarea></div>
-                    <input type="button" class="enviar_comentario" value="Enviar comentario" onclick="close_comment_modal('m2')">
-                </div>
-            </div>
-
-            <div class="recuadro">
-                <div class="pregunta">Dificultad<br>¿Académicamente que tan difícil fue?</div>
-                <ul class="opciones">
-                    <li><input class="low_hard" type="radio" name="difficulty_level" value=1></li>
-                    <li><input class="low_soft" type="radio" name="difficulty_level" value=2></li>
-                    <li><input class="neutral" type="radio" name="difficulty_level" value=3></li>
-                    <li><input class="high_soft" type="radio" name="difficulty_level" value=4></li>
-                    <li><input class="high_hard" type="radio" name="difficulty_level" value=5></li>
-                </ul>
-                <div class="comentar" id="abrir_modal" onclick="open_comment_modal('m3')">Ver comentarios</div>
-            </div>
-            <div class="modal" id="m3">
-                <div class="modal-content">
-                    <input type="button" class="close" id="volver" value="X" onclick="close_comment_modal('m3')">
-                    <p>Agregue su comentario</p>
-                    <div class="modal-comment"><textarea name="difficulty_comment" class="comentario" placeholder="Escriba su comentario acá" rows="4" cols="50"></textarea></div>
-                    <input type="button" class="enviar_comentario" value="Enviar comentario" onclick="close_comment_modal('m3')">
-                </div>
-            </div>
-
-            <div class="recuadro">
-                <div class="pregunta">Tiempo de dedicación<br>¿El tiempo dedicado al ramo se ajusta a los créditos del curso?</div>
-                <ul class="opciones">
-                    <li><input class="low_hard" type="radio" name="required_time_level" value=1></li>
-                    <li><input class="low_soft" type="radio" name="required_time_level" value=2></li>
-                    <li><input class="neutral" type="radio" name="required_time_level" value=3></li>
-                    <li><input class="high_soft" type="radio" name="required_time_level" value=4></li>
-                    <li><input class="high_hard" type="radio" name="required_time_level" value=5></li>
-                </ul>
-                <div class="comentar" id="abrir_modal" onclick="open_comment_modal('m4')">Ver comentarios</div>
-            </div>
-            <div class="modal" id="m4">
-                <div class="modal-content">
-                    <input type="button" class="close" id="volver" value="X" onclick="close_comment_modal('m4')">
-                    <p>Agregue su comentario</p>
-                    <div class="modal-comment"><textarea name="required_time_comment" class="comentario" placeholder="Escriba su comentario acá" rows="4" cols="50"></textarea></div>
-                    <input type="button" class="enviar_comentario" value="Enviar comentario" onclick="close_comment_modal('m4')">
-                </div>
-            </div>
-
-            <div class="recuadro">
-                <div class="pregunta">Evaluaciones<br>¿Las evaluaciones están ajustadas al contenido visto en clase?
-                </div>
-                <ul class="opciones">
-                        <div class="star">
-                          <i class="star-empty">a</i>
-                          <i class="star-half">a</i>
-                          <i class="star-filled">a</i>
+                <div class="column_flex">
+                    <div class="commentBox">
+                        <div class="row_flex" style="justify-content: space-around;">  
+                            <div class="globo abajo-derecha" style>
+                              Shrek:
+                                Había una vez, una encantadora princesa.Pero estaba condenada por un terrible hechizo, que solo podíaromperse con el primer beso del verdadero amor.La había encerrado en un castillo, que vigilaba un horrible dragónque escupía fuego.Muchos valientes caballeros habían intentado liberarla de esasombría prisión, pero ninguno lo había logrado.Y custodiada por el dragón, esperaba, en el último cuarto de latorre más alta, a su primer amor.El primer beso de su verdadero amor.
+                            </div><img  src="{% static 'images/iconusercomment.png' %}" height="70px">
                         </div>
-                        <div class="star">
-                          <i class="star-empty"></i>
-                          <i class="star-half"></i>
-                          <i class="star-filled"></i>
+                        <div class="row_flex" style="justify-content: space-around;">  
+                            <div class="globo abajo-derecha" style>
+                              Shrek:
+                                 (Risas) Si, como si estas cosas pasaran.
+                                Esto es pura…
+                                 (Sonido de inodoro)
+                            </div><img  src="{% static 'images/iconusercomment.png' %}" height="70px">
                         </div>
-                        <div class="star">
-                          <i class="star-empty"></i>
-                          <i class="star-half"></i>
-                          <i class="star-filled"></i>
+                        <div class="row_flex" style="justify-content: space-around;">  
+                            <div class="globo abajo-derecha" style>
+                              Letrero:
+                                Cuidado con el ogro, no se acerque.(Mientras tanto, en una ciudad cercana, los aldeanos se reúnenpara ir tras el)
+                            </div><img  src="{% static 'images/iconusercomment.png' %}" height="70px">
                         </div>
-                        <div class="star">
-                          <i class="star-empty"></i>
-                          <i class="star-half"></i>
-                          <i class="star-filled"></i>
+                        <div class="row_flex" style="justify-content: space-around;">  
+                            <div class="globo abajo-derecha" style>
+                              Letrero:
+                                Cuidado con el ogro, no se acerque.(Mientras tanto, en una ciudad cercana, los aldeanos se reúnenpara ir tras el)
+                            </div><img  src="{% static 'images/iconusercomment.png' %}" height="70px">
                         </div>
-                        <div class="star">
-                          <i class="star-empty"></i>
-                          <i class="star-half"></i>
-                          <i class="star-filled"></i>
-                        </div>
-                </ul>
-                <div class="comentar" id="abrir_modal" onclick="open_comment_modal('m5')">Ver comentarios</div>
-            </div>
-            <div class="modal" id="m5">
-                <div class="modal-content">
-                    <input type="button" class="close" id="volver" value="X" onclick="close_comment_modal('m5')">
-                    <p>Agregue su comentario</p>
-                    <div class="modal-comment"><textarea name="content_adjustment_comment" class="comentario" placeholder="Escriba su comentario acá" rows="4" cols="50"></textarea></div>
-                    <input type="button" class="enviar_comentario" value="Enviar comentario" onclick="close_comment_modal('m5')">
-                </div>
-            </div>
-
-            <div class="recuadro">
-                <div class="pregunta">Estrés<br>¿Qué tanto estrés te generó el curso?</div>
-                <ul class="opciones">
-                    <div class="container text-center">
-                      <div class="rating large star-icon half color-default label-top">
-                        <div class="star-container">
-                            <div class="star">
-                                <i class="star-empty"></i>
-                                <i class="star-half"></i>
-                                <i class="star-filled"></i>
-                            </div>
-                            <div class="star">
-                                <i class="star-empty"></i>
-                                <i class="star-half"></i>
-                                <i class="star-filled"></i>
-                            </div>
-                            <div class="star">
-                                <i class="star-empty"></i>
-                                <i class="star-half"></i>
-                                <i class="star-filled"></i>
-                            </div>
-                            <div class="star">
-                                <i class="star-empty"></i>
-                                <i class="star-half"></i>
-                                <i class="star-filled"></i>
-                            </div>
-                            <div class="star">
-                                <i class="star-empty"></i>
-                                <i class="star-half"></i>
-                                <i class="star-filled"></i>
-                            </div>
+                        <div class="row_flex" style="justify-content: space-around;">  
+                            <div class="globo abajo-derecha" style>
+                              Letrero:
+                                Cuidado con el ogro, no se acerque.(Mientras tanto, en una ciudad cercana, los aldeanos se reúnenpara ir tras el)
+                            </div><img  src="{% static 'images/iconusercomment.png' %}" height="70px">
                         </div>
                     </div>
-                </ul>
-                <div class="comentar" id="abrir_modal" onclick="open_comment_modal('m6')">Ver comentarios</div>
-            </div>
-            <div class="modal" id="m6">
-                <div class="modal-content">
-                    <input type="button" class="close" id="volver" value="X" onclick="close_comment_modal('m6')">
-                    <p>Agregue su comentario</p>
-                    <div class="modal-comment"><textarea name="stress_comment" class="comentario" placeholder="Escriba su comentario acá" rows="4" cols="50"></textarea></div>
-                    <input type="button" class="enviar_comentario" value="Enviar comentario" onclick="close_comment_modal('m6')">
-                </div>
-            </div>
-
-
-            <div class="recuadro">
-                <div class="pregunta">Utilidad<br>¿Crees que este curso será util en tu vida profesional?</div>
-                <ul class="opciones">
+                    <div class='meanBar'>
+                        <h2>Promedio:</h2>
+                        <meter min='1' max='5' value="4.3" low="2" high="4" optimum="5"></meter>
+                        <br>
+                        <div style="position:relative;">
+                            <div style="left:0; display: inline;">Muy en desacuerdo</div>
+                            <div style="margin-left: 60%; display: inline;">Muy de acuerdo</div>
+                        </div>
                     
-                </ul>
-                <div class="comentar" onclick="open_comment_modal('m7')">Ver comentarios</div>
-            </div>
-            <div class="modal" id="m7">
-                <div class="modal-content">
-                    <input type="button" class="close" value="X" onclick="close_comment_modal('m7')">
-                    <p>Agregue su comentario</p>
-                    <div class="modal-comment"><textarea name="usefulness_comment" class="comentario" placeholder="Escriba su comentario acá" rows="4" cols="50"></textarea></div>
-                    <input type="button" class="enviar_comentario" value="Enviar comentario" onclick="close_comment_modal('m7')">
+                    </div>
                 </div>
-            </div>
-
-            <div class="recuadro">
-                <div class="pregunta">Enfoque del curso<br>¿Qué tan teórico práctico es el curso?</div>
-                <ul class="opciones">
-                    <li><input class="low_hard" type="radio" name="practicality_level" value=1></li>
-                    <li><input class="low_soft" type="radio" name="practicality_level" value=2></li>
-                    <li><input class="neutral" type="radio" name="practicality_level" value=3></li>
-                    <li><input class="high_soft" type="radio" name="practicality_level" value=4></li>
-                    <li><input class="high_hard" type="radio" name="practicality_level" value=5></li>
-                </ul>
-                <div class="comentar" onclick="open_comment_modal('m8')">Ver comentarios</div>
-            </div>
-            <div class="modal" id="m8">
-                <div class="modal-content">
-                    <input type="button" class="close" value="X" onclick="close_comment_modal('m8')">
-                    <p>Agregue su comentario</p>
-                    <div class="modal-comment"><textarea name="practicality_comment" class="comentario" placeholder="Escriba su comentario acá" rows="4" cols="50"></textarea></div>
-                    <input type="button" class="enviar_comentario" value="Enviar comentario" onclick="close_comment_modal('m8')">
-                </div>
-            </div>
-
-            <div class="recuadro">
-                <div class="pregunta">Modalidad de trabajo<br>¿Qué tanto trabajo en equipo requiere este curso?</div>
-                <ul class="opciones">
-                    <li><input class="low_hard" type="radio" name="teamwork_level" value=1></li>
-                    <li><input class="low_soft" type="radio" name="teamwork_level" value=2></li>
-                    <li><input class="neutral" type="radio" name="teamwork_level" value=3></li>
-                    <li><input class="high_soft" type="radio" name="teamwork_level" value=4></li>
-                    <li><input class="high_hard" type="radio" name="teamwork_level" value=5></li>
-                </ul>
-                <div class="comentar" onclick="open_comment_modal('m9')">Ver comentarios</div>
-            </div>
-            <div class="modal" id="m9">
-                <div class="modal-content">
-                    <input type="button" class="close" value="X" onclick="close_comment_modal('m9')">
-                    <p>Agregue su comentario</p>
-                    <div class="modal-comment"><textarea name="teamwork_comment" class="comentario" placeholder="Escriba su comentario acá" rows="4" cols="50"></textarea></div>
-                    <input type="button" class="enviar_comentario" value="Enviar comentario" onclick="close_comment_modal('m9')">
-                </div>
+                
             </div>
         </div>
     </div>
-    </div>  
+    </div> 
+
+        <div class="row_flex">
+            <div class="visualization">
+            <div class="encabezado">¿Qué tanto recomiendas el curso?</div>
+            <div style="overflow-y:scroll;">
+
+        
+        <div class="row_flex">
+            <div class="graphBox">
+                <figure class="highcharts-figure">
+                    <div id="testGraph3"></div>
+                </figure>
+            </div>
+            <div class="column_flex">
+                <div class="commentBox">
+                    <div class="row_flex" style="justify-content: space-around;">  
+                        <div class="globo abajo-derecha" style>
+                          Shrek:
+                            Había una vez, una encantadora princesa.Pero estaba condenada por un terrible hechizo, que solo podíaromperse con el primer beso del verdadero amor.La había encerrado en un castillo, que vigilaba un horrible dragónque escupía fuego.Muchos valientes caballeros habían intentado liberarla de esasombría prisión, pero ninguno lo había logrado.Y custodiada por el dragón, esperaba, en el último cuarto de latorre más alta, a su primer amor.El primer beso de su verdadero amor.
+                        </div><img  src="{% static 'images/iconusercomment.png' %}" height="70px">
+                    </div>
+                    <div class="row_flex" style="justify-content: space-around;">  
+                        <div class="globo abajo-derecha" style>
+                          Shrek:
+                             (Risas) Si, como si estas cosas pasaran.
+                            Esto es pura…
+                             (Sonido de inodoro)
+                        </div><img  src="{% static 'images/iconusercomment.png' %}" height="70px">
+                    </div>
+                    <div class="row_flex" style="justify-content: space-around;">  
+                        <div class="globo abajo-derecha" style>
+                          Letrero:
+                            Cuidado con el ogro, no se acerque.(Mientras tanto, en una ciudad cercana, los aldeanos se reúnenpara ir tras el)
+                        </div><img  src="{% static 'images/iconusercomment.png' %}" height="70px">
+                    </div>
+                    <div class="row_flex" style="justify-content: space-around;">  
+                        <div class="globo abajo-derecha" style>
+                          Letrero:
+                            Cuidado con el ogro, no se acerque.(Mientras tanto, en una ciudad cercana, los aldeanos se reúnenpara ir tras el)
+                        </div><img  src="{% static 'images/iconusercomment.png' %}" height="70px">
+                    </div>
+                    <div class="row_flex" style="justify-content: space-around;">  
+                        <div class="globo abajo-derecha" style>
+                          Letrero:
+                            Cuidado con el ogro, no se acerque.(Mientras tanto, en una ciudad cercana, los aldeanos se reúnenpara ir tras el)
+                        </div><img  src="{% static 'images/iconusercomment.png' %}" height="70px">
+                    </div>
+                </div>
+                <div class='meanBar'>
+                    <h2>Promedio:</h2>
+                    <meter min='1' max='5' value="4.3" low="2" high="4" optimum="5"></meter>
+                    <br>
+                    <div style="position:relative;">
+                        <div style="left:0; display: inline;">Muy en desacuerdo</div>
+                        <div style="margin-left: 60%; display: inline;">Muy de acuerdo</div>
+                    </div>
+                
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</div>
+</div> 
+
+    
 
     <div style="margin-left: 8%; margin-right: 8%;">
         <div class="row_flex">
