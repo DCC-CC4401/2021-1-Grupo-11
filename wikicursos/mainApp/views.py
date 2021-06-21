@@ -11,8 +11,32 @@ courses_Dict = {
     'DII' : [('IN3002', 'IN3002 Econo'), ('IN4002', 'IN3002 Evaluación de proyectos')]
 }
 
-lista_indicadores = ['required_time_level', 'difficulty_level', 'recommendation_level', 'practicality_level', 
-        'content_adjustment_level', 'stress_level', 'teamwork_level', 'fondness_level', 'usefulness_level']
+lista_indicadores = ['required_time', 'difficulty', 'recommendation', 'practicality', 
+        'content_adjustment', 'stress', 'teamwork', 'fondness', 'usefulness']
+
+title_dict = {
+    'required_time': '¿El tiempo dedicado al ramo se ajusta a los créditos del curso?',
+    'fondness': '¿Qué tanto te gustó la materia que viste?​',
+    'difficulty': "¿Académicamente que tan difícil fue?",
+    'recommendation': "¿Qué tanto recomiendas el curso?",
+    'practicality': '¿Qué tan teórico práctico es el curso?',
+    'content_adjustment': '¿Las evaluaciones están ajustadas al contenido visto en clase?',
+    'stress': '¿Qué tanto estrés te generó el curso?',
+    'teamwork': '¿Qué tanto trabajo en equipo requiere este curso?',
+    'usefulness': '¿Crees que este curso será util en tu vida profesional?'
+}
+
+bounds_dict = {
+    'required_time': ["Muy en desacuerdo, me consumió mucho más tiempo", "Muy de acuerdo, me consumió el tiempo señalado o menos"],
+    'fondness': ["No me gustó nada", "Me gustó mucho"],
+    'difficulty': ["Muy fácil", "Muy difícil"],
+    'recommendation': ["Nada recomendable", "Muy recomendable"],
+    'practicality': ['Totalmente teórico', 'Totalmente práctico'],
+    'content_adjustment': ['Muy en desacuerdo, no tenían relación', 'Muy de acuerdo, estaban muy relacionadas'],
+    'stress': ['Nada de estrés', 'Excesivo estrés'],
+    'teamwork': ['Estríctamente individual', 'Estríctamente grupal'],
+    'usefulness': ['Poco útil', 'Muy útil']
+}
         
 
 # Create your views here.
@@ -179,21 +203,27 @@ Funcion que dada una lista de indicadores, retorna un string con el promedio y c
 de cada indicador
 """
 def statistics(request):
-    
-    def mean_count_aux(indicador, data_string):
-        indicador_level = list(Review.objects.values(indicador))
-        indicador_level = list(map(lambda x: x[indicador], indicador_level))
+
+    def mean_count_aux(indicador, data_string, is_level=True):
+        indicador_level = list(Review.objects.values(indicador + '_level'))
+        indicador_comment = list(Review.objects.values(indicador + '_comment'))
+        indicador_level = list(map(lambda x: x[indicador + '_level'], indicador_level))
+        indicador_comment = list(filter(lambda x: x != '', list(map(lambda x: x[indicador + '_comment'], indicador_comment))))
         indicador_level_mean = st.mean(indicador_level)
-        data_string += indicador + '_mean=' + str(indicador_level_mean) + ';'
-        data_string += indicador + '_count=' + str([indicador_level.count(i) for i in range(1, 6)]) +';'
+        data_string += indicador +': {'
+        data_string += 'title: ' + '"' +str(title_dict[indicador]) + '",'
+        data_string += 'mean: ' + str(indicador_level_mean) + ','
+        data_string += 'count: ' + str([indicador_level.count(i) for i in range(1, 6)]) +','
+        data_string += 'comment: ' + str(indicador_comment) + ','
+        data_string += 'bounds: ' + str(bounds_dict[indicador]) + ','
+        data_string += '},'
         return data_string
 
     if request.user.is_authenticated:
-        data_string = '' 
+        data_string = 'data={' 
         for indicador in lista_indicadores:
             data_string = mean_count_aux(indicador, data_string)
-
-        print(data_string)
+        data_string += '};' 
         context = {}
         context['listString'] = data_string
 

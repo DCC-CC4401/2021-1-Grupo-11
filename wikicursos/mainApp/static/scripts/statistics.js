@@ -1,18 +1,24 @@
-function displayGraph(divId, data) {
+function displayGraph(divId, countList, title, boundList) {
+    let seriesData = [{
+        name : '',
+        data : countList
+    }]
+
+    console.log(countList)
     Highcharts.chart(divId, {
         chart: {
             type: 'column'
         },
         title: {
-            text: 'Título gráfico test'
+            text: "Frecuencia de: '" + title + "'"
         },
         xAxis: {
             categories: [
-                'Muy en desacuerdo',
-                'En desacuerdo',
-                'Neutral',
-                'De acuerdo',
-                'Muy de acuerdo',
+                boundList[0],
+                '',
+                '',
+                '',
+                boundList[1],
             ],
             crosshair: true
         },
@@ -36,7 +42,7 @@ function displayGraph(divId, data) {
                 borderWidth: 0
             }
         },
-        series: data
+        series: seriesData
     });
 
 }
@@ -44,17 +50,79 @@ function displayGraph(divId, data) {
 
 const testData = [{
     name: '',
-    data: required_time_level_count // [1, 2, 3, 4, 5]
+    data: [5, 2, 3, 4, 5]
 
 }]
 
+
+console.log(data)
+
 const testList1 = list1
-console.log(required_time_level_mean, required_time_level_count)
 function displayGraphs() {
-    //displayGraph('testGraph1', testData)
-    displayGraph('testGraph2', testData)
-    displayGraph('testGraph3', testData)
-    displayGraph('testGraph4', testData)
-    displayGraph('testGraph5', testData)
+    for (const indicador in data) {
+        displayGraph(`graph_${indicador}`, data[indicador]['count'], data[indicador]['title'], data[indicador]['bounds'])
+    }
+}
+
+test = {
+    xd : 3,
+    hola : 'chao',
+    no : 'se'
 
 }
+
+for (const x in test) {
+    console.log(x)
+    console.log(test[x])
+}
+
+for (const x of [1, 2, 3]) {
+    console.log(x)
+}
+ 
+
+function generateStatisticsHTML() {
+    
+    mainDiv = document.getElementById('StatisticsColumn')   
+    for (const indicador in data) { // para acceder a algún atributo se usa data[indicador][atributo]
+        commentsHTML = ``
+        for (const comment of data[indicador]['comment']) {  
+            commentsHTML += `
+                                <div class="row_flex" style="justify-content: space-around;">  
+                                    <div class="globo abajo-derecha" style>${comment}</div>
+                                    <img  src="/static/images/iconusercomment.png" height="70px">
+                                </div>`
+        }
+        mainDiv.innerHTML += 
+        `<div class="row_flex">
+            <div class="visualization">
+                <div class="encabezado">${data[indicador]["title"]}</div>
+                <div style="overflow-y:scroll;">
+                    <div class="row_flex">
+                        <div class="graphBox">
+                            <figure class="highcharts-figure">
+                                <div id="graph_${indicador}"></div>
+                            </figure>
+                        </div>
+                        <div class="column_flex"> 
+                            <div class="commentBox" id="commentBox_${indicador}">
+                                ${commentsHTML}
+                            </div>
+                            <div class='meanBar'>
+                                <h2>Promedio:</h2>
+                                <meter min='1' max='5' value="${data[indicador]['mean']}" low="2" high="3" optimum="4"></meter>
+                                <br>
+                                <div style="position:relative;">
+                                    <div style="left:0; display: inline;">${data[indicador]['bounds'][0]}</div>
+                                    <div style="margin-left: 60%; display: inline;">${data[indicador]['bounds'][1]}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>`
+    }
+}
+
+
