@@ -15,9 +15,9 @@ function displayGraph(divId, countList, title, boundList) {
         xAxis: {
             categories: [
                 boundList[0],
-                '',
-                '',
-                '',
+                '<-----',
+                '-----',
+                '----->',
                 boundList[1],
             ],
             crosshair: true
@@ -112,9 +112,9 @@ function generateStatisticsHTML() {
                                 <h2>Promedio:</h2>
                                 <meter min='1' max='5' value="${data[indicador]['mean']}" low="2" high="3" optimum="4"></meter>
                                 <br>
-                                <div style="position:relative;">
-                                    <div style="left:0; display: inline;">${data[indicador]['bounds'][0]}</div>
-                                    <div style="margin-left: 60%; display: inline;">${data[indicador]['bounds'][1]}</div>
+                                <div class="row_flex" style="justify-content: space-between">
+                                    <div style="width:20%">${data[indicador]['bounds'][0]}</div>
+                                    <div style="width:20%">${data[indicador]['bounds'][1]}</div>
                                 </div>
                             </div>
                         </div>
