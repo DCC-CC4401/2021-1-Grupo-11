@@ -40,6 +40,9 @@ body{
     width: 200px;
     font-size: 15px;
     text-align: center;
+    border: solid darkgrey;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
 }
 
 .selection{
@@ -51,7 +54,8 @@ body{
 }
 
 .formulario{
-    background-color: #df6666ee;
+    /*background-color: #df6666ee;*/
+    background-color: #8e8e8eee;
     width: 80%;
     margin-left: 10%;
     margin-top: 2%;
@@ -122,24 +126,24 @@ body{
 }
 
 .opciones li input[type="radio"].low_hard{
-    width: 4em;
-    height: 4em;
+    width: 5em;
+    height: 5em;
 }
 .opciones li input[type="radio"].low_soft{
-    width: 5em;
-    height: 5em;
-}
-.opciones li input[type="radio"].neutral{
-    width: 6em;
-    height: 6em;
-}
-.opciones li input[type="radio"].high_soft{
-    width: 5em;
-    height: 5em;
-}
-.opciones li input[type="radio"].high_hard{
     width: 4em;
     height: 4em;
+}
+.opciones li input[type="radio"].neutral{
+    width: 3em;
+    height: 3em;
+}
+.opciones li input[type="radio"].high_soft{
+    width: 4em;
+    height: 4em;
+}
+.opciones li input[type="radio"].high_hard{
+    width: 5em;
+    height: 5em;
 }
 
 input[type='radio']:after {
@@ -289,6 +293,9 @@ input[type='radio'].high_hard:checked:after {background-color: #454545;}
     width: 200px;
     font-size: 15px;
     text-align: center;
+    border: solid darkgrey;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
 }
 
 /* width */
@@ -366,4 +373,31 @@ input[type='radio'].high_hard:checked:after {background-color: #454545;}
   border-radius: 0 0 0 10em;
   box-shadow: 
     inset calc(var(--colita)/2) calc(var(--colita)/3) 0 0 white;
+}
+
+
+#error{
+  content: "";
+  background: black;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0.9;
+  display: none;
+  justify-content: center;
+}
+
+#errormsg{
+    overflow-y: scroll;
+    background-color: #000000;
+    color: white;
+    font-weight: 700;
+    font-size: 24px;
+    border-radius: 15px;
+    padding: 20px;
+    width: 50%;
+    height: 40%;
+    margin-top: 15%;
 }

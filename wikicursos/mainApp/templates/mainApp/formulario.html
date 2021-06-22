@@ -5,7 +5,6 @@
     <meta charset="UTF-8">
     <title>Formulario</title>
     <link rel="stylesheet" href="{% static 'styles/base_styles.css' %}" type="text/css">
-    
     <script src="{% static 'scripts/formulario.js' %}"></script>
 
     
@@ -16,8 +15,7 @@
     <ul class="menu">
         <img src="{% static 'images/wikicursos_lite.png' %}" alt="title" height="50px" >
         <li><a href="{% url 'index' %}">Inicio</a></li>
-        <li><a href="{% url 'search_department' %}">Ver cursos</a></li>
-        <li><a href="{% url 'register_review' %}">Valorar un curso</a></li>
+        <li><a href="{% url 'search_department' %}">Ver y valorar cursos</a></li>
         <li><a href="{% url 'statistics' %}">Estadisticas</a></li>
         <li><a href="{% url 'logout' %}">Cerrar sesión</a></li>
         <div style="margin-top: 2%;">Usuario</div>
@@ -25,35 +23,40 @@
     </ul>
      
     <!--<div class="topbar"><img src="{% static 'images/wikicursos.png' %}" alt="title" width="300" ></div>-->
-    <form method="POST">
+    <form id="form" method="POST">
         {% csrf_token %}
+        <h1 id="course_name" style="text-align: center;"></h1>
     	<div class="selection">
 	        <div class="legend">
+                *
 	            <input type="number" min=2011 max=2021 value=2021 name="year" id=year required>
 	        </div>
-	       <div class="legend">
+	        <div class="legend">
+                *
 	            <select  name="semester" id="semester">
-	                <option value=0 selected disabled>Semestre</option>
+	                <option value=0 selected disabled="disabled">Semestre</option>
 	                <option value=1>Otoño</option>
 	                <option value=2>Primavera</option>
 	            </select>
 	        </div>
 	        
 	        <div class="legend">
+                *
 	            <select name="section" id="section">
-	                <option value=0 selected="selected">Sección</option>
+	                <option value=0 selected="selected" disabled="disabled">Sección</option>
 	                <option value=1>1</option>
 	                <option value=2>2</option>
 	            </select>
 	        </div>
     	</div>
+        <script>setCourseName()</script>
     	<div class="formulario">
             <div class="encabezado">Elija una puntuación para cada aspecto</div>
             <div style="overflow-y:scroll; height: 50em;">
 
             
             <div class="recuadro">
-                <div class="pregunta">Recomendación<br>¿Qué tanto recomiendas el curso?</div>
+                <div class="pregunta">* Recomendación<br>¿Qué tanto recomiendas el curso?</div>
                 <ul class="opciones">
                     <li class="anotacion">Nada recomendable</li>
                     <li><input class="low_hard" type="radio" name="recommendation_level" value=1></li>
@@ -75,7 +78,7 @@
             </div>
 
             <div class="recuadro">
-                <div class="pregunta">Interés en la materia<br>¿Qué tanto te gustó la materia que viste?​
+                <div class="pregunta">* Interés en la materia<br>¿Qué tanto te gustó la materia que viste?​
                 </div>
                 <ul class="opciones">
                     <li class="anotacion">No me gustó nada</li>
@@ -98,7 +101,7 @@
             </div>
 
             <div class="recuadro">
-                <div class="pregunta">Dificultad<br>¿Académicamente que tan difícil fue?</div>
+                <div class="pregunta">* Dificultad<br>¿Académicamente que tan difícil fue?</div>
                 <ul class="opciones">
                     <li class="anotacion">Muy fácil</li>
                     <li><input class="low_hard" type="radio" name="difficulty_level" value=1></li>
@@ -120,7 +123,7 @@
             </div>
 
             <div class="recuadro">
-                <div class="pregunta">Tiempo de dedicación<br>¿El tiempo dedicado al ramo se ajusta a los créditos del curso?</div>
+                <div class="pregunta">* Tiempo de dedicación<br>¿El tiempo dedicado al ramo se ajusta a los créditos del curso?</div>
                 <ul class="opciones">
                     <li class="anotacion">Muy en desacuerdo, me consumió mucho más tiempo</li>
                     <li><input class="low_hard" type="radio" name="required_time_level" value=1></li>
@@ -142,7 +145,7 @@
             </div>
 
             <div class="recuadro">
-                <div class="pregunta">Evaluaciones<br>¿Las evaluaciones están ajustadas al contenido visto en clase?
+                <div class="pregunta">* Evaluaciones<br>¿Las evaluaciones están ajustadas al contenido visto en clase?
                 </div>
                 <ul class="opciones">
                     <li class="anotacion">Muy en desacuerdo, no tenían relación</li>
@@ -165,7 +168,7 @@
             </div>
 
             <div class="recuadro">
-                <div class="pregunta">Estrés<br>¿Qué tanto estrés te generó el curso?</div>
+                <div class="pregunta">* Estrés<br>¿Qué tanto estrés te generó el curso?</div>
                 <ul class="opciones">
                     <li class="anotacion">Nada de estrés</li>
                     <li><input class="low_hard" type="radio" name="stress_level" value=1></li>
@@ -188,7 +191,7 @@
 
 
             <div class="recuadro">
-                <div class="pregunta">Utilidad<br>¿Crees que este curso será util en tu vida profesional?</div>
+                <div class="pregunta">* Utilidad<br>¿Crees que este curso será util en tu vida profesional?</div>
                 <ul class="opciones">
                     <li class="anotacion">Poco útil</li>
                     <li><input class="low_hard" type="radio" name="usefulness_level" value=1></li>
@@ -210,7 +213,7 @@
             </div>
 
             <div class="recuadro">
-                <div class="pregunta">Enfoque del curso<br>¿Qué tan teórico práctico es el curso?</div>
+                <div class="pregunta">* Enfoque del curso<br>¿Qué tan teórico práctico es el curso?</div>
                 <ul class="opciones">
                     <li class="anotacion">Totalmente teórico</li>
                     <li><input class="low_hard" type="radio" name="practicality_level" value=1></li>
@@ -232,7 +235,7 @@
             </div>
 
             <div class="recuadro">
-                <div class="pregunta">Modalidad de trabajo<br>¿Qué tanto trabajo en equipo requiere este curso?</div>
+                <div class="pregunta">* Modalidad de trabajo<br>¿Qué tanto trabajo en equipo requiere este curso?</div>
                 <ul class="opciones">
                     <li class="anotacion">Estríctamente individual</li>
                     <li><input class="low_hard" type="radio" name="teamwork_level" value=1></li>
@@ -273,12 +276,16 @@
                 <textarea name="general_comment" class="comentario" placeholder="Escriba su comentario acá"></textarea>
             </div>
             <input type="hidden" name="course_id" value={{course_id}}>
-            <button class="envio" type="submit">Enviar  review</button>
+            <button class="envio" type="button" onclick="confBox()">Enviar  review</button>
+
         </form>
+        <div id="error">
+        <div id="errormsg"></div>
+    </div>
     </div>
     </div>
 
-   
+
 </body>
     
 

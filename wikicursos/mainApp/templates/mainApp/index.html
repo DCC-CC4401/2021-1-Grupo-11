@@ -13,8 +13,7 @@
     <ul class="menu">
         <img src="{% static 'images/wikicursos_lite.png' %}" alt="title" height="50px" >
         <li><a href="{% url 'index' %}">Inicio</a></li>
-        <li><a href="{% url 'search_department' %}">Ver cursos</a></li>
-        <li><a href="{% url 'register_review' %}">Valorar un curso</a></li>
+        <li><a href="{% url 'search_department' %}">Ver y valorar cursos</a></li>
         <li><a href="{% url 'statistics' %}">Estadisticas</a></li>
         <li><a href="{% url 'logout' %}">Cerrar sesión</a></li>
         <div style="margin-top: 2%;">Usuario</div>
@@ -87,6 +86,4 @@ function showSlides() {
 
 
 </body>
-    
-
 </html>
