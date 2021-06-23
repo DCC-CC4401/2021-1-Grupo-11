@@ -192,7 +192,7 @@ def searchCourse(request):
         courses_id_list = list(BelongsTo.objects.filter(department_id = dep_id).values('course_id'))
         courses_id_list = list(map(lambda x: x['course_id'], courses_id_list))
 
-        courses_list = list(Course.objects.filter(id__in = courses_id_list).values('name', 'id'))
+        courses_list = list(Course.objects.filter(id__in = courses_id_list).values('name', 'id', 'course_code'))
 
         context['dep_id'] = dep_id
         context['courses_id_list'] = courses_id_list
@@ -275,3 +275,10 @@ def gracias(request):
         return render(request, "mainApp/gracias.html", context)
     else:
         return HttpResponseRedirect('/login')
+
+def fillDB(request):
+    course_name = 'Introducción al Cálculo'
+    course_code = 'MA 1002'
+    course = Course(name=course_name, course_code=course_code, course_type='OBLIGATORIO')
+    course.save()
+    return HttpResponseRedirect('/login')

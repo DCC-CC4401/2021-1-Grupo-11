@@ -1,3 +1,7 @@
+* {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
 .highcharts-figure {
     min-width: 600px; 
     max-width: 800px;
@@ -32,23 +36,12 @@ meter {
     height: 60px;
 }
 
-.envio_stat{
-    cursor: pointer;
-    background-color: #3f3f3f;
-    text-align: center;
-    font-size: 40px;
-    border-radius: 8px;
-    box-shadow: 8px 8px 5px #1d070788;
-    padding: 20px;
-    color: #FFF;
-    text-decoration: none;
-    width:30%;
-    margin-left:35%;
-    margin-right:35%;
+.visualization2{
+    background-color: #f1c4c4ea;
+    width: 48%;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    border-radius: 10px;
+    box-shadow: 30px 30px 10px #1d070788;
+    border-radius: 20px;
 }
-
-.envio_stat:hover{
-      background-color: #A35151;
-      cursor: pointer;
-}
-

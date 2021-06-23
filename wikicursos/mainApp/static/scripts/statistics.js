@@ -139,6 +139,7 @@ function generateStatisticsHTML() {
         'study_recommendation' : 'Recomendaciones para el estudio'
     }
 
+    cont = 0;
     for (const commentType in comments ){
         commentsHTML = ``
         
@@ -158,15 +159,22 @@ function generateStatisticsHTML() {
             `
         }
 
+        var ind = Math.trunc(cont/2);
+
         mainDiv.innerHTML += 
-        `<div class="row_flex">
-                <div class="visualization">
+        `<div id="box${ind}" class="row_flex" style="justify-content: space-between; width:80%; margin-left:10%;"></div>`
+        
+        box = document.getElementById(`box${ind}`);
+
+        box.innerHTML += 
+        `       <div class="visualization2">
                     <div class="encabezado">${commentTitles[commentType]}</div>
                     <div class="commentBox" style="width:100%">
                         ${commentsHTML}
                     </div>
                 </div>
-        </div>`
+        `
+        cont += 1;
     }
 
 }
