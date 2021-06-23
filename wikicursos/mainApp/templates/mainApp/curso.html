@@ -29,8 +29,9 @@
         <ul id="myUL">
             {% for course in courses_list %}
                 <li class="row_flex" style="justify-content: center">
-                    <a style="width: 60%;" class="course_name" href="/register_review?course_id={{course.id}}&course_name={{course.name}}">{{course.name}}</a>
-                    <a  href="/statistics?course_id={{course.id}}&course_name={{course.name}}">Vista</a>
+                    <!--<a style="width: 60%;" class="course_name" href="/register_review?course_id={{course.id}}&course_name={{course.name}}">{{course.name}}</a>-->
+                    <!--<a  href="/statistics?course_id={{course.id}}&course_name={{course.name}}">Vista</a>-->
+                    <a style="width: 60%;" class="course_name" href="/statistics?course_id={{course.id}}">{{course.name}}</a>
                 </li>
             {% endfor %}
         </ul> 

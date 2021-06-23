@@ -14,6 +14,8 @@ courses_Dict = {
 lista_indicadores = ['required_time', 'difficulty', 'recommendation', 'practicality', 
         'content_adjustment', 'stress', 'teamwork', 'fondness', 'usefulness']
 
+lista_comentarios = ['general', 'useful_courses', 'tools', 'study_recommendation']
+
 title_dict = {
     'required_time': '¿El tiempo dedicado al ramo se ajusta a los créditos del curso?',
     'fondness': '¿Qué tanto te gustó la materia que viste?​',
@@ -27,7 +29,7 @@ title_dict = {
 }
 
 bounds_dict = {
-    'required_time': ["Muy en desacuerdo, me consumió mucho más tiempo", "Muy de acuerdo, me consumió el tiempo señalado o menos"],
+    'required_time': ["Muy de acuerdo, me consumió mucho más tiempo", "Muy en desacuerdo, me consumió el tiempo señalado o menos"],
     'fondness': ["No me gustó nada", "Me gustó mucho"],
     'difficulty': ["Muy fácil", "Muy difícil"],
     'recommendation': ["Nada recomendable", "Muy recomendable"],
@@ -98,11 +100,13 @@ def register_review(request):
 
         if request.user.is_authenticated:
             course_id = request.GET.get('course_id')
+            course_name = Course.objects.filter(id=course_id).values('name')[0]['name']
 
             context = dict()
             #roles = Roles.objects.filter(...)
             context['dict'] = courses_Dict
             context['course_id'] = course_id
+            context['course_name'] = course_name
             return render(request, "mainApp/formulario.html", context)  # template de nombre review 
 
         else:
@@ -127,7 +131,7 @@ def register_review(request):
         recommendation_level = request.POST['recommendation_level']
         recommendation_comment = request.POST.get('recommendation_comment', '')
         practicality_level = request.POST['practicality_level']
-        practicality_comment = request.POST.get('recommendation_comment', '')
+        practicality_comment = request.POST.get('practicality_comment', '')
         content_adjustment_level = request.POST['content_adjustment_level']
         content_adjustment_comment = request.POST.get('content_adjustment_comment', '')
         stress_level =  request.POST['stress_level']
@@ -161,7 +165,7 @@ def register_review(request):
         review.save()
 
         #Redireccionar 
-        return HttpResponseRedirect('/index')
+        return HttpResponseRedirect(f'/gracias?course_id={course_id}')
 
 """
 Para el proximo sprint (dropdown departamento filtra dropdown cursos)
@@ -222,21 +226,52 @@ def statistics(request):
     if request.user.is_authenticated:
 
         course_id = request.GET.get('course_id')
+        course_name = Course.objects.filter(id=course_id).values('name')[0]['name']
 
         # ACA CONSULTA BASE DE DATOS
         review_object_filter = Review.objects.filter(course_id = course_id)
+        
         count_review = review_object_filter.count()
+        if count_review == 0:
+            context = {'ErrorString' : 'No hay reviews para este curso',
+                        'course_id' : course_id}
+            return render(request, 'mainApp/reviewError.html', context)
+        print(count_review)
 
         data_string = 'data={' 
         for indicador in lista_indicadores:
             data_string = mean_count_aux(indicador, data_string)
         data_string += '};' 
+
+
+        comments_string = 'comments={'
+        for comentario in lista_comentarios:
+            comment_list = list(review_object_filter.values(comentario + '_comment'))
+            comment_list = list(filter(lambda x: x != '', list(map(lambda x: x[comentario + '_comment'], comment_list))))
+            comments_string += comentario + ':' + str(comment_list) + ','
+            
+        comments_string += '};' 
+
+        
+
         context = {}
         context['listString'] = data_string
         context['countReview'] = "countReview="+str(count_review)+""
+        context['course_id'] = course_id
+        context['course_name'] = course_name
+        context['commentsString'] = comments_string
 
         # renderear
         return render(request, "mainApp/statistics.html", context)
 
+    else:
+        return HttpResponseRedirect('/login')
+        
+
+def gracias(request):
+    if request.user.is_authenticated:
+        course_id = request.GET.get('course_id')
+        context = {'course_id' : course_id}
+        return render(request, "mainApp/gracias.html", context)
     else:
         return HttpResponseRedirect('/login')

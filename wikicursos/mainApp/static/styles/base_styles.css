@@ -5,6 +5,10 @@ body{
     /* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
 }
 
+* {
+    font-family: Arial, Helvetica, sans-serif;
+   }
+
 .menu{
     font-family: Arial, Helvetica, sans-serif;
     background-color: #ffffff;
@@ -55,7 +59,7 @@ body{
 
 .formulario{
     /*background-color: #df6666ee;*/
-    background-color: #8e8e8eee;
+    background-color: #f1c4c4ea;
     width: 80%;
     margin-left: 10%;
     margin-top: 2%;
@@ -66,6 +70,7 @@ body{
 }
 
 .encabezado{
+    font-family: Arial, Helvetica, sans-serif;
     background-color: #474747;
     padding: 20px;
     border-radius: 20px;
@@ -83,6 +88,7 @@ body{
     margin-right: 10%;
     text-align: center;
     border-radius: 15px;
+    border-style: solid;
 }
 
 .pregunta{
@@ -400,4 +406,34 @@ input[type='radio'].high_hard:checked:after {background-color: #454545;}
     width: 50%;
     height: 40%;
     margin-top: 15%;
+}
+
+.number_question{
+    float: left;
+    font-size: 25px;
+}
+
+.page_error{
+    text-align: center;
+    font-size: 40px;
+}
+
+.envio_stat{
+    cursor: pointer;
+    background-color: #3f3f3f;
+    text-align: center;
+    font-size: 40px;
+    border-radius: 8px;
+    box-shadow: 8px 8px 5px #1d070788;
+    padding: 20px;
+    color: #FFF;
+    text-decoration: none;
+    width:30%;
+    margin-left:35%;
+    margin-right:35%;
+}
+
+.envio_stat:hover{
+      background-color: #A35151;
+      cursor: pointer;
 }

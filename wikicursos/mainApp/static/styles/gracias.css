@@ -1,0 +1,42 @@
+* {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.caja{
+    background-color: #f1c4c4ea;
+    width: 80%;
+    margin-left: 10%;
+    border-radius: 20px;
+    box-shadow: 30px 30px 10px #1d070788;
+    text-align: center;
+}
+
+.agradecimiento{
+    font-size: 500%;
+    font-weight: 500px;
+    padding: 40px;
+    margin-bottom: 0;
+}
+
+.guino{
+    height: 15%;
+    width: 40%;
+    padding: 30px;
+}
+
+
+.Botones{
+    margin-top: 70px;
+    cursor: pointer;
+    background-color: #3f3f3f;
+    text-align: center;
+    font-size: 40px;
+    border-radius: 8px;
+    box-shadow: 8px 8px 5px #1d070788;
+    margin-left: 25%;
+    margin-bottom: 40px;
+    padding: 20px;
+    color: #FFF;
+    text-decoration: none;
+    display: inline-block;
+}

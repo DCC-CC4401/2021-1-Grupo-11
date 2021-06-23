@@ -86,13 +86,21 @@ function generateStatisticsHTML() {
     mainDiv = document.getElementById('StatisticsColumn')   
     for (const indicador in data) { // para acceder a algún atributo se usa data[indicador][atributo]
         commentsHTML = ``
-        for (const comment of data[indicador]['comment']) {  
+
+        if (data[indicador]['comment'].length != 0) {
+            for (const comment of data[indicador]['comment']) {  
+                commentsHTML += `
+                                    <div class="row_flex" style="justify-content: space-around;">  
+                                        <div class="globo abajo-derecha" style>${comment}</div>
+                                        <img  src="/static/images/iconusercomment.png" height="70px">
+                                    </div>`
+            }
+        } else {
             commentsHTML += `
-                                <div class="row_flex" style="justify-content: space-around;">  
-                                    <div class="globo abajo-derecha" style>${comment}</div>
-                                    <img  src="/static/images/iconusercomment.png" height="70px">
-                                </div>`
+                            <h2>No hay comentarios </h2>
+            `
         }
+        
         mainDiv.innerHTML += 
         `<div class="row_flex">
             <div class="visualization">
@@ -123,19 +131,48 @@ function generateStatisticsHTML() {
             </div>
         </div>`
     }
+
+    commentTitles = {
+        'general' : 'Comentarios generales sobre el curso',
+        'useful_courses' : 'Cursos útiles para el curso',
+        'tools' : 'Herramientas útiles para el curso', 
+        'study_recommendation' : 'Recomendaciones para el estudio'
+    }
+
+    for (const commentType in comments ){
+        commentsHTML = ``
+        
+        if (comments[commentType].length != 0) {
+            for (const comment of comments[commentType]) {  
+                commentsHTML += 
+                            `<div class="row_flex" style="justify-content: space-around;">  
+                                <div class="globo abajo-derecha" style>
+                                    ${comment}
+                                </div>
+                                <img  src="../static/images/iconusercomment.png" height="70px">
+                            </div>`;
+            }
+        } else {
+            commentsHTML += `
+                            <h2>No hay comentarios </h2>
+            `
+        }
+
+        mainDiv.innerHTML += 
+        `<div class="row_flex">
+                <div class="visualization">
+                    <div class="encabezado">${commentTitles[commentType]}</div>
+                    <div class="commentBox" style="width:100%">
+                        ${commentsHTML}
+                    </div>
+                </div>
+        </div>`
+    }
+
 }
 
-function getParameterByName(name) {
-    name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
-    var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
-    results = regex.exec(location.search);
-    return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
-}
-
-function setCourseName(){
-  course_name = document.getElementById('course_name');
-  course_name.innerHTML += getParameterByName('course_name');
-}
+var course_name;
+var course_id;
 
 function setCountReview(){
     count_review = document.getElementById('count_review');

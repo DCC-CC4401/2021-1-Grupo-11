@@ -25,7 +25,7 @@
     <!--<div class="topbar"><img src="{% static 'images/wikicursos.png' %}" alt="title" width="300" ></div>-->
     <form id="form" method="POST">
         {% csrf_token %}
-        <h1 id="course_name" style="text-align: center;"></h1>
+        <h1 id="course_name" style="text-align: center;">{{course_name}}</h1>
         <script>setCourseName()</script>
     	<div class="selection">
 	        <div class="legend">
@@ -56,6 +56,7 @@
 
             
             <div class="recuadro">
+                <div class="number_question">1.</div>
                 <div class="pregunta">* Recomendación<br>¿Qué tanto recomiendas el curso?</div>
                 <ul class="opciones">
                     <li class="anotacion">Nada recomendable</li>
@@ -78,6 +79,7 @@
             </div>
 
             <div class="recuadro">
+                <div class="number_question">2.</div>
                 <div class="pregunta">* Interés en la materia<br>¿Qué tanto te gustó la materia que viste?​
                 </div>
                 <ul class="opciones">
@@ -101,6 +103,7 @@
             </div>
 
             <div class="recuadro">
+                <div class="number_question">3.</div>
                 <div class="pregunta">* Dificultad<br>¿Académicamente que tan difícil fue?</div>
                 <ul class="opciones">
                     <li class="anotacion">Muy fácil</li>
@@ -123,6 +126,7 @@
             </div>
 
             <div class="recuadro">
+                <div class="number_question">4.</div>
                 <div class="pregunta">* Tiempo de dedicación<br>¿El tiempo dedicado al ramo se ajusta a los créditos del curso?</div>
                 <ul class="opciones">
                     <li class="anotacion">Muy en desacuerdo, me consumió mucho más tiempo</li>
@@ -145,6 +149,7 @@
             </div>
 
             <div class="recuadro">
+                <div class="number_question">5.</div>
                 <div class="pregunta">* Evaluaciones<br>¿Las evaluaciones están ajustadas al contenido visto en clase?
                 </div>
                 <ul class="opciones">
@@ -168,6 +173,7 @@
             </div>
 
             <div class="recuadro">
+                <div class="number_question">6.</div>
                 <div class="pregunta">* Estrés<br>¿Qué tanto estrés te generó el curso?</div>
                 <ul class="opciones">
                     <li class="anotacion">Nada de estrés</li>
@@ -191,6 +197,7 @@
 
 
             <div class="recuadro">
+                <div class="number_question">7.</div>
                 <div class="pregunta">* Utilidad<br>¿Crees que este curso será util en tu vida profesional?</div>
                 <ul class="opciones">
                     <li class="anotacion">Poco útil</li>
@@ -213,6 +220,7 @@
             </div>
 
             <div class="recuadro">
+                <div class="number_question">8.</div>
                 <div class="pregunta">* Enfoque del curso<br>¿Qué tan teórico práctico es el curso?</div>
                 <ul class="opciones">
                     <li class="anotacion">Totalmente teórico</li>
@@ -235,6 +243,7 @@
             </div>
 
             <div class="recuadro">
+                <div class="number_question">9.</div>
                 <div class="pregunta">* Modalidad de trabajo<br>¿Qué tanto trabajo en equipo requiere este curso?</div>
                 <ul class="opciones">
                     <li class="anotacion">Estríctamente individual</li>
@@ -257,21 +266,25 @@
             </div>
 
             <div class="recuadro">
+                <div class="number_question">10.</div>
                 <div class="pregunta">¿Qué recomiendas para el estudio de este curso?</div>
                 <textarea name="study_recommendation_comment" class="comentario" placeholder="Escriba su comentario acá"></textarea>
             </div>
 
             <div class="recuadro">
+                <div class="number_question">11.</div>
                 <div class="pregunta">¿Qué herramientas adicionales recomiendas para este curso?</div>
                 <textarea name="tools_comment" class="comentario" placeholder="Escriba su comentario acá"></textarea>
             </div>
 
             <div class="recuadro">
+                <div class="number_question">12.</div>
                 <div class="pregunta">¿Qué otros cursos te ayudaron para dar este?</div>
                 <textarea name="useful_courses_comment" class="comentario" placeholder="Escriba su comentario acá"></textarea>
             </div>
             
             <div class="recuadro">
+                <div class="number_question">13.</div>
                 <div class="pregunta">¿Algún otro comentario acerca del curso?</div>
                 <textarea name="general_comment" class="comentario" placeholder="Escriba su comentario acá"></textarea>
             </div>

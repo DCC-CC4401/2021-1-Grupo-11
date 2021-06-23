@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Formulario</title>
-    <link rel="stylesheet" href="{% static 'styles/departamento.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'styles/base_styles.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'styles/gracias.css' %}" type="text/css">
     <script src="{% static 'scripts/departamento.js' %}"></script>
 </head>
 
@@ -21,20 +22,15 @@
     </ul>
 
 
-    <div class="box">
-    	<div class="encabezado">Que curso le interesaria ver (Seleccione un curso)</div>
-        
-        <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Buscar departamento por nombre..." title="Type in a name">
-        
-        <ul id="myUL">
-
-        {% for dep in dep_list %}
-            <li class="row_flex" style="justify-content: center">
-                <a style=" width: 60%;"href="/search_course?dep={{dep.id}}">{{dep.name}}</a>
-            </li>
-        {% endfor %}
-        </ul> 
+    <div class="caja">
+    	<p class="agradecimiento">Muchas gracias por su colaboración</p>    <br>
+        <img src="{% static 'images/guino.gif' %}" class="guino" alt="guino">
     </div>
+
+    <a  class="Botones" href="{% url 'index' %}">Volver al inicio</a>
+
+    <a  class="Botones" href="/statistics?course_id={{course_id}}">Ver sitio del curso</a>
+
 
 </body>
 </html>
