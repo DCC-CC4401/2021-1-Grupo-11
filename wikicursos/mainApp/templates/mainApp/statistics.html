@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="{% static 'styles/graphs.css' %}" type="text/css">
     <script> list1 = [3, 2, 1, 5, 6]; list2 = [5, 5, 2, 1, 3]; list3 = [4, 2, 1, 2, 2]</script>
     <script>{{listString|safe}}</script>
+    <script>{{countReview|safe}}</script>
     <script src="{% static 'scripts/statistics.js' %}"></script>
     <script src="https://code.highcharts.com/highcharts.src.js"></script>
     
@@ -23,141 +24,18 @@
         <img src="{% static 'images/wikicursos_lite.png' %}" alt="title" height="50px" >
         <li><a href="{% url 'index' %}">Inicio</a></li>
         <li><a href="{% url 'search_department' %}">Ver y valorar cursos</a></li>
-        <li><a href="{% url 'statistics' %}">Estadisticas</a></li>
+        <li><a href="">Estadisticas</a></li>
         <li><a href="{% url 'logout' %}">Cerrar sesión</a></li>
         <div style="margin-top: 2%;">Usuario</div>
         <img src="{% static 'images/usuario1.png' %}" class="icono_usuario" alt="Icono usuario", height="50px">
     </ul>
      
         {% csrf_token %}
+        <h1 id="course_name" style="text-align: center;"></h1>
+        <h2 id="count_review" style="text-align: center;">Numero de reviews: </h2>
+        <script>setCourseName();setCountReview();</script>
     <div class="column_flex" id='StatisticsColumn'>
-        <div class="row_flex">
-    	    <div class="visualization">
-            <div class="encabezado">¿Qué tanto recomiendas el curso?</div>
-            <div style="overflow-y:scroll;">
-                <div class="row_flex">
-                <div class="graphBox">
-                    <figure class="highcharts-figure">
-                        <div id="testGraph2"></div>
-                    </figure>
-                </div>
-                <div class="column_flex">
-                    <div class="commentBox">
-                        <div class="row_flex" style="justify-content: space-around;">  
-                            <div class="globo abajo-derecha" style>
-                              Shrek:
-                                Había una vez, una encantadora princesa.Pero estaba condenada por un terrible hechizo, que solo podíaromperse con el primer beso del verdadero amor.La había encerrado en un castillo, que vigilaba un horrible dragónque escupía fuego.Muchos valientes caballeros habían intentado liberarla de esasombría prisión, pero ninguno lo había logrado.Y custodiada por el dragón, esperaba, en el último cuarto de latorre más alta, a su primer amor.El primer beso de su verdadero amor.
-                            </div><img  src="{% static 'images/iconusercomment.png' %}" height="70px">
-                        </div>
-                        <div class="row_flex" style="justify-content: space-around;">  
-                            <div class="globo abajo-derecha" style>
-                              Shrek:
-                                 (Risas) Si, como si estas cosas pasaran.
-                                Esto es pura…
-                                 (Sonido de inodoro)
-                            </div><img  src="{% static 'images/iconusercomment.png' %}" height="70px">
-                        </div>
-                        <div class="row_flex" style="justify-content: space-around;">  
-                            <div class="globo abajo-derecha" style>
-                              Letrero:
-                                Cuidado con el ogro, no se acerque.(Mientras tanto, en una ciudad cercana, los aldeanos se reúnenpara ir tras el)
-                            </div><img  src="{% static 'images/iconusercomment.png' %}" height="70px">
-                        </div>
-                        <div class="row_flex" style="justify-content: space-around;">  
-                            <div class="globo abajo-derecha" style>
-                              Letrero:
-                                Cuidado con el ogro, no se acerque.(Mientras tanto, en una ciudad cercana, los aldeanos se reúnenpara ir tras el)
-                            </div><img  src="{% static 'images/iconusercomment.png' %}" height="70px">
-                        </div>
-                        <div class="row_flex" style="justify-content: space-around;">  
-                            <div class="globo abajo-derecha" style>
-                              Letrero:
-                                Cuidado con el ogro, no se acerque.(Mientras tanto, en una ciudad cercana, los aldeanos se reúnenpara ir tras el)
-                            </div><img  src="{% static 'images/iconusercomment.png' %}" height="70px">
-                        </div>
-                    </div>
-                    <div class='meanBar'>
-                        <h2>Promedio:</h2>
-                        <meter min='1' max='5' value="4.3" low="2" high="4" optimum="5"></meter>
-                        <br>
-                        <div style="position:relative;">
-                            <div style="left:0; display: inline;">Muy en desacuerdo</div>
-                            <div style="margin-left: 60%; display: inline;">Muy de acuerdo</div>
-                        </div>
-                    
-                    </div>
-                </div>
-                
-            </div>
-        </div>
-    </div>
-    
-    </div> 
-
-        <div class="row_flex">
-            <div class="visualization">
-            <div class="encabezado">¿Qué tanto recomiendas el curso?</div>
-            <div style="overflow-y:scroll;">
-
         
-        <div class="row_flex">
-            <div class="graphBox">
-                <figure class="highcharts-figure">
-                    <div id="testGraph3"></div>
-                </figure>
-            </div>
-            <div class="column_flex">
-                <div class="commentBox">
-                    <div class="row_flex" style="justify-content: space-around;">  
-                        <div class="globo abajo-derecha" style>
-                          Shrek:
-                            Había una vez, una encantadora princesa.Pero estaba condenada por un terrible hechizo, que solo podíaromperse con el primer beso del verdadero amor.La había encerrado en un castillo, que vigilaba un horrible dragónque escupía fuego.Muchos valientes caballeros habían intentado liberarla de esasombría prisión, pero ninguno lo había logrado.Y custodiada por el dragón, esperaba, en el último cuarto de latorre más alta, a su primer amor.El primer beso de su verdadero amor.
-                        </div><img  src="{% static 'images/iconusercomment.png' %}" height="70px">
-                    </div>
-                    <div class="row_flex" style="justify-content: space-around;">  
-                        <div class="globo abajo-derecha" style>
-                          Shrek:
-                             (Risas) Si, como si estas cosas pasaran.
-                            Esto es pura…
-                             (Sonido de inodoro)
-                        </div><img  src="{% static 'images/iconusercomment.png' %}" height="70px">
-                    </div>
-                    <div class="row_flex" style="justify-content: space-around;">  
-                        <div class="globo abajo-derecha" style>
-                          Letrero:
-                            Cuidado con el ogro, no se acerque.(Mientras tanto, en una ciudad cercana, los aldeanos se reúnenpara ir tras el)
-                        </div><img  src="{% static 'images/iconusercomment.png' %}" height="70px">
-                    </div>
-                    <div class="row_flex" style="justify-content: space-around;">  
-                        <div class="globo abajo-derecha" style>
-                          Letrero:
-                            Cuidado con el ogro, no se acerque.(Mientras tanto, en una ciudad cercana, los aldeanos se reúnenpara ir tras el)
-                        </div><img  src="{% static 'images/iconusercomment.png' %}" height="70px">
-                    </div>
-                    <div class="row_flex" style="justify-content: space-around;">  
-                        <div class="globo abajo-derecha" style>
-                          Letrero:
-                            Cuidado con el ogro, no se acerque.(Mientras tanto, en una ciudad cercana, los aldeanos se reúnenpara ir tras el)
-                        </div><img  src="{% static 'images/iconusercomment.png' %}" height="70px">
-                    </div>
-                </div>
-                <div class='meanBar'>
-                    <h2>Promedio:</h2>
-                    <meter min='1' max='5' value="4.3" low="2" high="4" optimum="5"></meter>
-                    <br>
-                    <div style="position:relative;">
-                        <div style="left:0; display: inline;">Muy en desacuerdo</div>
-                        <div style="margin-left: 60%; display: inline;">Muy de acuerdo</div>
-                    </div>
-                
-                </div>
-            </div>
-            
-        </div>
-    </div>
-</div>
-</div> 
-
     <!--<div class="row_flex">
         <div class="visualization">
             <div class="encabezado">Elija una puntuación para cada aspecto</div>

@@ -79,7 +79,7 @@ body{
   margin: 0;
 }
 
-#myUL li a {
+#myUL li a{
   border: 1px solid #ddd; /* Add a border to all links */
   margin-top: -1px; /* Prevent double borders */
   background-color: #f6f6f6; /* Grey background color */

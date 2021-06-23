@@ -125,4 +125,21 @@ function generateStatisticsHTML() {
     }
 }
 
+function getParameterByName(name) {
+    name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+    var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+    results = regex.exec(location.search);
+    return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+
+function setCourseName(){
+  course_name = document.getElementById('course_name');
+  course_name.innerHTML += getParameterByName('course_name');
+}
+
+function setCountReview(){
+    count_review = document.getElementById('count_review');
+    count_review.innerHTML += countReview;
+}
+
 

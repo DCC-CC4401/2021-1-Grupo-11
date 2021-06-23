@@ -205,8 +205,8 @@ de cada indicador
 def statistics(request):
 
     def mean_count_aux(indicador, data_string, is_level=True):
-        indicador_level = list(Review.objects.values(indicador + '_level'))
-        indicador_comment = list(Review.objects.values(indicador + '_comment'))
+        indicador_level = list(review_object_filter.values(indicador + '_level'))
+        indicador_comment = list(review_object_filter.values(indicador + '_comment'))
         indicador_level = list(map(lambda x: x[indicador + '_level'], indicador_level))
         indicador_comment = list(filter(lambda x: x != '', list(map(lambda x: x[indicador + '_comment'], indicador_comment))))
         indicador_level_mean = st.mean(indicador_level)
@@ -220,12 +220,20 @@ def statistics(request):
         return data_string
 
     if request.user.is_authenticated:
+
+        course_id = request.GET.get('course_id')
+
+        # ACA CONSULTA BASE DE DATOS
+        review_object_filter = Review.objects.filter(course_id = course_id)
+        count_review = review_object_filter.count()
+
         data_string = 'data={' 
         for indicador in lista_indicadores:
             data_string = mean_count_aux(indicador, data_string)
         data_string += '};' 
         context = {}
         context['listString'] = data_string
+        context['countReview'] = "countReview="+str(count_review)+""
 
         # renderear
         return render(request, "mainApp/statistics.html", context)
