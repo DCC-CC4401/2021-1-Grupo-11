@@ -88,7 +88,7 @@ function generateStatisticsHTML() {
         commentsHTML = ``
 
         if (data[indicador]['comment'].length != 0) {
-            for (const comment of data[indicador]['comment']) {  
+            for (const comment of data[indicador]['comment'].reverse()) {  
                 commentsHTML += `
                                     <div class="row_flex" style="justify-content: space-around;">  
                                         <div class="globo abajo-derecha" style>${comment}</div>
@@ -144,7 +144,7 @@ function generateStatisticsHTML() {
         commentsHTML = ``
         
         if (comments[commentType].length != 0) {
-            for (const comment of comments[commentType]) {  
+            for (const comment of comments[commentType].reverse()) {  
                 commentsHTML += 
                             `<div class="row_flex" style="justify-content: space-around;">  
                                 <div class="globo abajo-derecha" style>

@@ -54,6 +54,14 @@ def index(request):
 
 def login_user(request):
     if not request.user.is_authenticated:
+
+        roles = list(Roles.objects.values())
+        if len(roles) == 0 :
+            studentRole = Roles(role_name='student')
+            adminRole = Roles(role_name='admin')
+            studentRole.save()
+            adminRole.save()
+        
         if request.method == 'GET':
             return render(request, "mainApp/login.html")  
         if request.method == 'POST':
@@ -75,12 +83,27 @@ def logout_user(request):
 def register_user(request):
     if request.method == 'GET':
         if not request.user.is_authenticated:
+            
+            roles = list(Roles.objects.values())
+            if len(roles) == 0 :
+                studentRole = Roles(role_name='student')
+                adminRole = Roles(role_name='admin')
+                studentRole.save()
+                adminRole.save()
+
             return render(request, "mainApp/register_user.html") 
         else:
             return HttpResponseRedirect('/index')
 
     elif request.method == 'POST':
         username = request.POST['username']
+
+        # Revisar si ya existe ese usuario
+        
+        checkUser = list(User.objects.filter(username=username).values())
+        if (len(checkUser) != 0):
+            return HttpResponseRedirect('/login')
+
         password = request.POST['password']
         email = request.POST['email']
         first_name = request.POST['first_name']

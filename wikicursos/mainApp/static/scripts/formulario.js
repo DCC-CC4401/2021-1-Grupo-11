@@ -98,55 +98,55 @@ function validacionForm(){
 
   //Validacion recommendation_level
   if(!validateChecked("recommendation_level")){
-    msg = msg.concat("<li>Seleccione una opcion para: 'Recomendación'.</li>");
+    msg = msg.concat("<li>Seleccione una opcion para la pregunta: '1. Recomendación'.</li>");
     validate =  false;
   }
 
   //Validacion fondness_level
   if(!validateChecked("fondness_level")){
-    msg = msg.concat("<li>Seleccione una opcion para: 'Interes en la materia'.</li>");
+    msg = msg.concat("<li>Seleccione una opcion para para la pregunta: '2. Interes en la materia'.</li>");
     validate =  false;
   }
 
   //Validacion difficulty_level
   if(!validateChecked("difficulty_level")){
-    msg = msg.concat("<li>Seleccione una opcion para: 'Dificultad'.</li>");
+    msg = msg.concat("<li>Seleccione una opcion para la pregunta: '3. Dificultad'.</li>");
     validate =  false;
   }
 
   //Validacion required_time_level
   if(!validateChecked("required_time_level")){
-    msg = msg.concat("<li>Seleccione una opcion para: 'Tiempo de dedicacion'.</li>");
+    msg = msg.concat("<li>Seleccione una opcion para la pregunta: '4. Tiempo de dedicacion'.</li>");
     validate =  false;
   }
 
   //Validacion content_adjustment_level
   if(!validateChecked("content_adjustment_level")){
-    msg = msg.concat("<li>Seleccione una opcion para: 'Evaluaciones'.</li>");
+    msg = msg.concat("<li>Seleccione una opcion para la pregunta: '5. Evaluaciones'.</li>");
     validate =  false;
   }
 
   //Validacion stress_level
   if(!validateChecked("stress_level")){
-    msg = msg.concat("<li>Seleccione una opcion para: 'Estres'.</li>");
+    msg = msg.concat("<li>Seleccione una opcion para la pregunta: '6. Estres'.</li>");
     validate =  false;
   }
 
   //Validacion usefulness_level
   if(!validateChecked("usefulness_level")){
-    msg = msg.concat("<li>Seleccione una opcion para: 'Utilidad'.</li>");
+    msg = msg.concat("<li>Seleccione una opcion para la pregunta: '7. Utilidad'.</li>");
     validate =  false;
   }
 
   //Validacion practicality_level
   if(!validateChecked("practicality_level")){
-    msg = msg.concat("<li>Seleccione una opcion para: 'Enfoque del curso'.</li>");
+    msg = msg.concat("<li>Seleccione una opcion para la pregunta: '8. Enfoque del curso'.</li>");
     validate =  false;
   }
 
   //Validacion teamwork_level
   if(!validateChecked("teamwork_level")){
-    msg = msg.concat("<li>Seleccione una opcion para: 'Modalidad de trabajo'.</li>");
+    msg = msg.concat("<li>Seleccione una opcion para la pregunta: '9. Modalidad de trabajo'.</li>");
     validate =  false;
   }
 
