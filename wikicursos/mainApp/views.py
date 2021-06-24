@@ -2,7 +2,10 @@ from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from mainApp.models import Course, Department, Review, User, UserRoles, Roles, BelongsTo
 from django.contrib.auth import authenticate, login, logout
+from mainApp.depCursos import depCursos
+from mainApp.reviewCursos import comentarios
 import statistics as st
+import random
 
 
 courses_Dict = {
@@ -175,6 +178,7 @@ def load_cursos(request):
     return render(request, '') #html con el dropdown de cursos
 """
 
+
 def searchDepartment(request):
     if request.user.is_authenticated:
         context = {}
@@ -277,8 +281,86 @@ def gracias(request):
         return HttpResponseRedirect('/login')
 
 def fillDB(request):
-    course_name = 'Introducción al Cálculo'
-    course_code = 'MA 1002'
-    course = Course(name=course_name, course_code=course_code, course_type='OBLIGATORIO')
-    course.save()
+    # El plan para llenar la base de datos es:
+    # 0. Crear roles
+    # 1. Agregar departamentos
+    # 2. Agregar cursos y relacionar belongsTo
+    # 3. Agregar reviews para los cursos
+
+    
+
+    def addCourse(name, course_code, course_type):
+        course = Course(name=name, course_code=course_code, course_type=course_type)
+        course.save()
+        return course.id
+
+    #addCourse('TestCourse1', '1', 'OBLIGATORIO', 1)
+
+    def addDepartment(name):
+        department = Department(name=name)
+        department.save()
+        return department.id
+
+    def addBelongsTo(department_id, course_id):
+        belongsTo = BelongsTo(course_id=course_id, department_id=department_id)
+        belongsTo.save()
+
+    def addReview(course_id):
+        user = request.user    #usuario loggeado
+        course = Course.objects.get(id=course_id)
+        section = 2
+        year = 2021
+        semester = 1
+        required_time_level = random.randint(1, 5)
+        required_time_comment = comentarios['required_time_comment'][random.randint(0,len(comentarios['required_time_comment']) - 1)]
+        difficulty_level = random.randint(1, 5)
+        difficulty_comment = comentarios['difficulty_comment'][random.randint(0,len(comentarios['difficulty_comment']) - 1)]
+        recommendation_level = random.randint(1, 5)
+        recommendation_comment = comentarios['recommendation_comment'][random.randint(0,len(comentarios['recommendation_comment']) - 1)]
+        practicality_level = random.randint(1, 5)
+        practicality_comment = comentarios['practicality_comment'][random.randint(0,len(comentarios['practicality_comment']) - 1)]
+        content_adjustment_level =random.randint(1, 5)
+        content_adjustment_comment = comentarios['content_adjustment_comment'][random.randint(0,len(comentarios['content_adjustment_comment']) - 1)]
+        stress_level = random.randint(1, 5)
+        stress_comment = comentarios['stress_comment'][random.randint(0,len(comentarios['stress_comment']) - 1)]
+        teamwork_level = random.randint(1, 5)
+        teamwork_comment = comentarios['teamwork_comment'][random.randint(0,len(comentarios['teamwork_comment']) - 1)]
+        fondness_level = random.randint(1, 5)
+        fondness_comment = comentarios['fondness_comment'][random.randint(0,len(comentarios['fondness_comment']) - 1)]
+        usefulness_level = random.randint(1, 5)
+        usefulness_comment = comentarios['usefulness_comment'][random.randint(0,len(comentarios['usefulness_comment']) - 1)]
+
+        study_recommendation_comment = comentarios['study_recommendation_comment'][random.randint(0,len(comentarios['study_recommendation_comment']) - 1)]
+        
+        tools_comment = comentarios['tools_comment'][random.randint(0,len(comentarios['tools_comment']) - 1)]
+
+        useful_courses_comment = comentarios['useful_courses_comment'][random.randint(0,len(comentarios['useful_courses_comment']) - 1)]
+
+        general_comment = comentarios['general_comment'][random.randint(0,len(comentarios['general_comment']) - 1)]
+
+        review = Review(user=user, course=course, section=section, year=year, semester=semester, required_time_level=required_time_level,
+                        required_time_comment=required_time_comment, difficulty_level=difficulty_level, 
+                        difficulty_comment=difficulty_comment, recommendation_level=recommendation_level, 
+                        recommendation_comment=recommendation_comment, practicality_level = practicality_level,
+                        practicality_comment = practicality_comment, content_adjustment_level = content_adjustment_level,
+                        content_adjustment_comment = content_adjustment_comment, stress_level =  stress_level,
+                        stress_comment = stress_comment, teamwork_level = teamwork_level, teamwork_comment = teamwork_comment,
+                        fondness_level = fondness_level, fondness_comment = fondness_comment, usefulness_level = usefulness_level,
+                        usefulness_comment = usefulness_comment, study_recommendation_comment = study_recommendation_comment,
+                        tools_comment = tools_comment, useful_courses_comment = useful_courses_comment, 
+                        general_comment = general_comment)
+        review.save()
+
+    
+    for department in depCursos:
+        # agregar departamento
+        department_id = addDepartment(department) 
+        for course in depCursos[department]:
+            # agregar curso
+            course_id = addCourse(course['name'], course['code'], course['type'])
+            # agregar belongsTo
+            addBelongsTo(department_id, course_id)
+            for _ in range(5):
+                addReview(course_id)        
+    #departamentosCursos['Departamento'][0]['nombre'] = 'algoritmos'
     return HttpResponseRedirect('/login')
