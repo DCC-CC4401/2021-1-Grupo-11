@@ -1,0 +1,439 @@
+body{
+    /*background-color: rgb(221, 221, 221);*/
+    background-color: #ffffff;
+    background-image: url("https://www.transparenttextures.com/patterns/clean-gray-paper.png");
+    /* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
+}
+
+* {
+    font-family: Arial, Helvetica, sans-serif;
+   }
+
+.menu{
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #ffffff;
+    list-style: none;
+    margin-left: 3%;
+    margin-right: 3%;
+    height: 10%;
+    display: flex !important;
+}
+
+.menu li{
+    display: inline-block;
+    text-align: center;
+    width: 15%;
+    margin-left: 40px;
+    margin-right: 40px;
+}
+
+.menu li a{
+    color: rgb(0, 0, 0);
+    padding: 15px;
+    display: block;
+    text-decoration: none;
+}
+
+.menu li a:hover{
+    background-color: #df6666ee;
+}
+
+
+.legend select{
+    height: 50px;
+    width: 200px;
+    font-size: 15px;
+    text-align: center;
+    border: solid darkgrey;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+
+.selection{
+    margin-top: 2%;
+    display: flex;
+    justify-content: space-around;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+.formulario{
+    /*background-color: #df6666ee;*/
+    background-color: #f1c4c4ea;
+    width: 80%;
+    margin-left: 10%;
+    margin-top: 2%;
+    margin-bottom: 8%;
+    border-radius: 10px;
+    box-shadow: 30px 30px 10px #1d070788;
+    border-radius: 20px;
+}
+
+.encabezado{
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #474747;
+    padding: 20px;
+    border-radius: 20px;
+    margin-bottom: 5px;
+    font-size: 20px;
+    color: #FFF
+}
+
+.recuadro{
+    background-color: #ffffff;
+    padding: 20px;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    margin-left: 10%;
+    margin-right: 10%;
+    text-align: center;
+    border-radius: 15px;
+    border-style: double;
+}
+
+.pregunta{
+    font-size: x-large;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 15px;
+    text-align: center;
+    color: black;
+}
+
+.opciones{
+    list-style: none;
+    height: 10%;
+    text-align:center;
+}
+
+.opciones li{
+    padding: 1%;
+    display: inline-block;
+    text-align: center;
+}
+
+
+.envio{
+    cursor: pointer;
+    background-color: #3f3f3f;
+    text-align: center;
+    font-size: 40px;
+    border-radius: 8px;
+    box-shadow: 8px 8px 5px #1d070788;
+    margin: 15px;
+    margin-left: 40%;
+    margin-bottom: 40px;
+    padding: 20px;
+    color: #FFF;
+}
+
+.envio:hover{
+      background-color: #A35151;
+      cursor: pointer;
+}
+
+.opciones li input[type="radio"].low_hard{
+    width: 5em;
+    height: 5em;
+}
+.opciones li input[type="radio"].low_soft{
+    width: 4em;
+    height: 4em;
+}
+.opciones li input[type="radio"].neutral{
+    width: 3em;
+    height: 3em;
+}
+.opciones li input[type="radio"].high_soft{
+    width: 4em;
+    height: 4em;
+}
+.opciones li input[type="radio"].high_hard{
+    width: 5em;
+    height: 5em;
+}
+
+input[type='radio']:after {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    top: -2px;
+    left: -1px;
+    position: relative;
+    content: '';
+    display: inline-block;
+    visibility: visible;
+    border: 2px solid white;
+    cursor: pointer;
+}
+
+input[type='radio'].low_hard:after {background-color: #9B2B36;}
+input[type='radio'].low_soft:after {background-color: #CB535F;}
+input[type='radio'].neutral:after {background-color: #c0c566;}
+input[type='radio'].high_soft:after {background-color: #6CC56C;}
+input[type='radio'].high_hard:after {background-color: #3D933D;}
+
+input[type='radio']:checked:after {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    top: -4px;
+    left: -3px;
+    position: relative;
+    content: '';
+    display: inline-block;
+    visibility: visible;
+    border: 3px solid black;
+}
+input[type='radio'].low_hard:checked:after {background-color: #454545;}
+input[type='radio'].low_soft:checked:after {background-color: #454545;}
+input[type='radio'].neutral:checked:after {background-color: #454545;}
+input[type='radio'].high_soft:checked:after {background-color: #454545;}
+input[type='radio'].high_hard:checked:after {background-color: #454545;}
+
+.anotacion{
+    width: 15%;
+    text-align: center;
+    color: black;
+}
+
+.comentar{
+    cursor: pointer;
+    color: blue;
+    text-decoration: underline;
+}
+
+.modal {
+    display: none; 
+    position: fixed; 
+    z-index: 1; 
+    padding-top: 100px; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%;  
+    overflow: auto;  
+    background: rgba(0, 0, 0, 0.658);
+    transition: all 500ms ease;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.modal-content {
+    background-color:  #df6666ee;
+    margin-top: 70px;
+    margin-left: 20%;
+    padding: 20px;
+    border: 1px solid rgb(0, 0, 0);
+    width: 60%;
+}
+
+.modal-content p{
+    text-align: center;
+    font-size: 220%;
+
+}
+
+.comentario_modal{
+    height: 150px;
+    width: 500px;
+    font-size: 17px;
+    margin-left: 130px;
+    margin-right: 130px;
+    resize: none;
+}
+
+
+.close{
+    float:right;
+}
+
+.enviar_comentario{
+    text-align: center;
+    margin-top: 30px;
+    margin-left: 40%;
+}
+
+.comentario{
+    height: 100px;
+    width: 80%;
+    font-size: 15px;
+    resize: none;
+}
+
+.topbar{
+    display: flex;
+    justify-content: center;
+}
+
+.topbar_register{
+    background-color: white; 
+    height: 40px; 
+    margin-bottom: 4%;
+}
+
+.topbar_register img{
+    margin-left: 40%;
+}
+
+.box{
+    background-color: #f1c4c4ea;
+    width: 80%;
+    height: 30em;
+    margin-left: 10%;
+    border-radius: 20px;
+    box-shadow: 30px 30px 10px #1d070788;
+}
+
+.form-group label{
+    width: 200%;
+}
+
+.modal-comment{
+    display: flex;
+    justify-content: center;
+}
+
+.selection .legend input[type="number"]{
+    height: 50px;
+    width: 200px;
+    font-size: 15px;
+    text-align: center;
+    border: solid darkgrey;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/*statistics*/
+
+.visualization{
+    background-color: #f1c4c4ea;
+    width: 80%;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    border-radius: 10px;
+    box-shadow: 30px 30px 10px #1d070788;
+    border-radius: 20px;
+}
+
+.row_flex{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.column_flex{
+    display: flex;
+    flex-direction: column;
+}
+
+*, *::before{box-sizing: border-box;}
+
+.globo{
+  font-size: 15px;
+  border-radius: var(--borde);
+  padding: var(--borde);
+  --borde: 1em;
+  font-family: sans-serif;
+  z-index: 1; 
+  background-color: white;
+  filter: drop-shadow(0px 0px 1px black);
+  margin-left: 5%;
+  margin-bottom: 4%;
+  width: 85%;
+  text-align: initial;
+}
+
+.globo::before{
+  content: '';
+  position: absolute; 
+  z-index: -1;
+  width: var(--colita);
+  height: var(--colita);
+}
+
+.globo.abajo-derecha::before{
+  --colita: 35px;
+  left: 95%;
+  bottom: calc( var(--colita) / -1.5);
+  transform: skewY(30deg) rotateZ(-50deg);
+  border-radius: 0 0 0 10em;
+  box-shadow: 
+    inset calc(var(--colita)/2) calc(var(--colita)/3) 0 0 white;
+}
+
+
+#error{
+  content: "";
+  background: black;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0.9;
+  display: none;
+  justify-content: center;
+}
+
+#errormsg{
+    overflow-y: scroll;
+    background-color: #000000;
+    color: white;
+    font-weight: 700;
+    font-size: 24px;
+    border-radius: 15px;
+    padding: 20px;
+    width: 50%;
+    height: 40%;
+    margin-top: 15%;
+}
+
+.number_question{
+    float: left;
+    font-size: 25px;
+}
+
+.page_error{
+    text-align: center;
+    font-size: 40px;
+}
+
+.envio_stat{
+    cursor: pointer;
+    background-color: #3f3f3f;
+    text-align: center;
+    font-size: 40px;
+    border-radius: 8px;
+    box-shadow: 8px 8px 5px #1d070788;
+    padding: 20px;
+    color: #FFF;
+    text-decoration: none;
+    width:30%;
+    margin-left:35%;
+    margin-right:35%;
+}
+
+.envio_stat:hover{
+      background-color: #A35151;
+      cursor: pointer;
+}

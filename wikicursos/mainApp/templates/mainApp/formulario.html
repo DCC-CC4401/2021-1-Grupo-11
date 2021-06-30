@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <title>Formulario</title>
+    <link rel="stylesheet" href="{% static 'styles/base_styles.css' %}" type="text/css">
+    <script src="{% static 'scripts/formulario.js' %}"></script>
+
+    
+</head>
+
+<body>
+
+    <ul class="menu">
+        <img src="{% static 'images/wikicursos_lite.png' %}" alt="title" height="50px" >
+        <li><a href="{% url 'index' %}">Inicio</a></li>
+        <li><a href="{% url 'search_department' %}">Ver y valorar cursos</a></li>
+        <li><a href="">Estadisticas</a></li>
+        <li><a href="{% url 'logout' %}">Cerrar sesión</a></li>
+        <div style="margin-top: 2%;">Usuario</div>
+        <img src="{% static 'images/usuario1.png' %}" class="icono_usuario" alt="Icono usuario", height="50px">
+    </ul>
+     
+    <!--<div class="topbar"><img src="{% static 'images/wikicursos.png' %}" alt="title" width="300" ></div>-->
+    <form id="form" method="POST">
+        {% csrf_token %}
+        <h1 id="course_name" style="text-align: center;">{{course_name}}</h1>
+        <script>setCourseName()</script>
+    	<div class="selection">
+	        <div class="legend">
+                *
+	            <input type="number" min=2011 max=2021 value=2021 name="year" id=year required>
+	        </div>
+	        <div class="legend">
+                *
+	            <select  name="semester" id="semester">
+	                <option value=0 selected disabled="disabled">Semestre</option>
+	                <option value=1>Otoño</option>
+	                <option value=2>Primavera</option>
+	            </select>
+	        </div>
+	        
+	        <div class="legend">
+                *
+	            <select name="section" id="section">
+	                <option value=0 selected="selected" disabled="disabled">Sección</option>
+	                <option value=1>1</option>
+	                <option value=2>2</option>
+	            </select>
+	        </div>
+    	</div>
+    	<div class="formulario">
+            <div class="encabezado">Elija una puntuación para cada aspecto</div>
+            <div style="overflow-y:scroll; height: 50em;">
+
+            
+            <div class="recuadro">
+                <div class="number_question">1.</div>
+                <div class="pregunta">* Recomendación<br>¿Qué tanto recomiendas el curso?</div>
+                <ul class="opciones">
+                    <li class="anotacion">Nada recomendable</li>
+                    <li><input class="low_hard" type="radio" name="recommendation_level" value=1></li>
+                    <li><input class="low_soft" type="radio" name="recommendation_level" value=2></li>
+                    <li><input class="neutral" type="radio" name="recommendation_level" value=3></li>
+                    <li><input class="high_soft" type="radio" name="recommendation_level" value=4></li>
+                    <li><input class="high_hard" type="radio" name="recommendation_level" value=5></li>
+                    <li class="anotacion">Muy recomendable</li>
+                </ul>
+                <div class="comentar" id="abrir_modal" onclick="open_comment_modal('m1')">Agregar comentario</div>
+            </div>
+            <div class="modal" id="m1">
+                <div class="modal-content">
+                    <input type="button" class="close" id="volver" value="X" onclick="close_comment_modal('m1')">
+                    <p>Agregue su comentario</p>
+                    <div class="modal-comment"><textarea name="recommendation_comment" class="comentario" placeholder="Escriba su comentario acá" rows="4" cols="50"></textarea></div>
+                    <input type="button" class="enviar_comentario" value="Enviar comentario" onclick="close_comment_modal('m1')">
+                </div>
+            </div>
+
+            <div class="recuadro">
+                <div class="number_question">2.</div>
+                <div class="pregunta">* Interés en la materia<br>¿Qué tanto te gustó la materia que viste?​
+                </div>
+                <ul class="opciones">
+                    <li class="anotacion">No me gustó nada</li>
+                    <li><input class="low_hard" type="radio" name="fondness_level" value=1></li>
+                    <li><input class="low_soft" type="radio" name="fondness_level" value=2></li>
+                    <li><input class="neutral" type="radio" name="fondness_level" value=3></li>
+                    <li><input class="high_soft" type="radio" name="fondness_level" value=4></li>
+                    <li><input class="high_hard" type="radio" name="fondness_level" value=5></li>
+                    <li class="anotacion">Me gustó mucho</li>
+                </ul>
+                <div class="comentar" id="abrir_modal" onclick="open_comment_modal('m2')">Agregar comentario</div>
+            </div>
+            <div class="modal" id="m2">
+                <div class="modal-content">
+                    <input type="button" class="close" id="volver" value="X" onclick="close_comment_modal('m2')">
+                    <p>Agregue su comentario</p>
+                    <div class="modal-comment"><textarea name="fondness_comment" class="comentario" placeholder="Escriba su comentario acá" rows="4" cols="50"></textarea></div>
+                    <input type="button" class="enviar_comentario" value="Enviar comentario" onclick="close_comment_modal('m2')">
+                </div>
+            </div>
+
+            <div class="recuadro">
+                <div class="number_question">3.</div>
+                <div class="pregunta">* Dificultad<br>¿Académicamente que tan difícil fue?</div>
+                <ul class="opciones">
+                    <li class="anotacion">Muy fácil</li>
+                    <li><input class="low_hard" type="radio" name="difficulty_level" value=1></li>
+                    <li><input class="low_soft" type="radio" name="difficulty_level" value=2></li>
+                    <li><input class="neutral" type="radio" name="difficulty_level" value=3></li>
+                    <li><input class="high_soft" type="radio" name="difficulty_level" value=4></li>
+                    <li><input class="high_hard" type="radio" name="difficulty_level" value=5></li>
+                    <li class="anotacion">Muy difícil</li>
+                </ul>
+                <div class="comentar" id="abrir_modal" onclick="open_comment_modal('m3')">Agregar comentario</div>
+            </div>
+            <div class="modal" id="m3">
+                <div class="modal-content">
+                    <input type="button" class="close" id="volver" value="X" onclick="close_comment_modal('m3')">
+                    <p>Agregue su comentario</p>
+                    <div class="modal-comment"><textarea name="difficulty_comment" class="comentario" placeholder="Escriba su comentario acá" rows="4" cols="50"></textarea></div>
+                    <input type="button" class="enviar_comentario" value="Enviar comentario" onclick="close_comment_modal('m3')">
+                </div>
+            </div>
+
+            <div class="recuadro">
+                <div class="number_question">4.</div>
+                <div class="pregunta">* Tiempo de dedicación<br>¿El tiempo dedicado al ramo se ajusta a los créditos del curso?</div>
+                <ul class="opciones">
+                    <li class="anotacion">Muy en desacuerdo, me consumió mucho más tiempo</li>
+                    <li><input class="low_hard" type="radio" name="required_time_level" value=1></li>
+                    <li><input class="low_soft" type="radio" name="required_time_level" value=2></li>
+                    <li><input class="neutral" type="radio" name="required_time_level" value=3></li>
+                    <li><input class="high_soft" type="radio" name="required_time_level" value=4></li>
+                    <li><input class="high_hard" type="radio" name="required_time_level" value=5></li>
+                    <li class="anotacion">Muy de acuerdo, me consumió el tiempo señalado o menos</li>
+                </ul>
+                <div class="comentar" id="abrir_modal" onclick="open_comment_modal('m4')">Agregar comentario</div>
+            </div>
+            <div class="modal" id="m4">
+                <div class="modal-content">
+                    <input type="button" class="close" id="volver" value="X" onclick="close_comment_modal('m4')">
+                    <p>Agregue su comentario</p>
+                    <div class="modal-comment"><textarea name="required_time_comment" class="comentario" placeholder="Escriba su comentario acá" rows="4" cols="50"></textarea></div>
+                    <input type="button" class="enviar_comentario" value="Enviar comentario" onclick="close_comment_modal('m4')">
+                </div>
+            </div>
+
+            <div class="recuadro">
+                <div class="number_question">5.</div>
+                <div class="pregunta">* Evaluaciones<br>¿Las evaluaciones están ajustadas al contenido visto en clase?
+                </div>
+                <ul class="opciones">
+                    <li class="anotacion">Muy en desacuerdo, no tenían relación</li>
+                    <li><input class="low_hard" type="radio" name="content_adjustment_level" value=1></li>
+                    <li><input class="low_soft" type="radio" name="content_adjustment_level" value=2></li>
+                    <li><input class="neutral" type="radio" name="content_adjustment_level" value=3></li>
+                    <li><input class="high_soft" type="radio" name="content_adjustment_level" value=4></li>
+                    <li><input class="high_hard" type="radio" name="content_adjustment_level" value=5></li>
+                    <li class="anotacion">Muy de acuerdo, estaban muy relacionadas</li>
+                </ul>
+                <div class="comentar" id="abrir_modal" onclick="open_comment_modal('m5')">Agregar comentario</div>
+            </div>
+            <div class="modal" id="m5">
+                <div class="modal-content">
+                    <input type="button" class="close" id="volver" value="X" onclick="close_comment_modal('m5')">
+                    <p>Agregue su comentario</p>
+                    <div class="modal-comment"><textarea name="content_adjustment_comment" class="comentario" placeholder="Escriba su comentario acá" rows="4" cols="50"></textarea></div>
+                    <input type="button" class="enviar_comentario" value="Enviar comentario" onclick="close_comment_modal('m5')">
+                </div>
+            </div>
+
+            <div class="recuadro">
+                <div class="number_question">6.</div>
+                <div class="pregunta">* Estrés<br>¿Qué tanto estrés te generó el curso?</div>
+                <ul class="opciones">
+                    <li class="anotacion">Nada de estrés</li>
+                    <li><input class="low_hard" type="radio" name="stress_level" value=1></li>
+                    <li><input class="low_soft" type="radio" name="stress_level" value=2></li>
+                    <li><input class="neutral" type="radio" name="stress_level" value=3></li>
+                    <li><input class="high_soft" type="radio" name="stress_level" value=4></li>
+                    <li><input class="high_hard" type="radio" name="stress_level" value=5></li>
+                    <li class="anotacion">Excesivo estrés</li>
+                </ul>
+                <div class="comentar" id="abrir_modal" onclick="open_comment_modal('m6')">Agregar comentario</div>
+            </div>
+            <div class="modal" id="m6">
+                <div class="modal-content">
+                    <input type="button" class="close" id="volver" value="X" onclick="close_comment_modal('m6')">
+                    <p>Agregue su comentario</p>
+                    <div class="modal-comment"><textarea name="stress_comment" class="comentario" placeholder="Escriba su comentario acá" rows="4" cols="50"></textarea></div>
+                    <input type="button" class="enviar_comentario" value="Enviar comentario" onclick="close_comment_modal('m6')">
+                </div>
+            </div>
+
+
+            <div class="recuadro">
+                <div class="number_question">7.</div>
+                <div class="pregunta">* Utilidad<br>¿Crees que este curso será util en tu vida profesional?</div>
+                <ul class="opciones">
+                    <li class="anotacion">Poco útil</li>
+                    <li><input class="low_hard" type="radio" name="usefulness_level" value=1></li>
+                    <li><input class="low_soft" type="radio" name="usefulness_level" value=2></li>
+                    <li><input class="neutral" type="radio" name="usefulness_level" value=3></li>
+                    <li><input class="high_soft" type="radio" name="usefulness_level" value=4></li>
+                    <li><input class="high_hard" type="radio" name="usefulness_level" value=5></li>
+                    <li class="anotacion">Muy útil</li>
+                </ul>
+                <div class="comentar" onclick="open_comment_modal('m7')">Agregar comentario</div>
+            </div>
+            <div class="modal" id="m7">
+                <div class="modal-content">
+                    <input type="button" class="close" value="X" onclick="close_comment_modal('m7')">
+                    <p>Agregue su comentario</p>
+                    <div class="modal-comment"><textarea name="usefulness_comment" class="comentario" placeholder="Escriba su comentario acá" rows="4" cols="50"></textarea></div>
+                    <input type="button" class="enviar_comentario" value="Enviar comentario" onclick="close_comment_modal('m7')">
+                </div>
+            </div>
+
+            <div class="recuadro">
+                <div class="number_question">8.</div>
+                <div class="pregunta">* Enfoque del curso<br>¿Qué tan teórico práctico es el curso?</div>
+                <ul class="opciones">
+                    <li class="anotacion">Totalmente teórico</li>
+                    <li><input class="low_hard" type="radio" name="practicality_level" value=1></li>
+                    <li><input class="low_soft" type="radio" name="practicality_level" value=2></li>
+                    <li><input class="neutral" type="radio" name="practicality_level" value=3></li>
+                    <li><input class="high_soft" type="radio" name="practicality_level" value=4></li>
+                    <li><input class="high_hard" type="radio" name="practicality_level" value=5></li>
+                    <li class="anotacion">Totalmente práctico</li>
+                </ul>
+                <div class="comentar" onclick="open_comment_modal('m8')">Agregar comentario</div>
+            </div>
+            <div class="modal" id="m8">
+                <div class="modal-content">
+                    <input type="button" class="close" value="X" onclick="close_comment_modal('m8')">
+                    <p>Agregue su comentario</p>
+                    <div class="modal-comment"><textarea name="practicality_comment" class="comentario" placeholder="Escriba su comentario acá" rows="4" cols="50"></textarea></div>
+                    <input type="button" class="enviar_comentario" value="Enviar comentario" onclick="close_comment_modal('m8')">
+                </div>
+            </div>
+
+            <div class="recuadro">
+                <div class="number_question">9.</div>
+                <div class="pregunta">* Modalidad de trabajo<br>¿Qué tanto trabajo en equipo requiere este curso?</div>
+                <ul class="opciones">
+                    <li class="anotacion">Estríctamente individual</li>
+                    <li><input class="low_hard" type="radio" name="teamwork_level" value=1></li>
+                    <li><input class="low_soft" type="radio" name="teamwork_level" value=2></li>
+                    <li><input class="neutral" type="radio" name="teamwork_level" value=3></li>
+                    <li><input class="high_soft" type="radio" name="teamwork_level" value=4></li>
+                    <li><input class="high_hard" type="radio" name="teamwork_level" value=5></li>
+                    <li class="anotacion">Estríctamente grupal</li>
+                </ul>
+                <div class="comentar" onclick="open_comment_modal('m9')">Agregar comentario</div>
+            </div>
+            <div class="modal" id="m9">
+                <div class="modal-content">
+                    <input type="button" class="close" value="X" onclick="close_comment_modal('m9')">
+                    <p>Agregue su comentario</p>
+                    <div class="modal-comment"><textarea name="teamwork_comment" class="comentario" placeholder="Escriba su comentario acá" rows="4" cols="50"></textarea></div>
+                    <input type="button" class="enviar_comentario" value="Enviar comentario" onclick="close_comment_modal('m9')">
+                </div>
+            </div>
+
+            <div class="recuadro">
+                <div class="number_question">10.</div>
+                <div class="pregunta">¿Qué recomiendas para el estudio de este curso?</div>
+                <textarea name="study_recommendation_comment" class="comentario" placeholder="Escriba su comentario acá"></textarea>
+            </div>
+
+            <div class="recuadro">
+                <div class="number_question">11.</div>
+                <div class="pregunta">¿Qué herramientas adicionales recomiendas para este curso?</div>
+                <textarea name="tools_comment" class="comentario" placeholder="Escriba su comentario acá"></textarea>
+            </div>
+
+            <div class="recuadro">
+                <div class="number_question">12.</div>
+                <div class="pregunta">¿Qué otros cursos te ayudaron para dar este?</div>
+                <textarea name="useful_courses_comment" class="comentario" placeholder="Escriba su comentario acá"></textarea>
+            </div>
+            
+            <div class="recuadro">
+                <div class="number_question">13.</div>
+                <div class="pregunta">¿Algún otro comentario acerca del curso?</div>
+                <textarea name="general_comment" class="comentario" placeholder="Escriba su comentario acá"></textarea>
+            </div>
+            <input type="hidden" name="course_id" value={{course_id}}>
+            <button class="envio" type="button" onclick="confBox()">Enviar  review</button>
+
+        </form>
+        <div id="error">
+        <div id="errormsg"></div>
+    </div>
+    </div>
+    </div>
+
+
+</body>
+    
+
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <title>Registro</title>
+    <link rel="stylesheet" href="registro.css" type="text/css">
+    <script src="formulario.js"></script>  
+
+    <style>
+
+body{
+    /*background-color: rgb(221, 221, 221);*/
+    background-color: #ffffff;
+    background-image: url("https://www.transparenttextures.com/patterns/clean-gray-paper.png");
+    /* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
+}
+
+.topbar_register{
+    background-color: white; 
+    height: 40px; 
+    margin-bottom: 4%;
+}
+
+.topbar_register img{
+    margin-left: 40%;
+}
+
+.box{
+    background-color: #f1c4c4ea;
+    width: 80%;
+    height: 30em;
+    margin-left: 10%;
+    border-radius: 20px;
+    box-shadow: 30px 30px 10px #1d070788;
+}
+
+.encabezado{
+    background-color: #474747;
+    padding: 20px;
+    border-radius: 20px;
+    margin-bottom: 5px;
+    font-size: 20px;
+    color: #FFF
+}
+
+.form-group{
+    padding: 20px;
+}
+
+
+.form-group label{
+    width: 200%;
+    color: black;
+}
+
+
+
+    </style>
+
+</head> 
+<body>
+
+    <img src="usuario1.png" class="icono_usuario" alt="Icono usuario">
+
+    <div class="topbar_register"><img src="wikicursos_lite.png" alt="title" width="300" ></div>
+
+    <div class="box">
+    	<div class="encabezado">Iniciar Sesion</div>
+        <form method="POST">
+            <div class="form-group">
+                <label for="nombre_usuario">Nombre</label>
+                <input type="text" class="form-control" id=nombre_usuario name="name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="contraseña">Prefijo</label>
+                <input type="text" class="form-control" id="contraseña" name="prefix" required>
+            </div>
+
+             <button type="submit">Iniciar sesión</button>
+        </form>
+
+        
+    </div>
+</body>
+    
+
+</html>
+
+</body>
+</html>
