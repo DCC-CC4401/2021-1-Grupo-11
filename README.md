@@ -9,4 +9,5 @@ WikiCursos es una plataforma que reúne información de diferentes cursos de la 
 * Instalar dependencias.
 * Ejecutar `python manage.py migrate`.
 * Ejecutar la aplicación con: `python manage.py runserver`.
+* Ingresar a `http://127.0.0.1:8000/login/`
 
